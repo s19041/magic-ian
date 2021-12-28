@@ -1,0 +1,31 @@
+-No plot
+-lekkie wejscie do swiata(jakaś krótka narracja)
+
+------------------------------------------------------------------Dungeon crawler
+-Itemy po dungeonie a jak ci się nie uda no to tracisz cos/od nowa
+-Możliwość tworzenia dungeonu przez gracza/proceduralnie np. wybór 1 z 3 pokoi kilka krazy żeby ułożyć z tego dungeon
+
+-Kamera 2d z boku (darkest dungeon)
+
+-Ciemny styl graficzny
+
+-------System walki na zasadzie kart: As 1 dmg, dwójka 2 dmg itp. Król, dama itp mają specjalne właściwości
+np. dama healuje, joker odwraca dmg
+-Postać ma normalne hp
+-System walki do dopracowania w trakcie programowania
+
+-Deck maksymalnie x kart(wstępnie 12)
+
+-Przed dungeonem ustawiasz deck . (kolejność kart jest losowa)
+
+-Na start playthrough masz w tali as, 2, 3 i król
+
+-Zdobywasz karty w dungeonach
+
+-Może tracisz karte jak umrzesz
+
+-Jakieś proste pasywne itemy np. zmiana efektu karty. 
+
+-Bardzo prosty hub między dungeonami
+
+-UI jakieś coś nwm dungeon crawler wiadomo

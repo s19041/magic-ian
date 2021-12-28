@@ -1,0 +1,63 @@
+*12 kart w talii
+
+*talia składa się z 2 kolorów kart maks
+
+*Maks 2 takie same karty w talii
+
+//do zdobycia 52 różnych kart
+
+karty od 1 do 10 zadają obrażenia równe swojej wartości
+karty od 1 do 10 danego koloru mają takie zasady działania
+
+-pik(wino) Dodaje debuff na obrażenia przeciwnika(pokazujac to znaczkiem wina nad przeciwnikiem)
+
+-kier(czerwień) leczy 50% swojej przeciwnej wartości
+
+-trefl(żołądź) daje pancerz o przeciwnej wartości swojej karty(as daje 10 armora, 5 daje 6, 10 daje 1)(moze skoro trefl to 3 listna koniczyna to karty tez nakładają do 3 stacków żeby nastepny hit był zablokowany albo zredukowany dmg)
+
+-karo(dzwonek) nakłada stacki stuna o wartości przeciwnej swojej. 
+
+**STUN: przy 20 stackach stunuje postać czyli nie pozwala wykonać akcji w swojej turze
+
+
+=============================PLIK "POMYSŁY NA KARTY"===============
+pik(wino) 
+król
+dama 
+walet
+kier(czerwień)
+król
+dama 
+walet
+trefl(żołądź) 
+król
+dama 
+walet
+karo(dzwonek) n
+król
+dama(dama na wszystko, wszystko na dame(dama ignoruje np odpornosc(jesli ja zrobimy)))
+walet
+
+1 10
+2 9
+3 8
+4 7
+5 6 
+6 5 
+7 4 
+8 3 
+9 2 
+10 1
+
+ITEM IDEAS 
+Te z specjalnymi umiejętnościami zamiast przetasowania talii
+Długi Rękaw:  możesz zagrać asa losowego koloru zamiast karty z góry talii/ 
+możliwosć schowania karty na później(chowasz aktualną kartę i możesz ją zagrać kiedy chcesz zamiast standardowej lub tracisz ture i możesz 2 kart w jednej zagrać używając tej z rękawa)
+
+Cylinder: przetasowanie talii o koszcie pół pkt akcji.
+
+Peleryna: Za pół pkt akcji możesz zmienic kolor karty na górze talii
+
+Okulary: Za pół pkt akcji Widzisz 3 kolejne karty
+
+Różdzka: Gracz ma szanse na wyczarowanie dodatkowych punktów akcji
