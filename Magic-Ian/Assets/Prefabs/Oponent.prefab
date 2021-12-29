@@ -97,5 +97,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unitName: Bandzior
   hp: 10
-  armor: 0
+  armor: 2
+  damage: 3
+  stunStacks: 0
   maxHp: 10

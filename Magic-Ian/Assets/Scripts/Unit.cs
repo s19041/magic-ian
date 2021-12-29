@@ -8,6 +8,7 @@ public class Unit : MonoBehaviour
     public int hp;
     public int armor;
     public int damage;
+    public int stunStacks;
 
     public int maxHp;
 
@@ -34,6 +35,28 @@ public class Unit : MonoBehaviour
         if (hp <= 0)
             return true;
         return false;
+    }
+    public void Heal(int healAmount)
+    {
+        if (hp < maxHp)
+        {
+            if (healAmount + hp > maxHp)
+            {
+                hp = maxHp;
+            }
+            else
+            {
+                hp += healAmount;
+            }
+        }
+    }
+    public void ArmorUp(int armorAmount)
+    {
+        armor += armorAmount;
+    }
+    public void AddStunStacks(int stacks)
+    {
+        stunStacks += stacks;
     }
    
 }
