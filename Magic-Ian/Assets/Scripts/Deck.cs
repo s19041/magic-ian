@@ -67,5 +67,9 @@ public class Deck : MonoBehaviour
         return c;
         
     }
+    public List<Card> getCards()
+    {
+        return cards;
+    }
    
 }

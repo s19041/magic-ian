@@ -511,6 +511,28 @@ Transform:
   m_Father: {fileID: 2010601889}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &859225894 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6290075695810339533, guid: dc649aad49732c94e98c1ba91b5c0223, type: 3}
+  m_PrefabInstance: {fileID: 1507346181}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b0cad9fbd458b2469ca6010030d9571, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &859225896 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6290075695810339536, guid: dc649aad49732c94e98c1ba91b5c0223, type: 3}
+  m_PrefabInstance: {fileID: 1507346181}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &956918776 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1574478428098671101, guid: 1869276962c8f954d8ea780282c1cb64, type: 3}
@@ -582,6 +604,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   state: 0
+  cardDisplay: {fileID: 859225894}
   playerPrefab: {fileID: 4897434664256905212, guid: d023213d23e25354d8fcdfd4b3e1d660, type: 3}
   enemyPrefab: {fileID: 1636514762991776171, guid: bc668ccd1860eca4987237cb4a8275c0, type: 3}
   playerBattleStation: {fileID: 1712992971}
@@ -618,6 +641,10 @@ PrefabInstance:
     - target: {fileID: 6290075695810339531, guid: dc649aad49732c94e98c1ba91b5c0223, type: 3}
       propertyPath: m_Name
       value: Ace of Hearts
+      objectReference: {fileID: 0}
+    - target: {fileID: 6290075695810339531, guid: dc649aad49732c94e98c1ba91b5c0223, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6290075695810339532, guid: dc649aad49732c94e98c1ba91b5c0223, type: 3}
       propertyPath: m_Pivot.x
@@ -703,6 +730,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6290075695810339533, guid: dc649aad49732c94e98c1ba91b5c0223, type: 3}
+      propertyPath: artworkImage
+      value: 
+      objectReference: {fileID: 859225896}
     - target: {fileID: 6290075695810339535, guid: dc649aad49732c94e98c1ba91b5c0223, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 1
@@ -801,8 +832,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deck: {fileID: 1651449920}
-  allCards: []
-  AceOfHearts: {fileID: 11400000, guid: 520cd4d1e67b6ff4ea44ae1376f5c5ea, type: 2}
+  allCards:
+  - {fileID: 11400000, guid: ee8ba2511ec91e646826b97fcc5ef136, type: 2}
+  - {fileID: 11400000, guid: ce6493645dbc89d43b2340bc11069750, type: 2}
+  - {fileID: 11400000, guid: 4bc4db40800659d459a22a4bbefeeb16, type: 2}
+  - {fileID: 11400000, guid: 520cd4d1e67b6ff4ea44ae1376f5c5ea, type: 2}
+  - {fileID: 11400000, guid: c4aa124417ca45648a5e1b36d9523330, type: 2}
+  - {fileID: 11400000, guid: dd9bc2c36f29aff44a35944b89cdb02d, type: 2}
 --- !u!114 &1702859549 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1574478426820102424, guid: 1869276962c8f954d8ea780282c1cb64, type: 3}

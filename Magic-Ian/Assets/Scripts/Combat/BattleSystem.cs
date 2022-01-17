@@ -8,6 +8,7 @@ public enum BattleState {START, PLAYERTURN, ENEMYTURN, WON, LOST };
 public class BattleSystem : MonoBehaviour
 {
     public BattleState state;
+    public CardDisplay cardDisplay;
 
     public GameObject playerPrefab;
     public GameObject enemyPrefab;
@@ -23,6 +24,7 @@ public class BattleSystem : MonoBehaviour
     Unit enemyUnit;
 
     public Deck deck;
+    Card currentCard;
 
     // Start is called before the first frame update
     void Start()
@@ -52,6 +54,9 @@ public class BattleSystem : MonoBehaviour
         playerHUD.SetHud(playerUnit);
         enemyHUD.SetHud(enemyUnit);
 
+        
+        cardDisplay.updateDisplay();
+
 
         yield return new WaitForSeconds(2f);
         state = BattleState.PLAYERTURN;
@@ -60,6 +65,9 @@ public class BattleSystem : MonoBehaviour
     void PlayerTurn()
     {
         dialogueText.text = "Twój ruch";
+        currentCard = deck.playCard();
+        cardDisplay.card = currentCard;
+        cardDisplay.updateDisplay();
     }
     
     IEnumerator PlayerAttack()
@@ -67,8 +75,8 @@ public class BattleSystem : MonoBehaviour
         // tu powinna byæ ca³a logika z dzia³aniem kart. 
         // pobieranie wartosci dmg z karty itp zamiast z playerUnit. Tak samo z np healowaniem z kart(kier) wiec sama metoda to raczej PlayerPlayCard powinna byc
         
-        Card currentCard = deck.playCard();
-
+        
+        
 
 
         playerUnit.Heal(currentCard.heal);
