@@ -832,13 +832,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deck: {fileID: 1651449920}
-  allCards:
-  - {fileID: 11400000, guid: ee8ba2511ec91e646826b97fcc5ef136, type: 2}
-  - {fileID: 11400000, guid: ce6493645dbc89d43b2340bc11069750, type: 2}
+  hearts:
+  - {fileID: 11400000, guid: cd4eadbfb185c5148974fb7cb565dd08, type: 2}
+  spades:
+  - {fileID: 11400000, guid: 6649f1e5864a0e148ad9551b827c2203, type: 2}
+  - {fileID: 11400000, guid: 9d65f406662d6d14a8a79c25465c7b2a, type: 2}
+  - {fileID: 11400000, guid: ab4ff3b0b6f685c449303b3572cda4bc, type: 2}
+  - {fileID: 11400000, guid: 0e7139998d7bbab46b1b7c094ad0cbd6, type: 2}
+  - {fileID: 11400000, guid: 38d2c289cc411dc429fb540a92d1df65, type: 2}
+  - {fileID: 11400000, guid: a03cd9de54c102440a0e6e942c84ccb2, type: 2}
+  - {fileID: 11400000, guid: a03cd9de54c102440a0e6e942c84ccb2, type: 2}
+  clubs:
+  - {fileID: 11400000, guid: d20e5e9692f9af345b8ac48f13e94038, type: 2}
+  - {fileID: 11400000, guid: a1e9623aa1908c64ca19262bce957da0, type: 2}
+  - {fileID: 11400000, guid: ebfdadf00f4ae834c87821f460d7d6a6, type: 2}
+  - {fileID: 11400000, guid: 3c7de43dea6cad542bb1863883c43195, type: 2}
+  - {fileID: 11400000, guid: e91096eabe735a644b883f278bcc10cd, type: 2}
+  - {fileID: 11400000, guid: 83b6e67ba15ab104f9853e68c0b98d40, type: 2}
+  - {fileID: 11400000, guid: 1a4ac598885305f43b36d039c8a279e7, type: 2}
+  diamonds:
   - {fileID: 11400000, guid: 4bc4db40800659d459a22a4bbefeeb16, type: 2}
-  - {fileID: 11400000, guid: 520cd4d1e67b6ff4ea44ae1376f5c5ea, type: 2}
-  - {fileID: 11400000, guid: c4aa124417ca45648a5e1b36d9523330, type: 2}
-  - {fileID: 11400000, guid: dd9bc2c36f29aff44a35944b89cdb02d, type: 2}
 --- !u!114 &1702859549 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1574478426820102424, guid: 1869276962c8f954d8ea780282c1cb64, type: 3}

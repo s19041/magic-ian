@@ -21,6 +21,7 @@ public class Deck : MonoBehaviour
     {
         if (cards.Count < 12)
         {
+            card.setCard();
             cards.Add(card);
         }
     }

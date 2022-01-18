@@ -31,9 +31,15 @@ public class Card : ScriptableObject
     }
 
     // Update is called once per frame
-    void Update()
+    public void setCard()
     {
-        
+        setName();
+        setDamage();
+        setStats();
+    }
+    public void setName()
+    {
+        name = rank.ToString() + " Of " + suit.ToString();
     }
     public void setDamage()
     {//tu mo¿na dodaæ warunek który wyklucza karty specjalne
