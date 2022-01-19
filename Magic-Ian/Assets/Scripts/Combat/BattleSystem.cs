@@ -148,20 +148,20 @@ public class BattleSystem : MonoBehaviour
         dialogueText.text = "Ruch " + enemyUnit.unitName;
         bool isDead = false;
         yield return new WaitForSeconds(1f);//Poni¿ej legendarne GOLOMP AI
-        if (turn % 3 == 0)
+        if (turn % 3 == 1)
         {
             dialogueText.text = enemyUnit.unitName + " atakuje";
             isDead = playerUnit.TakeDamage(enemyUnit.damage);
         }
-        if (turn % 3 == 1)
-        {
-            dialogueText.text = enemyUnit.unitName + " broni sie";
-            enemyUnit.ArmorUp(5);
-        }
         if (turn % 3 == 2)
         {
+            dialogueText.text = enemyUnit.unitName + " broni sie";
+            enemyUnit.ArmorUp(6);
+        }
+        if (turn % 3 == 0)
+        {
             dialogueText.text = enemyUnit.unitName + " wzmacnia sie";
-            enemyUnit.damage += 1;
+            enemyUnit.damage += 2;
         }
 
 
