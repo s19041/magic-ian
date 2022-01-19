@@ -8,7 +8,7 @@ public enum BattleState {START, PLAYERTURN, ENEMYTURN, WON, LOST };
 public class BattleSystem : MonoBehaviour
 {
     public BattleState state;
-    public CardDisplay cardDisplay;
+    //public CardDisplay cardDisplay;
 
     public GameObject playerPrefab;
     public GameObject enemyPrefab;
@@ -25,6 +25,9 @@ public class BattleSystem : MonoBehaviour
 
     public Deck deck;
     Card currentCard;
+
+    private int turn;
+    private int shuffleCount;
 
     // Start is called before the first frame update
     void Start()
@@ -55,7 +58,7 @@ public class BattleSystem : MonoBehaviour
         enemyHUD.SetHud(enemyUnit);
 
         
-        cardDisplay.updateDisplay();
+       // cardDisplay.updateDisplay();
 
 
         yield return new WaitForSeconds(2f);
@@ -64,33 +67,35 @@ public class BattleSystem : MonoBehaviour
     }
     void PlayerTurn()
     {
-        dialogueText.text = "Twoj ruch";
-        currentCard = deck.playCard();
-        cardDisplay.card = currentCard;
-        cardDisplay.updateDisplay();
+        shuffleCount = 0;
+        dialogueText.text = "Twój ruch";
+        currentCard = deck.getTopCard();
+        //cardDisplay.card = currentCard;
+        //cardDisplay.updateDisplay();
+        turn++;
+
     }
-    
-    IEnumerator PlayerAttack()
+
+    IEnumerator PlayerPlayCard()
     {
         // tu powinna byæ ca³a logika z dzia³aniem kart. 
-        // pobieranie wartosci dmg z karty itp zamiast z playerUnit. Tak samo z np healowaniem z kart(kier) wiec sama metoda to raczej PlayerPlayCard powinna byc
-        
-        
-        
+        //nie wiem jak rozwi¹zaæ sprawê kart specjalnych. Pewnie sprawdzanie ich ifami i tutaj dzia³anie wpisywaæ ale to trochê s³abe(ale ³atwe)
+
+
+
 
 
         playerUnit.Heal(currentCard.heal);
         playerUnit.ArmorUp(currentCard.armor);
         enemyUnit.AddStunStacks(currentCard.stunStacks);
         bool isDead = enemyUnit.TakeDamage(currentCard.damage);
+        deck.cardPlayed();
 
 
-        //if kier to cos
-        //if trefl to cos/
-        //blablabla
-        playerHUD.SetStats(playerUnit.hp,playerUnit.maxHp,playerUnit.armor);
-        enemyHUD.SetStats(enemyUnit.hp,enemyUnit.maxHp, enemyUnit.armor);
-        
+
+        playerHUD.SetStats(playerUnit.hp, playerUnit.maxHp, playerUnit.armor);
+        enemyHUD.SetStats(enemyUnit.hp, enemyUnit.maxHp, enemyUnit.armor);
+
 
         if (isDead)
         {
@@ -104,24 +109,51 @@ public class BattleSystem : MonoBehaviour
             yield return new WaitForSeconds(2f);
             StartCoroutine(EnemyTurn());
         }
-        
+
 
     }
-    public void OnAttackButton()
+    public void OnPlayCardButton()
     {
         if (state != BattleState.PLAYERTURN)
             return;
-        StartCoroutine(PlayerAttack());
-       
+        StartCoroutine(PlayerPlayCard());
+
+    }
+    public void OnShuffleDeckButton()//przypisz to do przycisku kaju
+    {
+        if (state != BattleState.PLAYERTURN)
+            return;
+        shuffleCount++;
+        deck.Shuffle();
+        
+        //cardDisplay.updateDisplay();
+        if (shuffleCount>=2)
+            StartCoroutine(EnemyTurn());
     }
     IEnumerator EnemyTurn()
     {
         dialogueText.text = "Ruch " + enemyUnit.unitName;
+        bool isDead = false;
         yield return new WaitForSeconds(1f);
+        if (turn % 3 == 0)
+        {
+            dialogueText.text = enemyUnit.unitName + " atakuje";
+            isDead = playerUnit.TakeDamage(enemyUnit.damage);
+        }
+        if (turn % 3 == 1)
+        {
+            dialogueText.text = enemyUnit.unitName + " broni sie";
+            enemyUnit.ArmorUp(5);
+        }
+        if (turn % 3 == 2)
+        {
+            dialogueText.text = enemyUnit.unitName + " wzmacnia sie";
+            enemyUnit.damage += 1;
+        }
 
-        bool isDead = playerUnit.TakeDamage(enemyUnit.damage);
 
-        playerHUD.SetStats(playerUnit.hp,playerUnit.maxHp,playerUnit.armor);
+        playerHUD.SetStats(playerUnit.hp, playerUnit.maxHp, playerUnit.armor);
+        enemyHUD.SetStats(enemyUnit.hp, enemyUnit.maxHp, enemyUnit.armor);
 
         yield return new WaitForSeconds(1f);
 

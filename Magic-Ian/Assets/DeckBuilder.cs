@@ -28,6 +28,7 @@ public class DeckBuilder : MonoBehaviour
             deck.addCard(colors[2][i]);
         }
         deck.Shuffle();
+        deck.setTopCard();
         
         
     }

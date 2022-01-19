@@ -12,7 +12,12 @@ public class Deck : MonoBehaviour
     List<Card> graveyard;
 
     public Card topCard;
-    
+
+    public CardDisplay cardDisplay;
+    //myœli na temat tej klasy:
+    //mo¿e by rozdzielic to na graveyard i deck ale trochê useless
+    //fajnie by zrobiæ jakieœ przekl¹danie graveyard ¿eby sprawdziæ jakie karty siê zagra³o
+    //nawet bardzo fajnie /\
     private void Start()
     {
         graveyard = new List<Card>();
@@ -29,48 +34,59 @@ public class Deck : MonoBehaviour
     {
         return cards.Remove(card);
     }
-    public bool showCard()
+    public bool setTopCard()
     {
         if (cards.Count > 0)
         {
             topCard = cards[0];
+            cardDisplay.card = topCard;
+            cardDisplay.updateDisplay();// nie jestem pewien czy display powinien tutaj byæ ale chyba lepiej tutaj niz w battle system(nawet napewno lepiej)
             return false;
         }
         return true;
-            
+
     }
     public void Shuffle()
     {
         var shuffledcards = cards.OrderBy(a => Guid.NewGuid()).ToList();
         cards = shuffledcards;
+        setTopCard();
     }
 
     public void reShuffle()
     {
         cards = graveyard;
-        graveyard = new List<Card>();
+        graveyard = new List<Card>();//z tego bêdzie animacja powrotu z graveyard do decku
         Shuffle();
     }
-    public Card playCard()
+    public Card getTopCard()
     {
-        
-        //logic for playing the topcard
-        graveyard.Add(topCard);
+        return topCard;
+
+    }
+    public void throwCard()
+    {
         cards.Remove(topCard);
-        var isEmpty=showCard();
-        Card c = topCard;
+        graveyard.Add(topCard);
+    }
+    public void nextCard()
+    {
+        var isEmpty = setTopCard();
         if (isEmpty)
         {
             reShuffle();
-            showCard();
-            c = topCard;
+            setTopCard();
         }
-        return c;
-        
     }
+    public void cardPlayed()
+    {
+        throwCard();
+        nextCard();
+    }
+
     public List<Card> getCards()
     {
         return cards;
     }
-   
+
 }

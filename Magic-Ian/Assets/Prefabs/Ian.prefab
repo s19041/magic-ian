@@ -96,7 +96,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unitName: 
-  hp: 10
+  hp: 50
   armor: 2
   damage: 1
   stunStacks: 0

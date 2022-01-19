@@ -8,7 +8,7 @@ public enum Rank {ACE,TWO,THREE,FOUR,FIVE,SIX,SEVEN,EIGHT,NINE,TEN,JACK,QUEEN,KI
 [CreateAssetMenu(fileName = "new Card",menuName ="Card")]
 public class Card : ScriptableObject
 {
-    public string name;
+    public string cardName;
     public Suit suit;
     public Rank rank;
     public string description;
@@ -21,7 +21,7 @@ public class Card : ScriptableObject
     public Sprite artwork;
     public Card()
     {
-        name = rank.ToString() + " Of " + suit.ToString();
+        cardName = rank.ToString() + " Of " + suit.ToString();
         setDamage();
 
         setStats();
@@ -39,7 +39,7 @@ public class Card : ScriptableObject
     }
     public void setName()
     {
-        name = rank.ToString() + " Of " + suit.ToString();
+        cardName = rank.ToString() + " Of " + suit.ToString();
     }
     public void setDamage()
     {//tu mo¿na dodaæ warunek który wyklucza karty specjalne

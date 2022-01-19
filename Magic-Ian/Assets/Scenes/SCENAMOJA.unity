@@ -309,7 +309,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   state: 0
-  cardDisplay: {fileID: 859225894}
   playerPrefab: {fileID: 4897434664256905212, guid: d023213d23e25354d8fcdfd4b3e1d660, type: 3}
   enemyPrefab: {fileID: 1636514762991776171, guid: bc668ccd1860eca4987237cb4a8275c0, type: 3}
   playerBattleStation: {fileID: 1712992971}
@@ -379,6 +378,7 @@ MonoBehaviour:
   cards: []
   graveyard: []
   topCard: {fileID: 0}
+  cardDisplay: {fileID: 859225894}
 --- !u!114 &1651449921
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -658,10 +658,26 @@ PrefabInstance:
     - target: {fileID: 4006524170956499736, guid: 1869276962c8f954d8ea780282c1cb64, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1651449920}
+      objectReference: {fileID: 1184058452}
+    - target: {fileID: 4006524170956499736, guid: 1869276962c8f954d8ea780282c1cb64, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnShuffleDeckButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 4006524170956499736, guid: 1869276962c8f954d8ea780282c1cb64, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: BattleSystem, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4797315799198007243, guid: 1869276962c8f954d8ea780282c1cb64, type: 3}
+      propertyPath: m_Name
+      value: CardDisplay
+      objectReference: {fileID: 0}
     - target: {fileID: 6357334588836383187, guid: 1869276962c8f954d8ea780282c1cb64, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1184058452}
+    - target: {fileID: 6357334588836383187, guid: 1869276962c8f954d8ea780282c1cb64, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnPlayCardButton
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1869276962c8f954d8ea780282c1cb64, type: 3}
