@@ -99,4 +99,5 @@ MonoBehaviour:
   hp: 10
   armor: 2
   damage: 1
+  stunStacks: 0
   maxHp: 10

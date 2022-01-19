@@ -44,12 +44,12 @@ public class BattleSystem : MonoBehaviour
         enemyUnit = enemyGO.GetComponent<Unit>();
 
         playerUnit.unitName = "Ian";
-        enemyUnit.unitName = "Rozsierdzony Go³omp";
+        enemyUnit.unitName = "Rozsierdzony Golomp";
 
         playerUnit.armor = 0;
         enemyUnit.armor = 0;
 
-        dialogueText.text = enemyUnit.unitName+" przyby³";
+        dialogueText.text = enemyUnit.unitName+" przybyl";
 
         playerHUD.SetHud(playerUnit);
         enemyHUD.SetHud(enemyUnit);
@@ -64,7 +64,7 @@ public class BattleSystem : MonoBehaviour
     }
     void PlayerTurn()
     {
-        dialogueText.text = "Twój ruch";
+        dialogueText.text = "Twoj ruch";
         currentCard = deck.playCard();
         cardDisplay.card = currentCard;
         cardDisplay.updateDisplay();
@@ -140,10 +140,10 @@ public class BattleSystem : MonoBehaviour
     {
         if(state == BattleState.WON)
         {
-            dialogueText.text = "Wygra³eœ";
+            dialogueText.text = "Wygrales";
 
         }else if(state == BattleState.LOST){
-            dialogueText.text = "Przegra³eœ";
+            dialogueText.text = "Przegrales";
         }
     }
 }
