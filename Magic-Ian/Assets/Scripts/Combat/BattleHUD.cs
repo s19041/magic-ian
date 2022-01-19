@@ -11,6 +11,7 @@ public class BattleHUD : MonoBehaviour
     public Text nameText;
     public Text armorText;
     
+    
 
     public void SetHud(Unit unit)
     {

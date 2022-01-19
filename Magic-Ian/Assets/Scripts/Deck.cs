@@ -13,6 +13,8 @@ public class Deck : MonoBehaviour
 
     public Card topCard;
 
+    public Item item;
+
     public CardDisplay cardDisplay;
     //myœli na temat tej klasy:
     //mo¿e by rozdzielic to na graveyard i deck ale trochê useless
@@ -20,6 +22,8 @@ public class Deck : MonoBehaviour
     //nawet bardzo fajnie /\
     private void Start()
     {
+
+        cardDisplay.setItemButtonText(item);
         graveyard = new List<Card>();
     }
     public void addCard(Card card)

@@ -238,6 +238,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f36616fc90507ed419289ae37266212f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &909094968 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4706298383855481343, guid: 1869276962c8f954d8ea780282c1cb64, type: 3}
+  m_PrefabInstance: {fileID: 1574478428485147141}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &956918776 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1574478428098671101, guid: 1869276962c8f954d8ea780282c1cb64, type: 3}
@@ -378,6 +389,7 @@ MonoBehaviour:
   cards: []
   graveyard: []
   topCard: {fileID: 0}
+  item: {fileID: 11400000, guid: 75543d628adc4834ba256b447ad9b4e0, type: 2}
   cardDisplay: {fileID: 859225894}
 --- !u!114 &1651449921
 MonoBehaviour:
@@ -655,13 +667,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3110782410124827095, guid: 1869276962c8f954d8ea780282c1cb64, type: 3}
+      propertyPath: m_Name
+      value: ItemButton
+      objectReference: {fileID: 0}
     - target: {fileID: 4006524170956499736, guid: 1869276962c8f954d8ea780282c1cb64, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1184058452}
     - target: {fileID: 4006524170956499736, guid: 1869276962c8f954d8ea780282c1cb64, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: OnShuffleDeckButton
+      value: OnItemActivationButton
       objectReference: {fileID: 0}
     - target: {fileID: 4006524170956499736, guid: 1869276962c8f954d8ea780282c1cb64, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
@@ -671,6 +687,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CardDisplay
       objectReference: {fileID: 0}
+    - target: {fileID: 4797315799198007245, guid: 1869276962c8f954d8ea780282c1cb64, type: 3}
+      propertyPath: itemButtonText
+      value: 
+      objectReference: {fileID: 909094968}
     - target: {fileID: 6357334588836383187, guid: 1869276962c8f954d8ea780282c1cb64, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 

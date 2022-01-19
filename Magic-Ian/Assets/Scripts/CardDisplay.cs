@@ -10,6 +10,8 @@ public class CardDisplay : MonoBehaviour
     public Image artworkImage;
 
     public Text descriptionText;
+
+    public Text itemButtonText;// nie jestem przekonany ze to tutaj powinno byc ale nie mam pomys³u
     // Start is called before the first frame update
     void Start()
     {
@@ -20,6 +22,10 @@ public class CardDisplay : MonoBehaviour
         artworkImage.sprite = card.artwork;
 
         descriptionText.text = card.description;
+    }
+    public void setItemButtonText(Item item)
+    {
+        itemButtonText.text = item.buttonText;
     }
 }
 

@@ -26,6 +26,8 @@ public class BattleSystem : MonoBehaviour
     public Deck deck;
     Card currentCard;
 
+    
+
     private int turn;
     private int shuffleCount;
 
@@ -56,6 +58,8 @@ public class BattleSystem : MonoBehaviour
 
         playerHUD.SetHud(playerUnit);
         enemyHUD.SetHud(enemyUnit);
+
+        
 
         
        // cardDisplay.updateDisplay();
@@ -119,22 +123,31 @@ public class BattleSystem : MonoBehaviour
         StartCoroutine(PlayerPlayCard());
 
     }
-    public void OnShuffleDeckButton()//przypisz to do przycisku kaju
+    public void OnItemActivationButton()//tutaj zrobiæ 
     {
-        if (state != BattleState.PLAYERTURN)
-            return;
-        shuffleCount++;
-        deck.Shuffle();
-        
-        //cardDisplay.updateDisplay();
-        if (shuffleCount>=2)
-            StartCoroutine(EnemyTurn());
+        if (deck.item.itemName == ItemName.CYLINDER)
+        {
+            ShuffleDeck();
+        }
+        if (deck.item.itemName == ItemName.CAPE)
+        {
+
+        }
+        if (deck.item.itemName == ItemName.MONOCLE)
+        {
+
+        }
+        if (deck.item.itemName == ItemName.SLEEVE)
+        {
+
+        }
     }
+    
     IEnumerator EnemyTurn()
     {
         dialogueText.text = "Ruch " + enemyUnit.unitName;
         bool isDead = false;
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(1f);//Poni¿ej legendarne GOLOMP AI
         if (turn % 3 == 0)
         {
             dialogueText.text = enemyUnit.unitName + " atakuje";
@@ -178,4 +191,17 @@ public class BattleSystem : MonoBehaviour
             dialogueText.text = "Przegrales";
         }
     }
+    // BELOW - ALL ITEM POWERS
+    public void ShuffleDeck()//przypisz to do przycisku kaju
+    {
+        if (state != BattleState.PLAYERTURN)
+            return;
+        shuffleCount++;
+        deck.Shuffle();
+
+        //cardDisplay.updateDisplay();
+        if (shuffleCount >= 2)
+            StartCoroutine(EnemyTurn());
+    }
 }
+
