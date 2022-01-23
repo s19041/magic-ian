@@ -59,10 +59,11 @@ public class BattleSystem : MonoBehaviour
         playerHUD.SetHud(playerUnit);
         enemyHUD.SetHud(enemyUnit);
 
-        
 
+
+
+        // cardDisplay.updateDisplay();
         
-       // cardDisplay.updateDisplay();
 
 
         yield return new WaitForSeconds(2f);

@@ -13,9 +13,13 @@ public class CardDisplay : MonoBehaviour
 
     public Text itemButtonText;// nie jestem przekonany ze to tutaj powinno byc ale nie mam pomys³u
     // Start is called before the first frame update
+    public bool inDeck;
     void Start()
     {
-        updateDisplay();
+        var db = FindObjectOfType<DeckBuilder>();
+        inDeck = db.deck.removeCard(card);
+        
+        //updateDisplay();
     }
     public void updateDisplay()
     {
@@ -27,6 +31,29 @@ public class CardDisplay : MonoBehaviour
     {
         itemButtonText.text = item.buttonText;
     }
+    public void addToDeckOnClick()
+    {
+        if (inDeck == false)
+        {
+            var db = FindObjectOfType<DeckBuilder>();
+            db.addCardToDeck(card);
+            gameObject.GetComponent<Image>().color = new Color(87, 183, 78);
+            inDeck = true;
+
+
+        }
+        else
+        {
+            inDeck = false;
+            var db = FindObjectOfType<DeckBuilder>();
+            db.deck.removeCard(card);
+            gameObject.GetComponent<Image>().color = new Color(255, 255, 255);
+            inDeck = false;
+        }
+        
+
+    }
+
 }
 
     
