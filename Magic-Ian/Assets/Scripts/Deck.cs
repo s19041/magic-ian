@@ -26,13 +26,15 @@ public class Deck : MonoBehaviour
         cardDisplay.setItemButtonText(item);
         graveyard = new List<Card>();
     }
-    public void addCard(Card card)
+    public bool addCard(Card card)
     {
         if (cards.Count < 12)
         {
             card.setCard();
             cards.Add(card);
+            return true;
         }
+        return false;
     }
     public bool removeCard(Card card)
     {
@@ -90,7 +92,12 @@ public class Deck : MonoBehaviour
 
     public List<Card> getCards()
     {
+
         return cards;
+    }
+    public bool cardInDeck(Card card)
+    {
+        return cards.Contains(card);
     }
 
 }

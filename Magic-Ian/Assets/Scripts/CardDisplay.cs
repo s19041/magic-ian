@@ -14,13 +14,19 @@ public class CardDisplay : MonoBehaviour
     public Text itemButtonText;// nie jestem przekonany ze to tutaj powinno byc ale nie mam pomys³u
     // Start is called before the first frame update
     public bool inDeck;
+    public bool building;//zmienna robi¹ca to ¿e tylko podczas pokazywania deckBuilder kartty w decku s¹ zielone
     void Start()
     {
         var db = FindObjectOfType<DeckBuilder>();
-        inDeck = db.deck.removeCard(card);
+        inDeck = db.deck.cardInDeck(card);
+        if (inDeck && building)
+        {
+            gameObject.GetComponent<Image>().color = new Color32(87, 183, 78, 255);
+        }
         
         //updateDisplay();
     }
+ 
     public void updateDisplay()
     {
         artworkImage.sprite = card.artwork;
@@ -36,23 +42,31 @@ public class CardDisplay : MonoBehaviour
         if (inDeck == false)
         {
             var db = FindObjectOfType<DeckBuilder>();
-            db.addCardToDeck(card);
-            gameObject.GetComponent<Image>().color = new Color(87, 183, 78);
-            inDeck = true;
+            if (db.addCardToDeck(card) && building)
+            {
+                gameObject.GetComponent<Image>().color = new Color32(87, 183, 78, 255);
+                inDeck = true;
+            }
+            
+            
 
 
         }
         else
         {
-            inDeck = false;
+            
             var db = FindObjectOfType<DeckBuilder>();
             db.deck.removeCard(card);
-            gameObject.GetComponent<Image>().color = new Color(255, 255, 255);
+            if (db.addCardToDeck(card) && building)
+            {
+                gameObject.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
+            }
             inDeck = false;
         }
         
 
     }
+    
 
 }
 

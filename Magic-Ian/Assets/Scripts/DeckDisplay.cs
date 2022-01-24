@@ -8,28 +8,14 @@ public class DeckDisplay : MonoBehaviour
     // Start is called before the first frame update
     public GameObject panel;
     public GameObject cardPrefab;
-    List<GameObject> cardsDisplayed= new List<GameObject>();
-
-  
-    public void showListOfCards(List<Card> list)
+    List<GameObject> cardsDisplayed;
+    public DeckDisplay()
     {
-        foreach (Card card in list)
-        {
-            
-            CardDisplay cardDisplay = cardPrefab.GetComponent<CardDisplay>();
-            cardDisplay.card = card;
-            cardDisplay.updateDisplay();
-
-            GameObject cardObject = Instantiate(cardPrefab);
-            cardsDisplayed.Add(cardObject);
-            cardObject.transform.SetParent(panel.transform, false);
-
-
-
-
-
-        }
+        cardsDisplayed = new List<GameObject>();
     }
+
+
+
     public void showDeckBuilder(List<Card> list,bool isEnabled)
     {
         
@@ -40,9 +26,11 @@ public class DeckDisplay : MonoBehaviour
             cardDisplay.updateDisplay();
 
             GameObject cardObject = Instantiate(cardPrefab);
+            cardObject.GetComponent<CardDisplay>().building = isEnabled;
             cardsDisplayed.Add(cardObject);
             cardObject.transform.SetParent(panel.transform, false);
             cardObject.GetComponent<Button>().enabled = isEnabled;
+           
         }
     }
     public void clearDeckBuilder()
@@ -55,4 +43,5 @@ public class DeckDisplay : MonoBehaviour
         
     }
     
+
 }

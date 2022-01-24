@@ -63,7 +63,7 @@ public class BattleSystem : MonoBehaviour
 
 
         // cardDisplay.updateDisplay();
-        
+        deck.Shuffle();
 
 
         yield return new WaitForSeconds(2f);

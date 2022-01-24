@@ -25,19 +25,27 @@ public class DeckBuilder : MonoBehaviour
         colors.Add(clubs);
         colors.Add(diamonds);
 
-        for (int i = 0; i <= 5; i++)
-        {
-            avalibleCards.Add(colors[1][i]);
-            avalibleCards.Add(colors[2][i]);
-        }
+    
+        avalibleCards.AddRange(hearts);
+        avalibleCards.AddRange(spades);
+        avalibleCards.AddRange(diamonds);
+        avalibleCards.AddRange(clubs);
+        deck.addCard(avalibleCards[0]);
+        deck.addCard(avalibleCards[1]);
+        deck.addCard(avalibleCards[2]);
+
         deck.Shuffle();
         deck.setTopCard();
 
+
         
     }
-    public void addCardToDeck(Card card)
+    public bool addCardToDeck(Card card)
     {
-        deck.addCard(card);
+        if (deck.addCard(card))
+            return true;
+        return false;
+        
     }
     public void addCardToAvalible(Card card)
     {
@@ -46,7 +54,7 @@ public class DeckBuilder : MonoBehaviour
     public void showDeckBuilder()
     {
         deckDisplay.clearDeckBuilder();
-        if (deckDisplay.gameObject.active)
+        if (deckDisplay.gameObject.activeSelf)
         {
             deckDisplay.gameObject.SetActive(false);
         }
@@ -62,7 +70,7 @@ public class DeckBuilder : MonoBehaviour
     public void showDeck()
     {
         deckDisplay.clearDeckBuilder();
-        if (deckDisplay.gameObject.active)
+        if (deckDisplay.gameObject.activeSelf)
         {
             deckDisplay.gameObject.SetActive(false);
         }
