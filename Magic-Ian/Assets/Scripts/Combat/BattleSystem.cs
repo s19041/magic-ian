@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 
 public enum BattleState {START, PLAYERTURN, ENEMYTURN, WON, LOST };
@@ -19,7 +20,7 @@ public class BattleSystem : MonoBehaviour
     public BattleHUD playerHUD;
     public BattleHUD enemyHUD;
 
-    public Text dialogueText;
+    public TextMeshProUGUI dialogueText;
     Unit playerUnit;
     Unit enemyUnit;
 

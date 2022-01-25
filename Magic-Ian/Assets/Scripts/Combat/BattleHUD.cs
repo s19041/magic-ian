@@ -2,14 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class BattleHUD : MonoBehaviour
 {
     // Start is called before the first frame update
 
-    public Text hpText;
-    public Text nameText;
-    public Text armorText;
+    public TextMeshProUGUI hpText;
+    public TextMeshProUGUI nameText;
+    public TextMeshProUGUI armorText;
     
     
 
