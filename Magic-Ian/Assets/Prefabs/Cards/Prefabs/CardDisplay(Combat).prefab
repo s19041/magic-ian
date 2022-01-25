@@ -333,3 +333,4 @@ MonoBehaviour:
   descriptionText: {fileID: 6290075695428406136}
   itemButtonText: {fileID: 0}
   inDeck: 0
+  building: 0
