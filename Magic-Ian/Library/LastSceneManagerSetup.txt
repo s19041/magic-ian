@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/Scenes/SCENAMOJA.unity
+- path: Assets/Scenes/GEJBOX.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0
