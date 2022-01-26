@@ -60,10 +60,13 @@ public class BattleSystem : MonoBehaviour
         playerHUD.SetHud(playerUnit);
         enemyHUD.SetHud(enemyUnit);
 
+        FindObjectOfType<Deck>().setDisplay();
+        FindObjectOfType<CardDisplay>().updateDisplay();
 
 
 
-        // cardDisplay.updateDisplay();
+
+        
         deck.Shuffle();
 
 

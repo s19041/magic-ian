@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d37d1607e6228344688a10db5852c015, type: 3}
   m_Name: Ace of Hearts
   m_EditorClassIdentifier: 
-  name: Ace of Hearts
+  cardName: ACE Of HEARTS
   suit: 2
   rank: 0
   description: Fajna taka karta czerwona i robi wgl ten i tamten
@@ -20,4 +20,4 @@ MonoBehaviour:
   heal: 5
   armor: 0
   stunStacks: 0
-  artwork: {fileID: 21300000, guid: d1cd39d258a8828469a6a1dbdf6885a2, type: 3}
+  artwork: {fileID: -7733743142069244911, guid: 357a967688d2f5e439b15bccb5bf30d3, type: 3}

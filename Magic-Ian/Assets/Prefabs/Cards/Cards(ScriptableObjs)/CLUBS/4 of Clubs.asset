@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d37d1607e6228344688a10db5852c015, type: 3}
   m_Name: 4 of Clubs
   m_EditorClassIdentifier: 
-  name: ACE Of CLUBS
+  cardName: FOUR Of CLUBS
   suit: 0
   rank: 3
   description: 
-  damage: 1
+  damage: 4
   heal: 0
-  armor: 9
+  armor: 6
   stunStacks: 0
-  artwork: {fileID: 21300000, guid: e2c5e95270b12b84b9f894b2deba19d5, type: 3}
+  artwork: {fileID: -5892645596774105255, guid: 357a967688d2f5e439b15bccb5bf30d3, type: 3}

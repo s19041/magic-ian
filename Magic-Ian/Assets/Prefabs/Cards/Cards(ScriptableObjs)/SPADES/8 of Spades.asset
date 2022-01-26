@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d37d1607e6228344688a10db5852c015, type: 3}
   m_Name: 8 of Spades
   m_EditorClassIdentifier: 
-  name: ACE Of CLUBS
+  cardName: ACE Of CLUBS
   suit: 3
   rank: 7
   description: 
@@ -20,4 +20,4 @@ MonoBehaviour:
   heal: 0
   armor: 9
   stunStacks: 0
-  artwork: {fileID: 21300000, guid: 2a7e4644cfc6d894d881de811a6a557e, type: 3}
+  artwork: {fileID: 8971195533914883617, guid: 357a967688d2f5e439b15bccb5bf30d3, type: 3}

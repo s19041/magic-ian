@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d37d1607e6228344688a10db5852c015, type: 3}
   m_Name: 8 of DIamonds
   m_EditorClassIdentifier: 
-  name: 
+  cardName: ACE Of CLUBS
   suit: 1
   rank: 7
   description: 
@@ -20,4 +20,4 @@ MonoBehaviour:
   heal: 0
   armor: 0
   stunStacks: 0
-  artwork: {fileID: 21300000, guid: aecf015d3e6153c41aed313d62ba114d, type: 3}
+  artwork: {fileID: -299258118475828617, guid: 357a967688d2f5e439b15bccb5bf30d3, type: 3}

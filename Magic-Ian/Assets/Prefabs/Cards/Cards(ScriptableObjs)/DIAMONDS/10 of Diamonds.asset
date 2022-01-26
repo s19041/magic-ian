@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d37d1607e6228344688a10db5852c015, type: 3}
   m_Name: 10 of Diamonds
   m_EditorClassIdentifier: 
-  name: 
+  cardName: TEN Of DIAMONDS
   suit: 1
   rank: 9
   description: 
-  damage: 0
+  damage: 10
   heal: 0
   armor: 0
   stunStacks: 0
-  artwork: {fileID: 21300000, guid: 0214e4d3f3a6e6d4585355f7ec039bea, type: 3}
+  artwork: {fileID: -3518169887475478178, guid: 357a967688d2f5e439b15bccb5bf30d3, type: 3}

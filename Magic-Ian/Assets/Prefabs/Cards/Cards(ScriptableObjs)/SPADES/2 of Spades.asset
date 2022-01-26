@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d37d1607e6228344688a10db5852c015, type: 3}
   m_Name: 2 of Spades
   m_EditorClassIdentifier: 
-  name: ACE Of CLUBS
+  cardName: TWO Of SPADES
   suit: 3
   rank: 1
   description: 
-  damage: 1
+  damage: 3
   heal: 0
   armor: 9
   stunStacks: 0
-  artwork: {fileID: 21300000, guid: 3c1ecb279f6ca4c48b1af24740b54051, type: 3}
+  artwork: {fileID: -129039881323564314, guid: 357a967688d2f5e439b15bccb5bf30d3, type: 3}

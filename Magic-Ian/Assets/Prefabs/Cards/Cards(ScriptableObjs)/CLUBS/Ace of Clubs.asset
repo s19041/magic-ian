@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d37d1607e6228344688a10db5852c015, type: 3}
   m_Name: Ace of Clubs
   m_EditorClassIdentifier: 
-  name: ACE Of CLUBS
+  cardName: ACE Of CLUBS
   suit: 0
   rank: 0
   description: 
@@ -20,4 +20,4 @@ MonoBehaviour:
   heal: 0
   armor: 9
   stunStacks: 0
-  artwork: {fileID: 21300000, guid: e029a4bb65344e74ea57764818c0637e, type: 3}
+  artwork: {fileID: 2041332794081832404, guid: 357a967688d2f5e439b15bccb5bf30d3, type: 3}
