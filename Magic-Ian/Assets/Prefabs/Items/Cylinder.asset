@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   descriptionText: {fileID: 0}
   itemName: 0
-  buttonText: Przetasuj
+  buttonText: Shuffle
   artworkImage: {fileID: 0}

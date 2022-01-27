@@ -50,12 +50,12 @@ public class BattleSystem : MonoBehaviour
         enemyUnit = enemyGO.GetComponent<Unit>();
 
         playerUnit.unitName = "Ian";
-        enemyUnit.unitName = "Rozsierdzony Golomp";
+        enemyUnit.unitName = "Incensed Pigeon";
 
         playerUnit.armor = 0;
         enemyUnit.armor = 0;
 
-        dialogueText.text = enemyUnit.unitName+" przybyl";
+        dialogueText.text = enemyUnit.unitName+" approaches";
 
         playerHUD.SetHud(playerUnit);
         enemyHUD.SetHud(enemyUnit);
@@ -77,7 +77,7 @@ public class BattleSystem : MonoBehaviour
     void PlayerTurn()
     {
         shuffleCount = 0;
-        dialogueText.text = "Twój ruch";
+        dialogueText.text = "Your turn";
         currentCard = deck.getTopCard();
         //cardDisplay.card = currentCard;
         //cardDisplay.updateDisplay();
@@ -153,21 +153,7 @@ public class BattleSystem : MonoBehaviour
         dialogueText.text = "Ruch " + enemyUnit.unitName;
         bool isDead = false;
         yield return new WaitForSeconds(1f);//Poni¿ej legendarne GOLOMP AI
-        if (turn % 3 == 1)
-        {
-            dialogueText.text = enemyUnit.unitName + " atakuje";
-            isDead = playerUnit.TakeDamage(enemyUnit.damage);
-        }
-        if (turn % 3 == 2)
-        {
-            dialogueText.text = enemyUnit.unitName + " broni sie";
-            enemyUnit.ArmorUp(6);
-        }
-        if (turn % 3 == 0)
-        {
-            dialogueText.text = enemyUnit.unitName + " wzmacnia sie";
-            enemyUnit.damage += 2;
-        }
+        isDead = playerUnit.TakeDamage(enemyUnit.combatAi.doSomething(playerUnit, turn, dialogueText));
 
 
         playerHUD.SetStats(playerUnit.hp, playerUnit.maxHp, playerUnit.armor);
@@ -190,10 +176,10 @@ public class BattleSystem : MonoBehaviour
     {
         if(state == BattleState.WON)
         {
-            dialogueText.text = "Wygrales";
+            dialogueText.text = "You won";
 
         }else if(state == BattleState.LOST){
-            dialogueText.text = "Przegrales";
+            dialogueText.text = "You lost";
         }
     }
     // BELOW - ALL ITEM POWERS
