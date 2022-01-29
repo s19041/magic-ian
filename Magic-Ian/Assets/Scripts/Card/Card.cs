@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public enum Suit {CLUBS, DIAMONDS, HEARTS, SPADES }
-public enum Rank {ACE,TWO,THREE,FOUR,FIVE,SIX,SEVEN,EIGHT,NINE,TEN,JACK,QUEEN,KING }
+public enum Rank {ACE,TWO,THREE,FOUR,FIVE,SIX,SEVEN,EIGHT,NINE,TEN,JACK,QUEEN,KING,JOKER }
 
 [CreateAssetMenu(fileName = "new Card",menuName ="Card")]
 public class Card : ScriptableObject
@@ -19,6 +19,8 @@ public class Card : ScriptableObject
     public int stunStacks;
 
     public Sprite artwork;
+
+    public bool hasAbility;
     public Card()
     {
         cardName = rank.ToString() + " Of " + suit.ToString();
@@ -26,9 +28,7 @@ public class Card : ScriptableObject
 
         setStats();
     }
-    void Start()
-    {
-    }
+    
 
     // Update is called once per frame
     public void setCard()
@@ -36,7 +36,7 @@ public class Card : ScriptableObject
         setName();
         setDamage();
         setStats();
-    }
+        hasAbility = false;    }
     public void setName()
     {
         cardName = rank.ToString() + " Of " + suit.ToString();
