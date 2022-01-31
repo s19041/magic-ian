@@ -27,7 +27,8 @@ public class BattleSystem : MonoBehaviour
     public Deck deck;
     Card currentCard;
 
-    
+
+    AbstractAbilitySet abilitySet;
 
     private int turn;
     private int shuffleCount;
@@ -64,7 +65,7 @@ public class BattleSystem : MonoBehaviour
         FindObjectOfType<CardDisplay>().updateDisplay();
 
 
-
+        abilitySet = new AbilitySet1(deck, deck.gameObject.GetComponent<DeckBuilder>());//strasznie brzydkie ale jest póŸno
 
         
         deck.Shuffle();
@@ -92,13 +93,21 @@ public class BattleSystem : MonoBehaviour
 
 
 
-
+        
 
         playerUnit.Heal(currentCard.heal);
         playerUnit.ArmorUp(currentCard.armor);
         enemyUnit.AddStunStacks(currentCard.stunStacks);
-        bool isDead = enemyUnit.TakeDamage(currentCard.damage);
+        if (currentCard.hasAbility)
+        {
+            Debug.Log("eldoka");
+            abilitySet.playAbility(currentCard);
+            Time.timeScale = 0;
+        }
         deck.cardPlayed();
+
+        bool isDead = enemyUnit.TakeDamage(currentCard.damage);
+        //deck.cardPlayed();
 
 
 

@@ -16,9 +16,9 @@ MonoBehaviour:
   suit: 3
   rank: 12
   description: 
-  damage: 1
+  damage: 0
   heal: 0
-  armor: 9
+  armor: 0
   stunStacks: 0
   artwork: {fileID: -8400460703064076358, guid: 357a967688d2f5e439b15bccb5bf30d3, type: 3}
   hasAbility: 0

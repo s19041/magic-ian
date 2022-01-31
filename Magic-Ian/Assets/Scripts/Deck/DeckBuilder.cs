@@ -14,11 +14,14 @@ public class DeckBuilder : MonoBehaviour
 
     public DeckDisplay deckDisplay;
 
+    public List<Card> jackList;
+    public int jackListCount;
 
 
     // Start is called before the first frame update
     void Start()
     {//ta metoda wymaga przerobienia bo to placeholder do sprawdzania czy dzia³a
+        
         colors = new List<List<Card>>();
         colors.Add(hearts);
         colors.Add(spades);
@@ -30,9 +33,9 @@ public class DeckBuilder : MonoBehaviour
         avalibleCards.AddRange(spades);
         avalibleCards.AddRange(diamonds);
         avalibleCards.AddRange(clubs);
-        deck.addCard(avalibleCards[0]);
-        deck.addCard(avalibleCards[1]);
-        deck.addCard(avalibleCards[2]);
+        //deck.addCard(avalibleCards[0]);
+        //deck.addCard(avalibleCards[1]);
+        //deck.addCard(avalibleCards[2]);
 
         deck.Shuffle();
         deck.setTopCard();
@@ -50,6 +53,12 @@ public class DeckBuilder : MonoBehaviour
     public void addCardToAvalible(Card card)
     {
         avalibleCards.Add(card);
+    }
+    public void addCardsFromJack()
+    {
+        deck.addCardsFromJack(jackList);
+        jackList.Clear();
+            
     }
 
    

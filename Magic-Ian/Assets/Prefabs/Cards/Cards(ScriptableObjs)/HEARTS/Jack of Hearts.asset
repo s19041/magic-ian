@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d37d1607e6228344688a10db5852c015, type: 3}
   m_Name: Jack of Hearts
   m_EditorClassIdentifier: 
-  cardName: ACE Of CLUBS
+  cardName: JACK Of HEARTS
   suit: 2
   rank: 10
   description: 
-  damage: 1
+  damage: 0
   heal: 0
-  armor: 9
+  armor: 0
   stunStacks: 0
-  artwork: {fileID: -2905558514409974660, guid: 357a967688d2f5e439b15bccb5bf30d3, type: 3}
-  hasAbility: 0
+  artwork: {fileID: 3498103547527549379, guid: 357a967688d2f5e439b15bccb5bf30d3, type: 3}
+  hasAbility: 1

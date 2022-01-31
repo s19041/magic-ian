@@ -28,6 +28,10 @@ public class Deck : MonoBehaviour
 
         cardDisplay.setItemButtonText(item);
         graveyard = new List<Card>();
+
+        foreach (Card card in cards){
+            card.setCard();
+        }
     }
     public bool addCard(Card card)
     {
@@ -91,6 +95,7 @@ public class Deck : MonoBehaviour
     {
         throwCard();
         nextCard();
+        
     }
 
     public List<Card> getCards()
@@ -126,5 +131,12 @@ public class Deck : MonoBehaviour
     public List<Card> getGraveyard()
     {
         return graveyard;
+    }
+    public void addCardsFromJack(List<Card> jackList)
+    {
+        for(int i = 0; i < jackList.Count; i++)
+        {
+            cards[i] = jackList[i];
+        }
     }
 }

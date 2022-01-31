@@ -23,12 +23,10 @@ public class Card : ScriptableObject
     public bool hasAbility;
     public Card()
     {
-        cardName = rank.ToString() + " Of " + suit.ToString();
-        setDamage();
-
-        setStats();
+        setCard();
     }
     
+
 
     // Update is called once per frame
     public void setCard()
@@ -36,7 +34,8 @@ public class Card : ScriptableObject
         setName();
         setDamage();
         setStats();
-        hasAbility = false;    }
+        setHasAbility();
+    }
     public void setName()
     {
         cardName = rank.ToString() + " Of " + suit.ToString();
@@ -103,6 +102,14 @@ public class Card : ScriptableObject
     }
     public void setStats()
     {//tu mo¿na dodaæ warunek który wyklucza karty specjalne
+        if (damage == 0)
+        {
+            heal = 0;
+            stunStacks = 0;
+            armor = 0;
+            return;
+        }
+            
         if (suit == Suit.HEARTS)
         {
             heal = (int)(10 - damage) / 2;
@@ -118,6 +125,36 @@ public class Card : ScriptableObject
         if(suit == Suit.DIAMONDS)
         {
             stunStacks= 10 - damage;
+        }
+    }
+    public void setHasAbility()
+    {
+        switch (rank)
+        {
+            case Rank.KING:
+
+                hasAbility = true;
+                break;
+
+            case Rank.QUEEN:
+
+                hasAbility = true;
+                break;
+
+            case Rank.JACK:
+
+                hasAbility = true;
+                break;
+
+            case Rank.JOKER:
+
+                hasAbility = true;
+                break;
+
+            default:
+                hasAbility = false;
+                break;
+
         }
     }
 }

@@ -7,8 +7,12 @@ public class DeckDisplay : MonoBehaviour
 {
     // Start is called before the first frame update
     public GameObject panel;
+    public GameObject smallPanel;
     public GameObject cardPrefab;
+    public GameObject jackCardPrefab;
     List<GameObject> cardsDisplayed;
+    //static DeckDisplay instance;
+
     public DeckDisplay()
     {
         cardsDisplayed = new List<GameObject>();
@@ -16,9 +20,10 @@ public class DeckDisplay : MonoBehaviour
     public Deck deck;
     public DeckBuilder deckBuilder;
 
+    
+    int jackRange;
 
-
-    public void showDeckBuilder(List<Card> list,bool isEnabled)
+    public void ShowDeckBuilder(List<Card> list,bool isEnabled)
     {
         
         foreach (Card card in list)
@@ -28,14 +33,14 @@ public class DeckDisplay : MonoBehaviour
             cardDisplay.updateDisplay();
 
             GameObject cardObject = Instantiate(cardPrefab);
-            cardObject.GetComponent<CardDisplay>().building = isEnabled;
+            cardObject.GetComponent<CardDisplay>().inDeckColor = isEnabled;
             cardsDisplayed.Add(cardObject);
             cardObject.transform.SetParent(panel.transform, false);
             cardObject.GetComponent<Button>().enabled = isEnabled;
            
         }
     }
-    public void clearDeckDisplay()
+    public void ClearDeckDisplay()
     {
         for(int i = 0; i < cardsDisplayed.Count; i++)
         {
@@ -44,55 +49,100 @@ public class DeckDisplay : MonoBehaviour
         cardsDisplayed.Clear();
         
     }
-    public void showDeck()
+    public void ShowDeck()
     {
-        clearDeckDisplay();
-        if (gameObject.activeSelf)
+        ClearDeckDisplay();
+        if (panel.activeSelf)
         {
-            gameObject.SetActive(false);
+            panel.SetActive(false);
         }
         else
         {
-            gameObject.SetActive(true);
-            showDeckBuilder(deck.getCards(), false);
+            panel.SetActive(true);
+            ShowDeckBuilder(deck.getCards(), false);
 
 
         }
 
 
     }
-    public void showDeckBuilder()
+    public void ShowDeckBuilder()
     {
-        clearDeckDisplay();
-        if (gameObject.activeSelf)
+        ClearDeckDisplay();
+        if (panel.activeSelf)
         {
-            gameObject.SetActive(false);
+            panel.SetActive(false);
         }
         else
         {
-            gameObject.SetActive(true);
-            showDeckBuilder(deckBuilder.avalibleCards, true);
+            panel.SetActive(true);
+            ShowDeckBuilder(deckBuilder.avalibleCards, true);
 
 
         }
 
     }
-    public void showGraveyard()
+    
+    public void ShowGraveyard()
     {
-        clearDeckDisplay();
-        if (gameObject.activeSelf)
+        ClearDeckDisplay();
+        if (panel.activeSelf)
         {
-            gameObject.SetActive(false);
+            panel.SetActive(false);
         }
         else
         {
-            gameObject.SetActive(true);
-            showDeckBuilder(deck.getGraveyard(), true);
+            panel.SetActive(true);
+            ShowDeckBuilder(deck.getGraveyard(), true);
 
 
         }
 
     }
+    public void ShowJackBuilder(int count)
+    {
+        ClearDeckDisplay();
+        if (smallPanel.activeSelf)
+        {
+            smallPanel.SetActive(false);
+        }
+        else
+        {
+            smallPanel.SetActive(true);
+            ShowJackBuilder(deck.getCards(), count);
+
+
+        }
+
+    }
+    public void ShowJackBuilder(List<Card> list,int count)
+    {
+        //List<Card> threeCardsInOrder = new List<Card>();
+        for (int i=1;i< count+1; i++)
+        {
+            CardDisplay cardDisplay = jackCardPrefab.GetComponent<CardDisplay>();
+            cardDisplay.card = list[i];
+            cardDisplay.updateDisplay();
+
+            GameObject cardObject = Instantiate(jackCardPrefab);
+            cardObject.GetComponent<CardDisplay>().inDeckColor = false;
+            cardsDisplayed.Add(cardObject);
+            cardObject.transform.SetParent(smallPanel.transform, false);
+            cardObject.GetComponent<Button>().enabled = true;
+
+        }//trzeba dopisaæ logike wstawiania tego odpowiednio
+        //najlepiej mo¿e nowy prefab? w którym dopiero po zaznaczeniu wszystkich kart znika display i sie ustawiaja.
+        
+    }
+    public void CloseJackBuilder()
+    {
+        ClearDeckDisplay();
+        
+        smallPanel.SetActive(false);
+        
+        
+    }
+
 
 
 }
