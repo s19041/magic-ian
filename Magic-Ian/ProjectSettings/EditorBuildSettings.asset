@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/GEJBOX 2.unity
     guid: e48c1cee09e8ed840ad455e23d005caf
+  - enabled: 1
+    path: Assets/Scenes/SCENAKUBY.unity
+    guid: b6351bd64b29a744694e8e7391a56739
   m_configObjects: {}

@@ -9,10 +9,10 @@ public class HubManager : MonoBehaviour
     public Canvas mainCanvas;
     public Canvas tableCanvas;
     public Canvas displayCanvas;
-    
 
 
-    
+
+
 
 
 
@@ -20,17 +20,17 @@ public class HubManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
     public void OnBuildDeckButton()
     {
-        
+
         tableCanvas.gameObject.SetActive(true);
         mainCanvas.gameObject.SetActive(false);
     }

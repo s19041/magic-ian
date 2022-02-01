@@ -13,7 +13,7 @@ public class SceneLoader : MonoBehaviour
     public void FightScene()
     {
         SceneManager.LoadScene(2);
-        
+
     }
     public void HubScene()
     {

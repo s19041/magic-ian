@@ -43,16 +43,22 @@ public class Deck : MonoBehaviour
 
     private void Start()
     {
-        
-
-        cardDisplay.setItemButtonText(item);
+        cardDisplay = new CardDisplay();
         graveyard = new List<Card>();
 
-        foreach (Card card in cards){
+        foreach (Card card in cards)
+        {
             card.setCard();
         }
     }
-    public bool addCard(Card card)
+    public void SetDeckForCombat(CardDisplay cd)
+    {
+        cardDisplay = cd;
+        cardDisplay.setItemButtonText(item);
+        Shuffle();
+        SetTopCard();
+    }
+    public bool AddCard(Card card)
     {
         if (cards.Count < 12)
         {
@@ -62,11 +68,11 @@ public class Deck : MonoBehaviour
         }
         return false;
     }
-    public bool removeCard(Card card)
+    public bool RemoveCard(Card card)
     {
         return cards.Remove(card);
     }
-    public bool setTopCard()
+    public bool SetTopCard()
     {
         if (cards.Count > 0)
         {
@@ -82,64 +88,58 @@ public class Deck : MonoBehaviour
     {
         var shuffledcards = cards.OrderBy(a => Guid.NewGuid()).ToList();
         cards = shuffledcards;
-        setTopCard();
+        SetTopCard();
     }
 
-    public void reShuffle()
+    public void ReShuffle()
     {
         cards = graveyard;
         graveyard = new List<Card>();//z tego bêdzie animacja powrotu z graveyard do decku
         Shuffle();
     }
-    public Card getTopCard()
+    public Card GetTopCard()
     {
         return topCard;
 
     }
-    public void throwCard()
+    public void ThrowCard()
     {
         cards.Remove(topCard);
         graveyard.Add(topCard);
     }
-    public void nextCard()
+    public void NextCard()
     {
-        var isEmpty = setTopCard();
+        var isEmpty = SetTopCard();
         if (isEmpty)
         {
-            reShuffle();
-            setTopCard();
+            ReShuffle();
+            SetTopCard();
         }
     }
-    public void cardPlayed()
+    public void CardPlayed()
     {
-        throwCard();
-        nextCard();
-        
+        ThrowCard();
+        NextCard();
+
     }
 
-    public List<Card> getCards()
+    public List<Card> GetCards()
     {
 
         return cards;
     }
-    public bool cardInDeck(Card card)
+    public bool CardInDeck(Card card)
     {
         return cards.Contains(card);
     }
 
-    
-
-    public void setDisplay()
-    {
-        cardDisplay = FindObjectOfType<CardDisplay>();
-    }
-    public List<Card> getGraveyard()
+    public List<Card> GetGraveyard()
     {
         return graveyard;
     }
-    public void addCardsFromJack(List<Card> jackList)
+    public void AddCardsFromJack(List<Card> jackList)
     {
-        for(int i = 0; i < jackList.Count; i++)
+        for (int i = 0; i < jackList.Count; i++)
         {
             cards[i] = jackList[i];
         }

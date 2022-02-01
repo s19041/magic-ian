@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using TMPro;
 
 
-public enum BattleState {START, PLAYERTURN, ENEMYTURN, WON, LOST };
+public enum BattleState { START, PLAYERTURN, ENEMYTURN, WON, LOST };
 public class BattleSystem : MonoBehaviour
 {
     public BattleState state;
@@ -19,6 +19,8 @@ public class BattleSystem : MonoBehaviour
 
     public BattleHUD playerHUD;
     public BattleHUD enemyHUD;
+
+    public CardDisplay combatCardDisplay;
 
     public TextMeshProUGUI dialogueText;
     Unit playerUnit;
@@ -36,7 +38,7 @@ public class BattleSystem : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        deck = Deck.Instance;
+
         state = BattleState.START;
         StartCoroutine(SetupBattle());
     }
@@ -57,20 +59,21 @@ public class BattleSystem : MonoBehaviour
         playerUnit.armor = 0;
         enemyUnit.armor = 0;
 
-        dialogueText.text = enemyUnit.unitName+" approaches";
+        dialogueText.text = enemyUnit.unitName + " approaches";
 
         playerHUD.SetHud(playerUnit);
         enemyHUD.SetHud(enemyUnit);
 
-        FindObjectOfType<Deck>().setDisplay();
-        FindObjectOfType<CardDisplay>().updateDisplay();
+        deck = Deck.Instance;
+        deck.cardDisplay = combatCardDisplay;
+        combatCardDisplay.updateDisplay();
 
 
-        abilitySet = new AbilitySet1(deck, deck.gameObject.GetComponent<DeckBuilder>());//strasznie brzydkie ale jest póŸno
+        abilitySet = new AbilitySet1(deck, DeckBuilder.Instance);
 
-        
+
         deck.Shuffle();
-
+        deck.SetDeckForCombat(combatCardDisplay);
 
         yield return new WaitForSeconds(2f);
         state = BattleState.PLAYERTURN;
@@ -80,7 +83,7 @@ public class BattleSystem : MonoBehaviour
     {
         shuffleCount = 0;
         dialogueText.text = "Your turn";
-        currentCard = deck.getTopCard();
+        currentCard = deck.GetTopCard();
         //cardDisplay.card = currentCard;
         //cardDisplay.updateDisplay();
         turn++;
@@ -94,7 +97,7 @@ public class BattleSystem : MonoBehaviour
 
 
 
-        
+
 
         playerUnit.Heal(currentCard.heal);
         playerUnit.ArmorUp(currentCard.armor);
@@ -105,7 +108,7 @@ public class BattleSystem : MonoBehaviour
             abilitySet.playAbility(currentCard);
             Time.timeScale = 0;
         }
-        deck.cardPlayed();
+        deck.CardPlayed();
 
         bool isDead = enemyUnit.TakeDamage(currentCard.damage);
         //deck.cardPlayed();
@@ -157,7 +160,7 @@ public class BattleSystem : MonoBehaviour
 
         }
     }
-    
+
     IEnumerator EnemyTurn()
     {
         dialogueText.text = "Ruch " + enemyUnit.unitName;
@@ -184,11 +187,13 @@ public class BattleSystem : MonoBehaviour
     }
     void EndBattle()
     {
-        if(state == BattleState.WON)
+        if (state == BattleState.WON)
         {
             dialogueText.text = "You won";
 
-        }else if(state == BattleState.LOST){
+        }
+        else if (state == BattleState.LOST)
+        {
             dialogueText.text = "You lost";
         }
     }

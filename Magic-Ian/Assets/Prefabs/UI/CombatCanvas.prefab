@@ -3565,6 +3565,10 @@ PrefabInstance:
       propertyPath: dialogueText
       value: 
       objectReference: {fileID: 3527795179378667962}
+    - target: {fileID: 7079882847660468039, guid: 181965e0875049448853517229226d19, type: 3}
+      propertyPath: combatCardDisplay
+      value: 
+      objectReference: {fileID: 3782844217667740659}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 181965e0875049448853517229226d19, type: 3}
 --- !u!4 &5632149545489730755 stripped
@@ -3692,6 +3696,17 @@ PrefabInstance:
       objectReference: {fileID: 4706298383855481343}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a7b9bde8af7aa4b4691bb1f18989ec98, type: 3}
+--- !u!114 &3782844217667740659 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6290075695810339533, guid: a7b9bde8af7aa4b4691bb1f18989ec98, type: 3}
+  m_PrefabInstance: {fileID: 7148772003513499966}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b0cad9fbd458b2469ca6010030d9571, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &3782844217667740658 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6290075695810339532, guid: a7b9bde8af7aa4b4691bb1f18989ec98, type: 3}

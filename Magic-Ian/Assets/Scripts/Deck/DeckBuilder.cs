@@ -22,7 +22,7 @@ public class DeckBuilder : MonoBehaviour
     public static DeckBuilder Instance { get { return _instance; } }
     private void Awake()
     {
-        
+
         if (_instance != null && _instance != this)
         {
             Destroy(this.gameObject);
@@ -39,7 +39,7 @@ public class DeckBuilder : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {//ta metoda wymaga przerobienia bo to placeholder do sprawdzania czy dzia³a
-        
+
         colors = new List<List<Card>>();
         colors.Add(hearts);
         colors.Add(spades);
@@ -48,7 +48,7 @@ public class DeckBuilder : MonoBehaviour
 
         if (deckDisplay == null)
         {
-            deckDisplay=GameObject.FindObjectOfType<DeckDisplay>();
+            deckDisplay = GameObject.FindObjectOfType<DeckDisplay>();
         }
         avalibleCards.AddRange(hearts);
         avalibleCards.AddRange(spades);
@@ -58,18 +58,18 @@ public class DeckBuilder : MonoBehaviour
         //deck.addCard(avalibleCards[1]);
         //deck.addCard(avalibleCards[2]);
 
-        deck.Shuffle();
-        deck.setTopCard();
 
 
-        
+
+
     }
+
     public bool addCardToDeck(Card card)
     {
-        if (deck.addCard(card))
+        if (deck.AddCard(card))
             return true;
         return false;
-        
+
     }
     public void addCardToAvalible(Card card)
     {
@@ -77,12 +77,12 @@ public class DeckBuilder : MonoBehaviour
     }
     public void addCardsFromJack()
     {
-        deck.addCardsFromJack(jackList);
+        deck.AddCardsFromJack(jackList);
         jackList.Clear();
-            
+
     }
 
-   
+
 
 
 

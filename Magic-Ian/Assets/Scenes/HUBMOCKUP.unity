@@ -138,6 +138,18 @@ PrefabInstance:
       propertyPath: m_RenderMode
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3694436370050090459, guid: 088abe7d4ef57f745a5a103593db0194, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3694436370050090459, guid: 088abe7d4ef57f745a5a103593db0194, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3694436370050090459, guid: 088abe7d4ef57f745a5a103593db0194, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4457276925257026228, guid: 088abe7d4ef57f745a5a103593db0194, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
@@ -216,7 +228,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7867937196103585129, guid: 088abe7d4ef57f745a5a103593db0194, type: 3}
       propertyPath: m_Constraint
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7867937196103585129, guid: 088abe7d4ef57f745a5a103593db0194, type: 3}
       propertyPath: m_ConstraintCount
@@ -229,6 +241,18 @@ PrefabInstance:
     - target: {fileID: 7867937196103585131, guid: 088abe7d4ef57f745a5a103593db0194, type: 3}
       propertyPath: m_SizeDelta.y
       value: 821.21
+      objectReference: {fileID: 0}
+    - target: {fileID: 7867937196103585131, guid: 088abe7d4ef57f745a5a103593db0194, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7867937196103585131, guid: 088abe7d4ef57f745a5a103593db0194, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7867937196103585131, guid: 088abe7d4ef57f745a5a103593db0194, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7867937196103585131, guid: 088abe7d4ef57f745a5a103593db0194, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -576,6 +600,14 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 774338706}
+    - target: {fileID: 4685485775392382673, guid: b79b93556c82b424985da07800e76966, type: 3}
+      propertyPath: m_RenderMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4685485775392382673, guid: b79b93556c82b424985da07800e76966, type: 3}
+      propertyPath: m_PixelPerfect
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4685485775392382674, guid: b79b93556c82b424985da07800e76966, type: 3}
       propertyPath: m_Pivot.x
       value: 0

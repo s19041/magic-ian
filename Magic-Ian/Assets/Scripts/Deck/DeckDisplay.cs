@@ -21,7 +21,7 @@ public class DeckDisplay : MonoBehaviour
 
     private void Awake()
     {
-        
+
         cardsDisplayed = new List<GameObject>();
         if (_instance != null && _instance != this)
         {
@@ -32,17 +32,17 @@ public class DeckDisplay : MonoBehaviour
         {
             _instance = this;
         }
-        
+
     }
-    
-    
 
-    
-    
 
-    public void ShowDeckBuilder(List<Card> list,bool isEnabled)
+
+
+
+
+    public void ShowDeckBuilder(List<Card> list, bool isEnabled)
     {
-        
+
         foreach (Card card in list)
         {
             CardDisplay cardDisplay = cardPrefab.GetComponent<CardDisplay>();
@@ -54,17 +54,17 @@ public class DeckDisplay : MonoBehaviour
             cardsDisplayed.Add(cardObject);
             cardObject.transform.SetParent(panel.transform, false);
             cardObject.GetComponent<Button>().enabled = isEnabled;
-           
+
         }
     }
     public void ClearDeckDisplay()
     {
-        for(int i = 0; i < cardsDisplayed.Count; i++)
+        for (int i = 0; i < cardsDisplayed.Count; i++)
         {
             GameObject.Destroy(cardsDisplayed[i]);
         }
         cardsDisplayed.Clear();
-        
+
     }
     public void ShowDeck()
     {
@@ -76,7 +76,7 @@ public class DeckDisplay : MonoBehaviour
         else
         {
             panel.SetActive(true);
-            ShowDeckBuilder(deck.getCards(), false);
+            ShowDeckBuilder(deck.GetCards(), false);
 
 
         }
@@ -99,7 +99,7 @@ public class DeckDisplay : MonoBehaviour
         }
 
     }
-    
+
     public void ShowGraveyard()
     {
         ClearDeckDisplay();
@@ -110,7 +110,7 @@ public class DeckDisplay : MonoBehaviour
         else
         {
             panel.SetActive(true);
-            ShowDeckBuilder(deck.getGraveyard(), true);
+            ShowDeckBuilder(deck.GetGraveyard(), true);
 
 
         }
@@ -126,16 +126,16 @@ public class DeckDisplay : MonoBehaviour
         else
         {
             smallPanel.SetActive(true);
-            ShowJackBuilder(deck.getCards(), count);
+            ShowJackBuilder(deck.GetCards(), count);
 
 
         }
 
     }
-    public void ShowJackBuilder(List<Card> list,int count)
+    public void ShowJackBuilder(List<Card> list, int count)
     {
         //List<Card> threeCardsInOrder = new List<Card>();
-        for (int i=1;i< count+1; i++)
+        for (int i = 1; i < count + 1; i++)
         {
             CardDisplay cardDisplay = jackCardPrefab.GetComponent<CardDisplay>();
             cardDisplay.card = list[i];
@@ -148,16 +148,16 @@ public class DeckDisplay : MonoBehaviour
             cardObject.GetComponent<Button>().enabled = true;
 
         }//trzeba dopisaæ logike wstawiania tego odpowiednio
-        //najlepiej mo¿e nowy prefab? w którym dopiero po zaznaczeniu wszystkich kart znika display i sie ustawiaja.
-        
+         //najlepiej mo¿e nowy prefab? w którym dopiero po zaznaczeniu wszystkich kart znika display i sie ustawiaja.
+
     }
     public void CloseJackBuilder()
     {
         ClearDeckDisplay();
-        
+
         smallPanel.SetActive(false);
-        
-        
+
+
     }
 
 

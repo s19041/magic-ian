@@ -18,15 +18,15 @@ public class CardDisplay : MonoBehaviour
     void Start()
     {
         var db = FindObjectOfType<DeckBuilder>();
-        inDeck = db.deck.cardInDeck(card);
+        inDeck = db.deck.CardInDeck(card);
         if (inDeck && inDeckColor)
         {
             gameObject.GetComponent<Image>().color = new Color32(87, 183, 78, 255);
         }
-        
+
         //updateDisplay();
     }
- 
+
     public void updateDisplay()
     {
         artworkImage.sprite = card.artwork;
@@ -50,16 +50,16 @@ public class CardDisplay : MonoBehaviour
         }
         else
         {
-            
+
             var db = FindObjectOfType<DeckBuilder>();
-            if ( inDeckColor)//tutaj by³o db.addCardToDeck(card) && building 
+            if (inDeckColor)//tutaj by³o db.addCardToDeck(card) && building 
             {
-                db.deck.removeCard(card);
+                db.deck.RemoveCard(card);
                 gameObject.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
             }
             inDeck = false;
         }
-        
+
 
     }
     public void addToDeckOnClickJack()
@@ -68,30 +68,30 @@ public class CardDisplay : MonoBehaviour
         if (inDeck == true)
         {
             db.jackList.Add(card);
-                gameObject.GetComponent<Image>().color = new Color32(87, 183, 78, 255);
-                inDeck = true;
-       
+            gameObject.GetComponent<Image>().color = new Color32(87, 183, 78, 255);
+            inDeck = true;
+
         }
         else
         {
 
-                db.jackList.Remove(card);
-                gameObject.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
-            
+            db.jackList.Remove(card);
+            gameObject.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
+
             inDeck = false;
         }
-        if (db.jackList.Count==db.jackListCount)
+        if (db.jackList.Count == db.jackListCount)
         {
             db.addCardsFromJack();
             gameObject.transform.parent.gameObject.SetActive(false);
             Time.timeScale = 1;
-            db.deck.setTopCard();
+            db.deck.SetTopCard();
         }
-        
+
 
     }
 
 
 }
 
-    
+
