@@ -5,22 +5,21 @@ using UnityEngine.SceneManagement;
 
 public class SceneLoader : MonoBehaviour
 {
-    public void DeckScene()
+    public void HubScene()
     {
         SceneManager.LoadScene(1);
-    }
 
-    public void FightScene()
+    }
+    public void EntranceScene()
     {
         SceneManager.LoadScene(2);
 
     }
-    public void HubScene()
+    public void FightScene()
     {
-        SceneManager.LoadScene("HubMockup");
+        SceneManager.LoadScene(3);
+
     }
-    public void KubaScene()
-    {
-        SceneManager.LoadScene("SCENAKUBY");
-    }
+    
+    
 }

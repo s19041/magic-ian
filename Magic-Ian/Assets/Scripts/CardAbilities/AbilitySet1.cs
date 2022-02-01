@@ -14,7 +14,7 @@ public class AbilitySet1 : AbstractAbilitySet
         int count = 3;
 
         if (count > deck.GetCards().Count - 1)//-1 poniewa¿ .Count zwróci razem z górn¹ kart¹ a jej nie jestesmy w stanie przestasowaæ
-            count = deck.GetCards().Count - 1;
+            count = deck.GetCards().Count - 1;//dziwna logika ale dzia³a
         deckbuilder.jackListCount = count;
 
 

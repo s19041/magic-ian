@@ -134,13 +134,6 @@ public class BattleSystem : MonoBehaviour
 
 
     }
-    public void OnPlayCardButton()
-    {
-        if (state != BattleState.PLAYERTURN)
-            return;
-        StartCoroutine(PlayerPlayCard());
-
-    }
     public void OnItemActivationButton()//tutaj zrobiæ 
     {
         if (deck.item.itemName == ItemName.CYLINDER)
@@ -160,6 +153,14 @@ public class BattleSystem : MonoBehaviour
 
         }
     }
+    public void OnPlayCardButton()
+    {
+        if (state != BattleState.PLAYERTURN)
+            return;
+        StartCoroutine(PlayerPlayCard());
+
+    }
+
 
     IEnumerator EnemyTurn()
     {

@@ -43,7 +43,7 @@ public class Deck : MonoBehaviour
 
     private void Start()
     {
-        cardDisplay = new CardDisplay();
+        
         graveyard = new List<Card>();
 
         foreach (Card card in cards)
