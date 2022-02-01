@@ -11,17 +11,34 @@ public class DeckDisplay : MonoBehaviour
     public GameObject cardPrefab;
     public GameObject jackCardPrefab;
     List<GameObject> cardsDisplayed;
-    //static DeckDisplay instance;
 
-    public DeckDisplay()
-    {
-        cardsDisplayed = new List<GameObject>();
-    }
     public Deck deck;
     public DeckBuilder deckBuilder;
 
+    private static DeckDisplay _instance;
+
+    public static DeckDisplay Instance { get { return _instance; } }
+
+    private void Awake()
+    {
+        
+        cardsDisplayed = new List<GameObject>();
+        if (_instance != null && _instance != this)
+        {
+            Destroy(this.gameObject);
+
+        }
+        else
+        {
+            _instance = this;
+        }
+        
+    }
     
-    int jackRange;
+    
+
+    
+    
 
     public void ShowDeckBuilder(List<Card> list,bool isEnabled)
     {

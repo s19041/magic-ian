@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AbilitySet1 : AbstractAbilitySet
 {
-    public AbilitySet1(Deck _deck, DeckBuilder _deckBuilder) : base(_deck, _deckBuilder)
+    public AbilitySet1(Deck _deck, DeckBuilder _deckBuilder) : base(_deck)
     {
         
     }

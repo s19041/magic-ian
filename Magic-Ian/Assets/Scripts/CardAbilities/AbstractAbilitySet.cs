@@ -6,10 +6,10 @@ public abstract class AbstractAbilitySet
 {
     protected Deck deck;
     protected DeckBuilder deckbuilder;
-    public AbstractAbilitySet(Deck _deck, DeckBuilder _deckbuilder)
+    public AbstractAbilitySet(Deck _deck)
     {
         deck = _deck;
-        deckbuilder = _deckbuilder;
+        deckbuilder = DeckBuilder.Instance;
     }
     public void playAbility(Card card)
     {

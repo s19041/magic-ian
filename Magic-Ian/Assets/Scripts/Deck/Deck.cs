@@ -22,9 +22,28 @@ public class Deck : MonoBehaviour
     //mo¿e by rozdzielic to na graveyard i deck ale trochê useless
     //fajnie by zrobiæ jakieœ przekl¹danie graveyard ¿eby sprawdziæ jakie karty siê zagra³o
     //nawet bardzo fajnie /\
+    private static Deck _instance;
+
+    public static Deck Instance { get { return _instance; } }
+    private void Awake()
+    {
+
+        if (_instance != null && _instance != this)
+        {
+            Destroy(this.gameObject);
+
+        }
+        else
+        {
+            _instance = this;
+        }
+        DontDestroyOnLoad(gameObject);
+
+    }
+
     private void Start()
     {
-        cardDisplay = FindObjectOfType<CardDisplay>();
+        
 
         cardDisplay.setItemButtonText(item);
         graveyard = new List<Card>();
@@ -108,21 +127,7 @@ public class Deck : MonoBehaviour
         return cards.Contains(card);
     }
 
-    private void Awake()
-    {
-        //int counter = FindObjectsOfType(GetType()).Length;
-
-        if(instance!=null)//if (counter > 1)
-        {
-            gameObject.SetActive(false);
-            Destroy(gameObject);
-        }
-        else
-        {
-            instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-    }
+    
 
     public void setDisplay()
     {

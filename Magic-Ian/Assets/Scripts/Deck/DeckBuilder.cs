@@ -17,6 +17,24 @@ public class DeckBuilder : MonoBehaviour
     public List<Card> jackList;
     public int jackListCount;
 
+    private static DeckBuilder _instance;
+
+    public static DeckBuilder Instance { get { return _instance; } }
+    private void Awake()
+    {
+        
+        if (_instance != null && _instance != this)
+        {
+            Destroy(this.gameObject);
+
+        }
+        else
+        {
+            _instance = this;
+        }
+        deckDisplay = DeckDisplay.Instance;
+        //DontDestroyOnLoad(gameObject);
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -28,7 +46,10 @@ public class DeckBuilder : MonoBehaviour
         colors.Add(clubs);
         colors.Add(diamonds);
 
-    
+        if (deckDisplay == null)
+        {
+            deckDisplay=GameObject.FindObjectOfType<DeckDisplay>();
+        }
         avalibleCards.AddRange(hearts);
         avalibleCards.AddRange(spades);
         avalibleCards.AddRange(diamonds);
