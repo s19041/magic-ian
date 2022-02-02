@@ -5,11 +5,11 @@ using UnityEngine;
 public class DeckBuilder : MonoBehaviour
 {
     public Deck deck;
-    public List<Card> hearts;
-    public List<Card> spades;
-    public List<Card> clubs;
-    public List<Card> diamonds;
-    public List<List<Card>> colors;
+    [SerializeField] List<Card> hearts;
+    [SerializeField] List<Card> spades;
+    [SerializeField] List<Card> clubs;
+    [SerializeField] List<Card> diamonds;
+    [SerializeField] List<List<Card>> colors;
     public List<Card> avalibleCards;
 
     public DeckDisplay deckDisplay;

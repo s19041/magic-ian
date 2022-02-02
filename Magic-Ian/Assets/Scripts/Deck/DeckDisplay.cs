@@ -6,11 +6,11 @@ using UnityEngine.UI;
 public class DeckDisplay : MonoBehaviour
 {
     // Start is called before the first frame update
-    public GameObject panel;
-    public GameObject smallPanel;
-    public GameObject cardPrefab;
-    public GameObject jackCardPrefab;
-    List<GameObject> cardsDisplayed;
+    [SerializeField] GameObject panel;
+    [SerializeField] GameObject smallPanel;
+    [SerializeField] GameObject cardPrefab;
+    [SerializeField] GameObject jackCardPrefab;
+    private List<GameObject> cardsDisplayed;
 
     public Deck deck;
     public DeckBuilder deckBuilder;

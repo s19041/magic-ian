@@ -7,9 +7,9 @@ public class CardDisplay : MonoBehaviour
 
     public Card card;
 
-    public Image artworkImage;
+    [SerializeField] Image artworkImage;
 
-    public Text descriptionText;
+    [SerializeField] Text descriptionText;
 
     public Text itemButtonText;// nie jestem przekonany ze to tutaj powinno byc ale nie mam pomys³u
     // Start is called before the first frame update
@@ -17,7 +17,7 @@ public class CardDisplay : MonoBehaviour
     public bool inDeckColor;//zmienna robi¹ca to ¿e tylko podczas pokazywania deckBuilder karty w decku s¹ zielone
     void Start()
     {
-        var db = FindObjectOfType<DeckBuilder>();
+        var db = DeckBuilder.Instance;
         inDeck = db.deck.CardInDeck(card);
         if (inDeck && inDeckColor)
         {

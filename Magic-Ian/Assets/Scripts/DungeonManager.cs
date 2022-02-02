@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class DungeonManager : MonoBehaviour
 {
-    public GameObject playerPrefab;
-    
+    [SerializeField] GameObject playerPrefab;
 
-    public Transform playerBattleStation;
+
+    [SerializeField] Transform playerBattleStation;
     
 
     
