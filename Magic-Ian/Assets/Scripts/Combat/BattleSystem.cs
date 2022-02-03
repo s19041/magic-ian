@@ -33,7 +33,7 @@ public class BattleSystem : MonoBehaviour
     AbstractAbilitySet abilitySet;
 
     private int turn;
-    private int shuffleCount;
+    private ItemPowers itemPowers;
 
     // Start is called before the first frame update
     void Start()
@@ -71,7 +71,7 @@ public class BattleSystem : MonoBehaviour
 
         abilitySet = new AbilitySet1(deck, DeckBuilder.Instance);
 
-
+        itemPowers = new ItemPowers();
         deck.Shuffle();
         deck.SetDeckForCombat(combatCardDisplay);
 
@@ -81,7 +81,7 @@ public class BattleSystem : MonoBehaviour
     }
     void PlayerTurn()
     {
-        shuffleCount = 0;
+      
         dialogueText.text = "Your turn";
         currentCard = deck.GetTopCard();
         //cardDisplay.card = currentCard;
@@ -98,20 +98,18 @@ public class BattleSystem : MonoBehaviour
 
 
 
-
+        //zagrywanie karty
         playerUnit.Heal(currentCard.heal);
         playerUnit.ArmorUp(currentCard.armor);
         enemyUnit.AddStunStacks(currentCard.stunStacks);
+        
         if (currentCard.hasAbility)
         {
-            Debug.Log("eldoka");
             abilitySet.playAbility(currentCard);
-            Time.timeScale = 0;
         }
         deck.CardPlayed();
-
+        //
         bool isDead = enemyUnit.TakeDamage(currentCard.damage);
-        //deck.cardPlayed();
 
 
 
@@ -136,22 +134,13 @@ public class BattleSystem : MonoBehaviour
     }
     public void OnItemActivationButton()//tutaj zrobiæ 
     {
-        if (deck.item.itemName == ItemName.CYLINDER)
-        {
-            ShuffleDeck();
-        }
-        if (deck.item.itemName == ItemName.CAPE)
-        {
+        
+        if (state != BattleState.PLAYERTURN)
+            return;
+        bool noActionPointsLeft = itemPowers.ActivateItemPower(deck.item);
+        if(noActionPointsLeft)
+            StartCoroutine(EnemyTurn());
 
-        }
-        if (deck.item.itemName == ItemName.MONOCLE)
-        {
-
-        }
-        if (deck.item.itemName == ItemName.SLEEVE)
-        {
-
-        }
     }
     public void OnPlayCardButton()
     {
@@ -198,17 +187,6 @@ public class BattleSystem : MonoBehaviour
             dialogueText.text = "You lost";
         }
     }
-    // BELOW - ALL ITEM POWERS
-    public void ShuffleDeck()//przypisz to do przycisku kaju
-    {
-        if (state != BattleState.PLAYERTURN)
-            return;
-        shuffleCount++;
-        deck.Shuffle();
-
-        //cardDisplay.updateDisplay();
-        if (shuffleCount >= 2)
-            StartCoroutine(EnemyTurn());
-    }
+ 
 }
 

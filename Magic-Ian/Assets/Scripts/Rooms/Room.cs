@@ -4,7 +4,9 @@ using UnityEngine;
 
 
 public enum Type { ENTRANCE,COMBAT,TRADER,TREASURE,BOSS,SECRET }
-public abstract class Room 
+
+//[CreateAssetMenu(fileName = "new Room", menuName = "Room")]
+public abstract class Room :ScriptableObject
 {
     public Type type;
     public Room(Type _type)

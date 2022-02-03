@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class TreasureRoom : Room
 {
-    public int 
+    //here some kind of Treasure-class value
+    //Treasure treasure?
    public TreasureRoom():base(Type.TREASURE)
     {
 

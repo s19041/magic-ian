@@ -13,6 +13,7 @@ public abstract class AbstractAbilitySet
     }
     public void playAbility(Card card)
     {
+        Time.timeScale = 0;//NAD TYM SIÊ ZASTANOWIÆ BO TO CHYBA ŒREDNIE
         if (!card.hasAbility)
             return;
         switch (card.rank)

@@ -4,15 +4,8 @@ using UnityEngine;
 
 public class SecretRoom : Room// nie mam pojêcia co to ma byæ
 {
-    // Start is called before the first frame update
-    void Start()
+    public SecretRoom():base(Type.SECRET)
     {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

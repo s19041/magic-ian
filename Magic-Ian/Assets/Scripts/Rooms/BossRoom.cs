@@ -5,8 +5,8 @@ using UnityEngine;
 public class BossRoom : CombatRoom
 {
     
-    int goldReward;
-    //tutaj jakieœ pole na nagroddê
+    
+    //tutaj jakieœ pole na nagroddê za bossa
     //myœle ¿e klasa treasure która mo¿e odblokowaæ item/karty
     //Object reward;
     
