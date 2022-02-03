@@ -25,6 +25,7 @@ public class BattleSystem : MonoBehaviour
     public TextMeshProUGUI dialogueText;
     Unit playerUnit;
     Unit enemyUnit;
+    [SerializeField]
     List<Unit> enemyUnits;
 
     private Deck deck;
@@ -56,12 +57,14 @@ public class BattleSystem : MonoBehaviour
         playerUnit = playerGO.GetComponent<Unit>();
 
         enemyPrefabs = new List<GameObject>();
+        enemyPrefabs.AddRange(currentRoom.GetOpponents());
         List<GameObject> enemyGOs=new List<GameObject>();
         foreach (GameObject opponent in enemyPrefabs)
         {
             enemyGOs.Add(Instantiate(opponent, enemyBattleStation));
         }
-
+        enemyUnits = new List<Unit>();
+        enemyUnits.Add(enemyGOs[0].GetComponent<Unit>());
         enemyUnit = enemyUnits[0];// ¿eby b³êdów nie wywala³o póki work in progress
         //usun¹æ liniê powy¿ej 
 
