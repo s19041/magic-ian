@@ -95,7 +95,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcef66729b79c3e4c943787ab1116a92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unitName: 
+  unitName: Ian
   hp: 50
   armor: 0
   damage: 0

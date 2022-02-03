@@ -13,7 +13,11 @@ public class Unit : MonoBehaviour
     public int maxHp;
 
     public CombatAi combatAi;
-
+    public Unit()
+    {
+        armor = 0;
+        stunStacks = 0;
+    }
     public bool TakeDamage(int dmg)
     {
         if (armor > 0)

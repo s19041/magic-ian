@@ -11,6 +11,7 @@ public abstract class CombatAi : MonoBehaviour
         thisUnit = gameObject.GetComponent<Unit>();
     }
     // Start is called before the first frame update
-    public abstract int doSomething(Unit playerUnit, int turn, TextMeshProUGUI dialogueText); 
-   
+    public abstract int doSomething(Unit playerUnit, int turn, TextMeshProUGUI dialogueText);//trzeba popracowaæ nad tym bo trochê nudne takie Ai by by³o
+
+
 }

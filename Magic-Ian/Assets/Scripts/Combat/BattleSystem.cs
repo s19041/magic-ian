@@ -11,8 +11,8 @@ public class BattleSystem : MonoBehaviour
     public BattleState state;
     //public CardDisplay cardDisplay;
 
-    public GameObject playerPrefab;
-    public GameObject enemyPrefab;
+    private GameObject playerPrefab;
+    private List<GameObject> enemyPrefabs;
 
     public Transform playerBattleStation;
     public Transform enemyBattleStation;
@@ -25,8 +25,9 @@ public class BattleSystem : MonoBehaviour
     public TextMeshProUGUI dialogueText;
     Unit playerUnit;
     Unit enemyUnit;
+    List<Unit> enemyUnits;
 
-    public Deck deck;
+    private Deck deck;
     Card currentCard;
 
 
@@ -34,6 +35,7 @@ public class BattleSystem : MonoBehaviour
 
     private int turn;
     private ItemPowers itemPowers;
+    private CombatRoom currentRoom;
 
     // Start is called before the first frame update
     void Start()
@@ -47,22 +49,28 @@ public class BattleSystem : MonoBehaviour
 
     IEnumerator SetupBattle()
     {
-        GameObject playerGO = Instantiate(playerPrefab, playerBattleStation);
+        currentRoom = (CombatRoom)DungeonManager.Instance.GetCurrentRoom();
+
+        GameObject playerGO = MainCharacter.Instance.gameObject;
+        playerGO.transform.position = playerBattleStation.position;
         playerUnit = playerGO.GetComponent<Unit>();
 
-        GameObject enemyGO = Instantiate(enemyPrefab, enemyBattleStation);
-        enemyUnit = enemyGO.GetComponent<Unit>();
+        enemyPrefabs = new List<GameObject>();
+        List<GameObject> enemyGOs=new List<GameObject>();
+        foreach (GameObject opponent in enemyPrefabs)
+        {
+            enemyGOs.Add(Instantiate(opponent, enemyBattleStation));
+        }
 
-        playerUnit.unitName = "Ian";
-        enemyUnit.unitName = "Incensed Pigeon";
+        enemyUnit = enemyUnits[0];// ¿eby b³êdów nie wywala³o póki work in progress
+        //usun¹æ liniê powy¿ej 
 
-        playerUnit.armor = 0;
-        enemyUnit.armor = 0;
 
         dialogueText.text = enemyUnit.unitName + " approaches";
 
         playerHUD.SetHud(playerUnit);
-        enemyHUD.SetHud(enemyUnit);
+        
+        enemyHUD.SetHud(enemyUnits[0]);//work in progress
 
         deck = Deck.Instance;
         deck.cardDisplay = combatCardDisplay;

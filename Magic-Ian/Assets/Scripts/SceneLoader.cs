@@ -26,8 +26,8 @@ public class SceneLoader : MonoBehaviour
         switch (room.type)
         {
             case Type.ENTRANCE:
-
-               EntranceScene();
+                EntranceScene();
+                DungeonManager.Instance.EnableNextSceneButton();
                 break;
 
             case Type.COMBAT:
