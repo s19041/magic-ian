@@ -26,17 +26,17 @@ public class Unit : MonoBehaviour
                 armor -= dmg;
             else
             {
-                
-                hp -= (dmg-armor);
+
+                hp -= (dmg - armor);
                 armor = 0;
             }
-            
+
         }
         else
         {
             hp -= dmg;
         }
-        
+
 
         if (hp <= 0)
             return true;
@@ -64,5 +64,5 @@ public class Unit : MonoBehaviour
     {
         stunStacks += stacks;
     }
-   
+
 }

@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/Scenes/HubMockup.unity
+- path: Assets/Scenes/COMBAT.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0
