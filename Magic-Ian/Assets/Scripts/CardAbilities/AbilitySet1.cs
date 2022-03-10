@@ -9,7 +9,7 @@ public class AbilitySet1 : AbstractAbilitySet
 
     }
 
-    public override void JackAbility(Card card)
+    public override void JackAbility(Card card)//
     {
         int count = 3;
 
@@ -25,17 +25,17 @@ public class AbilitySet1 : AbstractAbilitySet
 
     }
 
-    public override void JokerAbility(Card card)
+    public override void JokerAbility(Card card)//zamienia siê w poprzedni¹ kartê
     {
         throw new System.NotImplementedException();
     }
 
-    public override void KingAbility(Card card)
+    public override void KingAbility(Card card)// nastêpna karta bêdzie aoe. Robi to co 5 danego koloru ale bez dmg
     {
         throw new System.NotImplementedException();
     }
 
-    public override void QueenAbility(Card card)
+    public override void QueenAbility(Card card) // Daje do x kart buff swojego koloru (np dama serce daje ka¿dej karcie dodatkowo efekt serca00)
     {
         throw new System.NotImplementedException();
     }

@@ -6,7 +6,7 @@ using TMPro;
 
 
 public enum BattleState { START, PLAYERTURN, ENEMYTURN, WON, LOST };
-public class BattleSystem : MonoBehaviour
+public class BattleSystem : MonoBehaviour// WIELKA KLASA KTÓRA £¥CZY WSZYSTKO W CA£EJ WALCE. Proszê nie krytykowaæ jakoœci kodu tutaj. Tylko geniusz mo¿e zapanowaæ nad chaosem
 {
     public BattleState state;
     //public CardDisplay cardDisplay;
@@ -69,7 +69,7 @@ public class BattleSystem : MonoBehaviour
         //usun¹æ liniê powy¿ej 
 
 
-        dialogueText.text = enemyUnit.unitName + " approaches";
+        dialogueText.text = enemyUnit.unitName + " approaches";//fajnie by by³a jak¹œ klase machnaæ na czêœæ ui BattleSystem
 
         playerHUD.SetHud(playerUnit);
         
