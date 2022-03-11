@@ -198,6 +198,11 @@ public class BattleSystem : MonoBehaviour// WIELKA KLASA KTÓRA £¥CZY WSZYSTKO W 
             dialogueText.text = "You lost";
         }
     }
+
+    public bool GetUnitsLength()
+    {
+       return (enemyUnits.Count == 2) ;
+    }
  
 }
 
