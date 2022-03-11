@@ -9,9 +9,13 @@ public class Deck : MonoBehaviour
     [SerializeField]
     List<Card> cards;
     [SerializeField]
+    List<Card> cardsBackup;
+    [SerializeField]
     List<Card> graveyard;
 
     public Card topCard;
+
+    public Card lastCard;
 
     public Item item;
 
@@ -48,11 +52,13 @@ public class Deck : MonoBehaviour
 
         foreach (Card card in cards)
         {
-            card.setCard();
+            card.SetCard();
         }
     }
     public void SetDeckForCombat(CardDisplay cd)
     {
+        lastCard = null;
+        cardsBackup.AddRange(cards);
         cardDisplay = cd;
         cardDisplay.setItemButtonText(item);
         Shuffle();
@@ -62,7 +68,7 @@ public class Deck : MonoBehaviour
     {
         if (cards.Count < 12)
         {
-            card.setCard();
+            card.SetCard();
             cards.Add(card);
             return true;
         }
@@ -106,6 +112,7 @@ public class Deck : MonoBehaviour
     {
         cards.Remove(topCard);
         graveyard.Add(topCard);
+        lastCard = topCard;
     }
     public void NextCard()
     {
@@ -143,5 +150,20 @@ public class Deck : MonoBehaviour
         {
             cards[i] = jackList[i];
         }
+    }
+    public void Reset()
+    {
+        cards = cardsBackup;
+    }
+    public void ChangeCardAt(int index,Card _card)
+    {
+        cards[index] = _card;
+        if(index==0)
+            SetTopCard();
+    }
+    public void SetCardAoe(int index)
+    {
+        if(cards.Count>index)
+            cards[index].aoe = true;
     }
 }

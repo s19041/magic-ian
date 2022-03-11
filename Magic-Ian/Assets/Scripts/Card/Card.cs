@@ -19,28 +19,30 @@ public class Card : ScriptableObject
     public int stunStacks;
 
     public Sprite artwork;
+    public bool aoe;
 
     public bool hasAbility;
     public Card()
     {
-        setCard();
+        SetCard();
     }
     
 
 
     // Update is called once per frame
-    public void setCard()
+    public void SetCard()
     {
-        setName();
-        setDamage();
-        setStats();
+        SetName();
+        SetDamage();
+        SetStats();
         setHasAbility();
+        aoe = false;
     }
-    public void setName()
+    public void SetName()
     {
         cardName = rank.ToString() + " Of " + suit.ToString();
     }
-    public void setDamage()
+    public void SetDamage()
     {//tu mo¿na dodaæ warunek który wyklucza karty specjalne
         switch (rank)
         {
@@ -68,7 +70,7 @@ public class Card : ScriptableObject
                 
                     damage = 5;
                     break;
-                
+
             case Rank.SIX:
                 
                     damage = 6;
@@ -100,7 +102,7 @@ public class Card : ScriptableObject
 
         }
     }
-    public void setStats()
+    public void SetStats()
     {//tu mo¿na dodaæ warunek który wyklucza karty specjalne
         if (damage == 0)
         {

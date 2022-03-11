@@ -84,16 +84,13 @@ public class DungeonCreator :MonoBehaviour
         {
             roomDifficulty++;
         }
-        List<GameObject> opps = OpponentPicker(roomDifficulty);
-            foreach(GameObject opponent in opps)
-        {
-            combatRoom.AddOponent(opponent);
-        }
+        OpponentPicker(roomDifficulty, combatRoom);
+          
         
         combatRoom.goldReward = roomDifficulty;
         return combatRoom;
     }
-    private List<GameObject> OpponentPicker(int roomDifficulty)
+    private void OpponentPicker(int roomDifficulty, CombatRoom _combatRoom)
     {
 
 
@@ -110,6 +107,7 @@ public class DungeonCreator :MonoBehaviour
             opponentLayout.Add(pigeonPrefab);
             opponentLayout.Add(pigeonPrefab);
             opponentLayout.Add(pigeonPrefab);
+            _combatRoom.encounterName = "Mad pigeons";
             
         }
         else
@@ -117,10 +115,18 @@ public class DungeonCreator :MonoBehaviour
             //opponentLayout.Add(evilMagicianPrefab);
             //opponentLayout.Add(evilMagicianPrefab);
         }
-
+        
 
         AdjustOpponentsDifficulty(opponentLayout);
-        return opponentLayout;
+
+
+        
+        foreach (GameObject opponent in opponentLayout)
+        {
+            _combatRoom.AddOponent(opponent);
+        }
+
+
     }
     private Room NeutralRoomCreator()//napisaæ tu jak¹œ fajn¹ proceduralke
     {

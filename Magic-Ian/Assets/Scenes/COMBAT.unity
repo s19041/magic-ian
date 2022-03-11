@@ -123,24 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &267505130 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1523520651916346117, guid: c2345e66abae704419a730e80a190aa3, type: 3}
-  m_PrefabInstance: {fileID: 1231609729}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &267505132
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 267505130}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c34eaf3cc05cfd642a0ee6d8feaebe1d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  battleSystem: {fileID: 664736859}
 --- !u!1 &504346255
 GameObject:
   m_ObjectHideFlags: 0
@@ -223,17 +205,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &664736859 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5632149545489730754, guid: c2345e66abae704419a730e80a190aa3, type: 3}
-  m_PrefabInstance: {fileID: 1231609729}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bc44eab1bdf9b6e47926b97c93acb826, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1083764308
 GameObject:
   m_ObjectHideFlags: 0
@@ -1627,6 +1598,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1557767469979534533, guid: 9848f5b93efadd34c8d103f75c9c5a60, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 1231609730}
     - target: {fileID: 6539607446473684886, guid: 9848f5b93efadd34c8d103f75c9c5a60, type: 3}
       propertyPath: cardDisplay
       value: 
@@ -1681,6 +1656,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9848f5b93efadd34c8d103f75c9c5a60, type: 3}
+--- !u!114 &1130150079 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3178744616297446573, guid: 9848f5b93efadd34c8d103f75c9c5a60, type: 3}
+  m_PrefabInstance: {fileID: 1130150078}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 567f5b560e0252345a55e7dbe3c6350a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1140618384
 GameObject:
   m_ObjectHideFlags: 0
@@ -1852,7 +1838,7 @@ PrefabInstance:
     - target: {fileID: 3899236536509231609, guid: c2345e66abae704419a730e80a190aa3, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1130150079}
     - target: {fileID: 3899236536509231609, guid: c2345e66abae704419a730e80a190aa3, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: ShowDeck
@@ -1877,6 +1863,18 @@ PrefabInstance:
       propertyPath: playerBattleStation
       value: 
       objectReference: {fileID: 1712992971}
+    - target: {fileID: 5632149545489730754, guid: c2345e66abae704419a730e80a190aa3, type: 3}
+      propertyPath: enemyPrefabs.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5632149545489730754, guid: c2345e66abae704419a730e80a190aa3, type: 3}
+      propertyPath: enemyPrefabs.Array.data[0]
+      value: 
+      objectReference: {fileID: 1636514762991776171, guid: bc668ccd1860eca4987237cb4a8275c0, type: 3}
+    - target: {fileID: 6130865193827871964, guid: c2345e66abae704419a730e80a190aa3, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 402.1199
+      objectReference: {fileID: 0}
     - target: {fileID: 6520125693043240183, guid: c2345e66abae704419a730e80a190aa3, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 91
@@ -1903,7 +1901,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8098553398261973255, guid: c2345e66abae704419a730e80a190aa3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 461
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 8191401940355194156, guid: c2345e66abae704419a730e80a190aa3, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -1916,13 +1914,18 @@ PrefabInstance:
     - target: {fileID: 8607951434766929447, guid: c2345e66abae704419a730e80a190aa3, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1130150079}
     - target: {fileID: 8607951434766929447, guid: c2345e66abae704419a730e80a190aa3, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: ShowGraveyard
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c2345e66abae704419a730e80a190aa3, type: 3}
+--- !u!20 &1231609730 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 139071207067953183, guid: c2345e66abae704419a730e80a190aa3, type: 3}
+  m_PrefabInstance: {fileID: 1231609729}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1243965258
 GameObject:
   m_ObjectHideFlags: 0

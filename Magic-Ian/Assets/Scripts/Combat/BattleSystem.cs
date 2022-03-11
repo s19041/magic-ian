@@ -12,21 +12,20 @@ public class BattleSystem : MonoBehaviour// WIELKA KLASA KTÓRA £¥CZY WSZYSTKO W 
     //public CardDisplay cardDisplay;
 
     private GameObject playerPrefab;
-    private List<GameObject> enemyPrefabs;
+    [SerializeField] List<GameObject> enemyPrefabs;
 
     public Transform playerBattleStation;
-    public Transform enemyBattleStation;
+    public List<Transform> enemyBattleStationList;
 
     public BattleHUD playerHUD;
-    public BattleHUD enemyHUD;
+    public List<BattleHUD> enemyHUDList;
 
     public CardDisplay combatCardDisplay;
 
     public TextMeshProUGUI dialogueText;
     Unit playerUnit;
-    Unit enemyUnit;
     [SerializeField]
-    List<Unit> enemyUnits;
+    List<Unit> enemyUnitList;
 
     private Deck deck;
     Card currentCard;
@@ -41,46 +40,58 @@ public class BattleSystem : MonoBehaviour// WIELKA KLASA KTÓRA £¥CZY WSZYSTKO W 
     // Start is called before the first frame update
     void Start()
     {
-
         state = BattleState.START;
         StartCoroutine(SetupBattle());
     }
 
     // Update is called once per frame
 
-    IEnumerator SetupBattle()
+    IEnumerator SetupBattle() 
     {
-        currentRoom = (CombatRoom)DungeonManager.Instance.GetCurrentRoom();
+        Debug.Log(0);
+        currentRoom = DungeonManager.Instance.GetCurrentCombatRoom();
 
         GameObject playerGO = MainCharacter.Instance.gameObject;
         playerGO.transform.position = playerBattleStation.position;
         playerUnit = playerGO.GetComponent<Unit>();
 
-        enemyPrefabs = new List<GameObject>();
-        enemyPrefabs.AddRange(currentRoom.GetOpponents());
+
+
+        enemyPrefabs = currentRoom.GetOpponents();
         List<GameObject> enemyGOs=new List<GameObject>();
-        foreach (GameObject opponent in enemyPrefabs)
+        for(int i = 0; i < enemyPrefabs.Count; i++)
         {
-            enemyGOs.Add(Instantiate(opponent, enemyBattleStation));
+            
+            enemyGOs.Add(Instantiate(enemyPrefabs[i], enemyBattleStationList[i]));
+            
         }
-        enemyUnits = new List<Unit>();
-        enemyUnits.Add(enemyGOs[0].GetComponent<Unit>());
-        enemyUnit = enemyUnits[0];// ¿eby b³êdów nie wywala³o póki work in progress
-        //usun¹æ liniê powy¿ej 
+        enemyUnitList = new List<Unit>();
+        foreach(GameObject enemyGO in enemyGOs)
+        {
+            
+            enemyUnitList.Add(enemyGO.GetComponent<Unit>());
+            
+
+        }
 
 
-        dialogueText.text = enemyUnit.unitName + " approaches";//fajnie by by³a jak¹œ klase machnaæ na czêœæ ui BattleSystem
+
+        dialogueText.text = currentRoom.encounterName + " encountered";//fajnie by by³a jak¹œ klase machnaæ na czêœæ ui BattleSystem
+
 
         playerHUD.SetHud(playerUnit);
-        
-        enemyHUD.SetHud(enemyUnits[0]);//work in progress
 
+        for (int i = 0; i < enemyUnitList.Count; i++)
+        {
+            enemyHUDList[i].SetHud(enemyUnitList[i]);
+        }
+        
         deck = Deck.Instance;
         deck.cardDisplay = combatCardDisplay;
         combatCardDisplay.updateDisplay();
 
 
-        abilitySet = new AbilitySet1(deck, DeckBuilder.Instance);
+        abilitySet = new AbilitySet1();
 
         itemPowers = new ItemPowers();
         deck.Shuffle();
@@ -98,7 +109,6 @@ public class BattleSystem : MonoBehaviour// WIELKA KLASA KTÓRA £¥CZY WSZYSTKO W 
         //cardDisplay.card = currentCard;
         //cardDisplay.updateDisplay();
         turn++;
-
     }
 
     IEnumerator PlayerPlayCard()
@@ -108,27 +118,62 @@ public class BattleSystem : MonoBehaviour// WIELKA KLASA KTÓRA £¥CZY WSZYSTKO W 
 
 
 
-
+        if (currentCard.hasAbility)
+        {
+            abilitySet.PlayAbility(currentCard);
+        }
         //zagrywanie karty
         playerUnit.Heal(currentCard.heal);
         playerUnit.ArmorUp(currentCard.armor);
-        enemyUnit.AddStunStacks(currentCard.stunStacks);
-        
-        if (currentCard.hasAbility)
-        {
-            abilitySet.playAbility(currentCard);
-        }
+
+
         deck.CardPlayed();
+
+
         //
-        bool isDead = enemyUnit.TakeDamage(currentCard.damage);
+
+        if (currentCard.aoe)
+        {
+            foreach (Unit enemyUnit in enemyUnitList)
+            {
+                enemyUnit.TakeDamage(currentCard.damage);//aoe wiadomo
+                enemyUnit.AddStunStacks(currentCard.stunStacks);
+            }
+            currentCard.aoe = false;
+        }
+        else
+        {
+            for (int i = enemyUnitList.Count - 1; i >= 0; i--)
+            {
+                if (enemyUnitList[i].hp > 0)
+                {
+                    enemyUnitList[i].TakeDamage(currentCard.damage);//klepanie frontalnego przeciwnika
+                    enemyUnitList[i].AddStunStacks(currentCard.stunStacks);
+                    break;
+                }
+                    
+            }
+        }
+        
+
+
+
 
 
 
         playerHUD.SetStats(playerUnit.hp, playerUnit.maxHp, playerUnit.armor);
-        enemyHUD.SetStats(enemyUnit.hp, enemyUnit.maxHp, enemyUnit.armor);
+        for(int i = 0; i < enemyUnitList.Count; i++)
+        {
+            enemyHUDList[i].SetStats(enemyUnitList[i].hp, enemyUnitList[i].maxHp, enemyUnitList[i].armor);
+        }
 
-
-        if (isDead)
+        bool areDead = true;
+        foreach (Unit enemyUnit in enemyUnitList)
+        {
+            if (enemyUnit.hp > 0)
+                areDead = false;
+        }
+        if (areDead)
         {
             state = BattleState.WON;
             yield return new WaitForSeconds(2f);
@@ -164,14 +209,30 @@ public class BattleSystem : MonoBehaviour// WIELKA KLASA KTÓRA £¥CZY WSZYSTKO W 
 
     IEnumerator EnemyTurn()
     {
-        dialogueText.text = "Ruch " + enemyUnit.unitName;
+        dialogueText.text = currentRoom.encounterName + " move";
         bool isDead = false;
-        yield return new WaitForSeconds(1f);//Poni¿ej legendarne GOLOMP AI
-        isDead = playerUnit.TakeDamage(enemyUnit.combatAi.doSomething(playerUnit, turn, dialogueText));
+        yield return new WaitForSeconds(1f);
+        for (int i = enemyUnitList.Count-1; i >=0; i--)
+        {
+            if (enemyUnitList[i].hp > 0)
+            {
+                dialogueText.text = enemyUnitList[i].unitName+ " move";
+                yield return new WaitForSeconds(0.5f);
+                isDead = playerUnit.TakeDamage(enemyUnitList[i].combatAi.doSomething(playerUnit, turn, i, enemyUnitList[i].hp, dialogueText));
+                yield return new WaitForSeconds(1f);
+            }
+            
+        }
+
+        
 
 
         playerHUD.SetStats(playerUnit.hp, playerUnit.maxHp, playerUnit.armor);
-        enemyHUD.SetStats(enemyUnit.hp, enemyUnit.maxHp, enemyUnit.armor);
+        for (int i = 0; i < enemyUnitList.Count; i++)
+        {
+            enemyHUDList[i].SetStats(enemyUnitList[i].hp, enemyUnitList[i].maxHp, enemyUnitList[i].armor);
+        }
+
 
         yield return new WaitForSeconds(1f);
 
@@ -197,11 +258,12 @@ public class BattleSystem : MonoBehaviour// WIELKA KLASA KTÓRA £¥CZY WSZYSTKO W 
         {
             dialogueText.text = "You lost";
         }
+        deck.Reset();
     }
 
     public bool GetUnitsLength()
     {
-       return (enemyUnits.Count == 2) ;
+       return (enemyUnitList.Count == 3) ;
     }
  
 }

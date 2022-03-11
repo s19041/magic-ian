@@ -4,14 +4,14 @@ using UnityEngine;
 
 public abstract class AbstractAbilitySet 
 {
-    protected Deck deck;
+    protected Deck Deck;
     protected DeckBuilder deckbuilder;
-    public AbstractAbilitySet(Deck _deck)
+    public AbstractAbilitySet()
     {
-        deck = _deck;
+        Deck = Deck.Instance;
         deckbuilder = DeckBuilder.Instance;
     }
-    public void playAbility(Card card)
+    public void PlayAbility(Card card)
     {
         Time.timeScale = 0;//NAD TYM SIÊ ZASTANOWIÆ BO TO CHYBA ŒREDNIE
         if (!card.hasAbility)

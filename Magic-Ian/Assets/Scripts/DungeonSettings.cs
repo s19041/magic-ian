@@ -12,9 +12,7 @@ public class DungeonSettings : MonoBehaviour
     InputField additionalCombatRooms;//ta nazwa jest okropna
     [SerializeField]
     Button generateButton;
-    private void Awake()
-    {
-    }
+
     public void OnDifficultyEdit()
     {
         if (Int32.Parse(difficulty.text) > 3)

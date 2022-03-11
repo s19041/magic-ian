@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class PigeonAi : CombatAi
 {
-    public override int doSomething(Unit playerUnit, int turn, TextMeshProUGUI dialogueText)
+    public override int doSomething(Unit playerUnit, int turn, int indexPosition, int unitHp, TextMeshProUGUI dialogueText)
     {
         if (turn % 3 == 1)
         {

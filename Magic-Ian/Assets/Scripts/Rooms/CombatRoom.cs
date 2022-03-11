@@ -6,6 +6,7 @@ public class CombatRoom : Room
 {
     List<GameObject> opponents;
     public int goldReward;
+    public string encounterName;
 
     public CombatRoom() : base(Type.COMBAT)
     {

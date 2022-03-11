@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class DungeonManager : MonoBehaviour
 {
+
     [SerializeField]
     GameObject playerPrefab;
 
