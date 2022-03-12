@@ -9,11 +9,14 @@ public class Deck : MonoBehaviour
     [SerializeField]
     List<Card> cards;
     [SerializeField]
+    Suit[] deckSuits;
+    [SerializeField]
     List<Card> cardsBackup;
     [SerializeField]
     List<Card> graveyard;
 
     public Card topCard;
+
 
     public Card lastCard;
 
@@ -42,6 +45,7 @@ public class Deck : MonoBehaviour
             _instance = this;
         }
         DontDestroyOnLoad(gameObject);
+        deckSuits = new Suit[2];
 
     }
 
@@ -49,7 +53,7 @@ public class Deck : MonoBehaviour
     {
         
         graveyard = new List<Card>();
-
+        cardsBackup = new List<Card>();
         for(int i = 0; i < cards.Count; i++)
         {
             cards[i] = Instantiate(cards[i]);//kopiowanie scriptable object ¿eby na nich nie pracowaæ a na ich obiektach
@@ -59,21 +63,29 @@ public class Deck : MonoBehaviour
     public void SetDeckForCombat(CardDisplay cd)
     {
         lastCard = null;
+        cardsBackup = new List<Card>();
         cardsBackup.AddRange(cards);
         cardDisplay = cd;
         cardDisplay.setItemButtonText(item);
         Shuffle();
         SetTopCard();
     }
-    public bool AddCard(Card card)
+    public void AddCard(Card card)
     {
-        if (cards.Count < 12)
+        if (card.suit != Suit.SPECIAL)
         {
-            card.SetCard();
-            cards.Add(card);
-            return true;
-        }
-        return false;
+            if (deckSuits[0] == 0)
+            {
+                deckSuits[0] = card.suit;
+            }
+            else
+            {
+                if(deckSuits[1] == 0)
+                    deckSuits[1] = card.suit;
+            }
+            
+        }        
+        cards.Add(card);
     }
     public bool RemoveCard(Card card)
     {
@@ -185,5 +197,13 @@ public class Deck : MonoBehaviour
         {
             cards[cardIndex].stunStacks = power;
         }
+    }
+    public bool HasOpenSuit()
+    {
+        if (deckSuits[0] == 0)
+            return true;
+        if (deckSuits[1] == 0)
+            return true;
+        return false;
     }
 }

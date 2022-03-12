@@ -66,8 +66,13 @@ public class DeckBuilder : MonoBehaviour
 
     public bool addCardToDeck(Card card)
     {
-        if (deck.AddCard(card))
-            return true;
+        
+        if (deck.GetCards().Count < 12 
+            && deck.HasOpenSuit() 
+            &&!deck.GetCards().Find(x=>x.rank==card.rank&&x.suit==card.suit))//tutaj trzeba zmienic chyba
+        {
+            deck.AddCard(card);
+        }
         return false;
 
     }
