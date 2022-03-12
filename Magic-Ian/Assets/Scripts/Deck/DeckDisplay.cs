@@ -40,23 +40,7 @@ public class DeckDisplay : MonoBehaviour
 
 
 
-    public void ShowDeckBuilder(List<Card> list, bool isEnabled)
-    {
 
-        foreach (Card card in list)
-        {
-            CardDisplay cardDisplay = cardPrefab.GetComponent<CardDisplay>();
-            cardDisplay.card = card;
-            cardDisplay.updateDisplay();
-
-            GameObject cardObject = Instantiate(cardPrefab);
-            cardObject.GetComponent<CardDisplay>().inDeckColor = isEnabled;
-            cardsDisplayed.Add(cardObject);
-            cardObject.transform.SetParent(panel.transform, false);
-            cardObject.GetComponent<Button>().enabled = isEnabled;
-
-        }
-    }
     public void ClearDeckDisplay()
     {
         for (int i = 0; i < cardsDisplayed.Count; i++)
@@ -98,6 +82,23 @@ public class DeckDisplay : MonoBehaviour
 
         }
 
+    }
+    public void ShowDeckBuilder(List<Card> list, bool isEnabled)//deck, czy przyciski s¹ klikalne
+    {
+
+        foreach (Card card in list)
+        {
+            CardDisplay cardDisplay = cardPrefab.GetComponent<CardDisplay>();
+            cardDisplay.card = card;
+            cardDisplay.updateDisplay();
+
+            GameObject cardObject = Instantiate(cardPrefab);
+            cardObject.GetComponent<CardDisplay>().inDeckColor = isEnabled;
+            cardsDisplayed.Add(cardObject);
+            cardObject.transform.SetParent(panel.transform, false);
+            cardObject.GetComponent<Button>().enabled = isEnabled;
+
+        }
     }
 
     public void ShowGraveyard()

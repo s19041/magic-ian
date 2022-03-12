@@ -68,10 +68,11 @@ public class DeckBuilder : MonoBehaviour
     {
         
         if (deck.GetCards().Count < 12 
-            && deck.HasOpenSuit() 
-            &&!deck.GetCards().Find(x=>x.rank==card.rank&&x.suit==card.suit))//tutaj trzeba zmienic chyba
+            && deck.HasSuit(card.suit) 
+            &&!deck.CardInDeck(card))//tutaj trzeba zmienic chyba
         {
             deck.AddCard(card);
+            return true;
         }
         return false;
 

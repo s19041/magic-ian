@@ -46,6 +46,8 @@ public class Deck : MonoBehaviour
         }
         DontDestroyOnLoad(gameObject);
         deckSuits = new Suit[2];
+        deckSuits[0] = Suit.EMPTY;
+        deckSuits[1] = Suit.EMPTY;
 
     }
 
@@ -74,22 +76,39 @@ public class Deck : MonoBehaviour
     {
         if (card.suit != Suit.SPECIAL)
         {
-            if (deckSuits[0] == 0)
+            if(deckSuits[0]!=card.suit && deckSuits[1] != card.suit)//sprawdzanie czy ju¿ jest taki
             {
-                deckSuits[0] = card.suit;
+                if (deckSuits[0] == Suit.EMPTY)
+                {
+                    deckSuits[0] = card.suit;
+                }
+                else
+                {
+                    if (deckSuits[1] == Suit.EMPTY)
+                        deckSuits[1] = card.suit;
+                }
             }
-            else
-            {
-                if(deckSuits[1] == 0)
-                    deckSuits[1] = card.suit;
-            }
-            
         }        
         cards.Add(card);
     }
     public bool RemoveCard(Card card)
     {
-        return cards.Remove(card);
+        Card c = cards.Find(x => x.suit == card.suit && x.rank == card.rank);
+        bool tmp = cards.Remove(c);
+        if (tmp)
+        {
+            bool suitExists = cards.Exists(x => x.suit == card.suit);
+            if (!suitExists)
+            {
+                if (deckSuits[0] == card.suit)
+                    deckSuits[0] = Suit.EMPTY;
+                if (deckSuits[1] == card.suit)
+                    deckSuits[1] = Suit.EMPTY;
+            }
+            
+        }
+        
+        return tmp;
     }
     public bool SetTopCard()
     {
@@ -150,7 +169,8 @@ public class Deck : MonoBehaviour
     }
     public bool CardInDeck(Card card)
     {
-        return cards.Contains(card);
+
+        return cards.Exists(x => x.rank == card.rank && x.suit == card.suit);
     }
 
     public List<Card> GetGraveyard()
@@ -198,11 +218,11 @@ public class Deck : MonoBehaviour
             cards[cardIndex].stunStacks = power;
         }
     }
-    public bool HasOpenSuit()
+    public bool HasSuit(Suit suit)
     {
-        if (deckSuits[0] == 0)
+        if (deckSuits[0] == Suit.EMPTY || deckSuits[0] == suit)
             return true;
-        if (deckSuits[1] == 0)
+        if (deckSuits[1] == Suit.EMPTY || deckSuits[1] == suit)
             return true;
         return false;
     }

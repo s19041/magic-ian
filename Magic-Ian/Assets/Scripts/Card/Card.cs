@@ -2,8 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum Suit {CLUBS, DIAMONDS, HEARTS, SPADES,SPECIAL }
-public enum Rank {ACE,TWO,THREE,FOUR,FIVE,SIX,SEVEN,EIGHT,NINE,TEN,JACK,QUEEN,KING,JOKER }
+public enum Suit {CLUBS, DIAMONDS, HEARTS, SPADES,SPECIAL,EMPTY }
+public enum Rank {ACE,TWO,THREE,FOUR,FIVE,SIX,SEVEN,EIGHT,NINE,TEN,JACK,QUEEN,KING,JOKER,EMPTY }
 
 [CreateAssetMenu(fileName = "new Card",menuName ="Card")]
 public class Card : ScriptableObject
@@ -26,9 +26,18 @@ public class Card : ScriptableObject
     {
         SetCard();
     }
-    
-
-
+    /*
+    public void SetCard(Suit _suit, Rank _rank)
+    {
+        rank = _rank;
+        suit = _suit;
+        SetName();
+        SetDamage();
+        SetStats();
+        SetHasAbility();
+        aoe = false;
+    }
+    */
     // Update is called once per frame
     public void SetCard()
     {
@@ -159,4 +168,5 @@ public class Card : ScriptableObject
 
         }
     }
+
 }

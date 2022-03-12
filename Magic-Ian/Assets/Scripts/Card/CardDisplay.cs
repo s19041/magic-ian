@@ -18,7 +18,7 @@ public class CardDisplay : MonoBehaviour
     DeckBuilder db;
     void Start()
     {
-        db = DeckBuilder.Instance;
+         db = DeckBuilder.Instance;
         inDeck = db.deck.CardInDeck(card);
         if (inDeck && inDeckColor)
         {
@@ -42,7 +42,7 @@ public class CardDisplay : MonoBehaviour
     {
         if (inDeck == false)
         {
-            
+            //varr db = FindObjectOfType<DeckBuilder>();
             if (db.addCardToDeck(card) && inDeckColor)
             {
                 gameObject.GetComponent<Image>().color = new Color32(87, 183, 78, 255);
@@ -52,7 +52,7 @@ public class CardDisplay : MonoBehaviour
         else
         {
 
-            
+            //var db = FindObjectOfType<DeckBuilder>();
             if (inDeckColor)//tutaj by³o db.addCardToDeck(card) && building 
             {
                 db.deck.RemoveCard(card);
@@ -65,7 +65,7 @@ public class CardDisplay : MonoBehaviour
     }
     public void addToDeckOnClickJack()
     {
-        
+        //var db = DeckBuilder.Instance;
         if (inDeck == true)
         {
             db.jackList.Add(card);
