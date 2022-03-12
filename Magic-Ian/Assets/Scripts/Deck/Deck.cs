@@ -50,9 +50,10 @@ public class Deck : MonoBehaviour
         
         graveyard = new List<Card>();
 
-        foreach (Card card in cards)
+        for(int i = 0; i < cards.Count; i++)
         {
-            card.SetCard();
+            cards[i] = Instantiate(cards[i]);//kopiowanie scriptable object ¿eby na nich nie pracowaæ a na ich obiektach
+            cards[i].SetCard();
         }
     }
     public void SetDeckForCombat(CardDisplay cd)
@@ -165,5 +166,24 @@ public class Deck : MonoBehaviour
     {
         if(cards.Count>index)
             cards[index].aoe = true;
+    }
+    public void AddStatOfSuit(Suit suit, int power, int cardIndex)
+    {
+        if (suit == Suit.HEARTS)
+        {
+            cards[cardIndex].heal += (int)(power / 2);
+        }
+        if (suit == Suit.CLUBS)
+        {
+            cards[cardIndex].armor += power;
+        }
+        if (suit == Suit.SPADES)
+        {
+            cards[cardIndex].damage += (int)(power / 2);
+        }
+        if (suit == Suit.DIAMONDS)
+        {
+            cards[cardIndex].stunStacks = power;
+        }
     }
 }

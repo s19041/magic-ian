@@ -4,47 +4,41 @@ using UnityEngine;
 
 public abstract class AbstractAbilitySet 
 {
-    protected Deck Deck;
+    protected Deck deck;
     protected DeckBuilder deckbuilder;
     public AbstractAbilitySet()
     {
-        Deck = Deck.Instance;
+        deck = Deck.Instance;
         deckbuilder = DeckBuilder.Instance;
     }
-    public void PlayAbility(Card card)
+    public bool PlayAbility(Card card)
     {
-        Time.timeScale = 0;//NAD TYM SIÊ ZASTANOWIÆ BO TO CHYBA ŒREDNIE
+
         if (!card.hasAbility)
-            return;
+            return false;
         switch (card.rank)
         {
             case Rank.KING:
-
-                KingAbility(card);
-                break;
+                return KingAbility(card);
 
             case Rank.QUEEN:
-
-                QueenAbility(card);
-                break;
+                return QueenAbility(card);
 
             case Rank.JACK:
-                JackAbility(card);
-                break;
+                return JackAbility(card);
 
             case Rank.JOKER:
-                JokerAbility(card);
-                break;
+                return JokerAbility(card);
 
             default:
-                break;
+                return false;
 
         }
     }
 
-    public abstract void KingAbility(Card card);
-    public abstract void QueenAbility(Card card);
-    public abstract void JackAbility(Card card);
-    public abstract void JokerAbility(Card card);
+    public abstract bool KingAbility(Card card);
+    public abstract bool QueenAbility(Card card);
+    public abstract bool JackAbility(Card card);
+    public abstract bool JokerAbility(Card card);
 
 }

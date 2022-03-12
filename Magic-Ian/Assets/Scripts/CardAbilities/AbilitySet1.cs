@@ -6,57 +6,66 @@ public class AbilitySet1 : AbstractAbilitySet
 {
     
 
-    public override void JackAbility(Card card)//
+    public override bool JackAbility(Card card)//
     {
+        Time.timeScale = 0;//NAD TYM SIÊ ZASTANOWIÆ BO TO CHYBA ŒREDNIE
         int count = 3;
 
-        if (count > Deck.Instance.GetCards().Count - 1)//-1 poniewa¿ .Count zwróci razem z górn¹ kart¹ a jej nie jestesmy w stanie przestasowaæ
-            count = Deck.Instance.GetCards().Count - 1;//dziwna logika ale dzia³a
+        if (count > deck.GetCards().Count - 1)//-1 poniewa¿ .Count zwróci razem z górn¹ kart¹ a jej nie jestesmy w stanie przestasowaæ
+            count = deck.GetCards().Count - 1;//dziwna logika ale dzia³a
         deckbuilder.jackListCount = count;
 
 
-        DeckBuilder.Instance.jackList = new List<Card>();
+        deckbuilder.jackList = new List<Card>();
 
 
-        DeckBuilder.Instance.deckDisplay.ShowJackBuilder(count);
-
+        deckbuilder.deckDisplay.ShowJackBuilder(count);
+        return false;
     }
 
-    public override void JokerAbility(Card card)// nastêpna karta bêdzie aoe a¿ do jej zagrania.
+    public override bool JokerAbility(Card card)// nastêpna ZADAJ¥CA OBRA¯ENIA karta bêdzie aoe a¿ do jej zagrania.
     {
-        Deck.Instance.SetCardAoe(1);
+        for(int i=1;i<deck.GetCards().Count;i++)//i=1 poniewa¿ chcemy ¿eby nastêpna karta by³a aoe a nie aktualna
+        {
+            if (deck.GetCards()[i].damage != 0)
+            {
+                deck.SetCardAoe(i);
+                break;
+            }
+            
+                
+        }
+        return false;
     }
 
-    public override void KingAbility(Card card)// Daje do x kart buff swojego koloru (np krol serce daje ka¿dej karcie dodatkowo efekt serca00) // na razie 2 nastêpne karty
+    public override bool KingAbility(Card card)// Daje do x kart buff swojego koloru (np krol serce daje ka¿dej karcie dodatkowo efekt serca00) // na razie 2 nastêpne karty
     {
         int kingPower = 5;//tu zmieniac dla balansu
         int x = 2;//iloœæ zbufowanych kart
-        if (Deck.Instance.GetCards().Count < 2)
-            x = Deck.Instance.GetCards().Count;
-        for (int i = 0; i < x; i++)
+        if (deck.GetCards().Count < x)
+            x = deck.GetCards().Count;
+        for (int i = 1; i < x+1; i++)
         {
-            if (card.suit == Suit.HEARTS)
+            if (deck.GetCards()[i].damage != 0)
             {
-                Deck.Instance.GetCards()[i].heal += (int)(kingPower / 2);
+                deck.AddStatOfSuit(card.suit, kingPower, i);
             }
-            if (card.suit == Suit.CLUBS)
+            else
             {
-                Deck.Instance.GetCards()[i].armor += kingPower;
+                if (x <= deck.GetCards().Count)
+                    x++;
             }
-            if (card.suit == Suit.SPADES)
-            {
-                Deck.Instance.GetCards()[i].damage += (int)(kingPower / 2);
-            }
-            if (card.suit == Suit.DIAMONDS)
-            {
-                Deck.Instance.GetCards()[i].stunStacks = kingPower;
-            }
+                
         }
+        return false;
     }
 
-    public override void QueenAbility(Card card) //zamienia siê w poprzedni¹ kartê
+    public override bool QueenAbility(Card card) //zamienia siê w poprzedni¹ kartê
     {
-       if(Deck.Instance.lastCard!=null)
-            Deck.Instance.ChangeCardAt(0, Deck.Instance.lastCard);
+        if (deck.lastCard != null)
+        {
+            deck.ChangeCardAt(0, Deck.Instance.lastCard);
+        }
+        return true; 
     }
 }

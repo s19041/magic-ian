@@ -13,12 +13,13 @@ MonoBehaviour:
   m_Name: Black Joker
   m_EditorClassIdentifier: 
   cardName: ACE Of CLUBS
-  suit: 0
-  rank: 0
+  suit: 4
+  rank: 13
   description: 
   damage: 0
   heal: 0
   armor: 0
   stunStacks: 0
   artwork: {fileID: 5949856349481144707, guid: 357a967688d2f5e439b15bccb5bf30d3, type: 3}
+  aoe: 0
   hasAbility: 0

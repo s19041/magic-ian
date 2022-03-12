@@ -15,9 +15,10 @@ public class CardDisplay : MonoBehaviour
     // Start is called before the first frame update
     public bool inDeck;
     public bool inDeckColor;//zmienna robi¹ca to ¿e tylko podczas pokazywania deckBuilder karty w decku s¹ zielone
+    DeckBuilder db;
     void Start()
     {
-        var db = DeckBuilder.Instance;
+        db = DeckBuilder.Instance;
         inDeck = db.deck.CardInDeck(card);
         if (inDeck && inDeckColor)
         {
@@ -41,7 +42,7 @@ public class CardDisplay : MonoBehaviour
     {
         if (inDeck == false)
         {
-            var db = FindObjectOfType<DeckBuilder>();
+            
             if (db.addCardToDeck(card) && inDeckColor)
             {
                 gameObject.GetComponent<Image>().color = new Color32(87, 183, 78, 255);
@@ -51,7 +52,7 @@ public class CardDisplay : MonoBehaviour
         else
         {
 
-            var db = FindObjectOfType<DeckBuilder>();
+            
             if (inDeckColor)//tutaj by³o db.addCardToDeck(card) && building 
             {
                 db.deck.RemoveCard(card);
@@ -64,12 +65,12 @@ public class CardDisplay : MonoBehaviour
     }
     public void addToDeckOnClickJack()
     {
-        var db = FindObjectOfType<DeckBuilder>();
+        
         if (inDeck == true)
         {
             db.jackList.Add(card);
             gameObject.GetComponent<Image>().color = new Color32(87, 183, 78, 255);
-            inDeck = true;
+            inDeck = false;
 
         }
         else
@@ -78,7 +79,7 @@ public class CardDisplay : MonoBehaviour
             db.jackList.Remove(card);
             gameObject.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
 
-            inDeck = false;
+            inDeck = true;
         }
         if (db.jackList.Count == db.jackListCount)
         {

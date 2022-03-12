@@ -117,21 +117,27 @@ public class BattleSystem : MonoBehaviour// WIELKA KLASA KTÓRA £¥CZY WSZYSTKO W 
         //nie wiem jak rozwi¹zaæ sprawê kart specjalnych. Pewnie sprawdzanie ich ifami i tutaj dzia³anie wpisywaæ ale to trochê s³abe(ale ³atwe)
 
 
-
-        if (currentCard.hasAbility)
+        bool checkNext = abilitySet.PlayAbility(currentCard);
+        Debug.Log("Ability casted");
+        deck.SetTopCard();
+        currentCard = deck.GetTopCard();
+        while (checkNext)
         {
-            abilitySet.PlayAbility(currentCard);
+            checkNext=abilitySet.PlayAbility(currentCard);
+            Debug.Log("Ability casted");
+            deck.SetTopCard();
+            currentCard = deck.GetTopCard();
+            //zagrywanie karty
         }
-        //zagrywanie karty
         playerUnit.Heal(currentCard.heal);
         playerUnit.ArmorUp(currentCard.armor);
 
 
         deck.CardPlayed();
 
-
+        Debug.Log("Card played");
         //
-
+        
         if (currentCard.aoe)
         {
             foreach (Unit enemyUnit in enemyUnitList)
@@ -154,7 +160,7 @@ public class BattleSystem : MonoBehaviour// WIELKA KLASA KTÓRA £¥CZY WSZYSTKO W 
                     
             }
         }
-        
+        Debug.Log("Damage done");
 
 
 
@@ -166,13 +172,14 @@ public class BattleSystem : MonoBehaviour// WIELKA KLASA KTÓRA £¥CZY WSZYSTKO W 
         {
             enemyHUDList[i].SetStats(enemyUnitList[i].hp, enemyUnitList[i].maxHp, enemyUnitList[i].armor);
         }
-
+        Debug.Log("Hud updated");
         bool areDead = true;
         foreach (Unit enemyUnit in enemyUnitList)
         {
             if (enemyUnit.hp > 0)
                 areDead = false;
         }
+        Debug.Log("Hp checked");
         if (areDead)
         {
             state = BattleState.WON;
@@ -186,7 +193,7 @@ public class BattleSystem : MonoBehaviour// WIELKA KLASA KTÓRA £¥CZY WSZYSTKO W 
             StartCoroutine(EnemyTurn());
         }
 
-
+        Debug.Log("Not working");
     }
     public void OnItemActivationButton()//tutaj zrobiæ 
     {
@@ -194,8 +201,12 @@ public class BattleSystem : MonoBehaviour// WIELKA KLASA KTÓRA £¥CZY WSZYSTKO W 
         if (state != BattleState.PLAYERTURN)
             return;
         bool noActionPointsLeft = itemPowers.ActivateItemPower(deck.item);
-        if(noActionPointsLeft)
+        if (noActionPointsLeft)
+        {
+            state = BattleState.ENEMYTURN;
             StartCoroutine(EnemyTurn());
+        }
+            
 
     }
     public void OnPlayCardButton()
@@ -209,6 +220,7 @@ public class BattleSystem : MonoBehaviour// WIELKA KLASA KTÓRA £¥CZY WSZYSTKO W 
 
     IEnumerator EnemyTurn()
     {
+        Debug.Log("Enemy turn");
         dialogueText.text = currentRoom.encounterName + " move";
         bool isDead = false;
         yield return new WaitForSeconds(1f);

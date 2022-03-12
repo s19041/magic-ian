@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum Suit {CLUBS, DIAMONDS, HEARTS, SPADES }
+public enum Suit {CLUBS, DIAMONDS, HEARTS, SPADES,SPECIAL }
 public enum Rank {ACE,TWO,THREE,FOUR,FIVE,SIX,SEVEN,EIGHT,NINE,TEN,JACK,QUEEN,KING,JOKER }
 
 [CreateAssetMenu(fileName = "new Card",menuName ="Card")]
@@ -35,7 +35,7 @@ public class Card : ScriptableObject
         SetName();
         SetDamage();
         SetStats();
-        setHasAbility();
+        SetHasAbility();
         aoe = false;
     }
     public void SetName()
@@ -129,7 +129,7 @@ public class Card : ScriptableObject
             stunStacks= 10 - damage;
         }
     }
-    public void setHasAbility()
+    public void SetHasAbility()
     {
         switch (rank)
         {
