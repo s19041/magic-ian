@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class DeckDisplay : MonoBehaviour
+public class DeckDisplay : MonoBehaviour//note to self: wiêkszoœæ klas 'display' jest troche syfem wiêc kiedyœ warto siê bêdzie temu przyjrzeæ
 {
     // Start is called before the first frame update
     [SerializeField] GameObject panel;

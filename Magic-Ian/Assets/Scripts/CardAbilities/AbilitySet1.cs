@@ -65,7 +65,9 @@ public class AbilitySet1 : AbstractAbilitySet
         if (deck.lastCard != null)
         {
             deck.ChangeCardAt(0, Deck.Instance.lastCard);
+            return true;
         }
-        return true; 
+        return false;
+        
     }
 }

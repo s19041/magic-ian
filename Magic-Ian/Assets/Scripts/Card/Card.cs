@@ -8,36 +8,35 @@ public enum Rank {ACE,TWO,THREE,FOUR,FIVE,SIX,SEVEN,EIGHT,NINE,TEN,JACK,QUEEN,KI
 [CreateAssetMenu(fileName = "new Card",menuName ="Card")]
 public class Card : ScriptableObject
 {
-    public string cardName;
     public Suit suit;
     public Rank rank;
+
+    public string cardName;
     public string description;
+    public Sprite artwork;
 
     public int damage;
     public int heal;
     public int armor;
     public int stunStacks;
 
-    public Sprite artwork;
     public bool aoe;
-
     public bool hasAbility;
+
+
+
     public Card()
     {
         SetCard();
     }
-    /*
-    public void SetCard(Suit _suit, Rank _rank)
+    
+    public Card(Suit _suit, Rank _rank)
     {
         rank = _rank;
         suit = _suit;
-        SetName();
-        SetDamage();
-        SetStats();
-        SetHasAbility();
-        aoe = false;
+        SetCard();
     }
-    */
+    
     // Update is called once per frame
     public void SetCard()
     {
@@ -52,7 +51,7 @@ public class Card : ScriptableObject
         cardName = rank.ToString() + " Of " + suit.ToString();
     }
     public void SetDamage()
-    {//tu mo¿na dodaæ warunek który wyklucza karty specjalne
+    {
         switch (rank)
         {
             case Rank.ACE:
@@ -120,22 +119,32 @@ public class Card : ScriptableObject
             armor = 0;
             return;
         }
-            
-        if (suit == Suit.HEARTS)
+
+        switch (suit)
         {
-            heal = (int)(10 - damage) / 2;
-        }
-        if (suit == Suit.CLUBS)
-        {
-            armor = 10 - damage;
-        }
-        if (suit == Suit.SPADES)
-        {
-            damage += (int)(damage / 2);
-        }
-        if(suit == Suit.DIAMONDS)
-        {
-            stunStacks= 10 - damage;
+            case Suit.HEARTS:
+
+                heal = (int)(10 - damage) / 2;
+                break;
+
+            case Suit.CLUBS:
+
+                armor = 10 - damage;
+                break;
+
+            case Suit.SPADES:
+
+                damage += (int)(damage / 2);
+                break;
+
+            case Suit.DIAMONDS:
+
+                stunStacks = 10 - damage;
+                break;
+
+            default:
+                break;
+
         }
     }
     public void SetHasAbility()

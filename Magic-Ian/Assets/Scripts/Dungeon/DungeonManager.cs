@@ -4,17 +4,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class DungeonManager : MonoBehaviour
+public class DungeonManager : MonoBehaviour//tutaj bêdzie ca³y gameloop(albo w game manager(jeœli taka klasa powstanie))
 {
 
     [SerializeField]
     GameObject playerPrefab;
-
-
     [SerializeField]
-    Transform playerBattleStation;//tutaj bêdzie ca³y gameloop(albo w game manager)
+    Transform playerBattleStation;
 
-    
     public int diff;
     public int additionalCombatRooms;
 
@@ -24,7 +21,11 @@ public class DungeonManager : MonoBehaviour
     private SceneLoader sceneLoader;
     [SerializeField]
     List<Room> dungeon;
-    public int currentRoomIndex;
+    [SerializeField]
+    int currentRoomIndex;
+
+    private static DungeonManager _instance;
+    public static DungeonManager Instance { get { return _instance; } }
 
     private void Awake()
     {
@@ -56,8 +57,7 @@ public class DungeonManager : MonoBehaviour
     }
     
     
-    private static DungeonManager _instance;
-    public static DungeonManager Instance { get { return _instance; } }
+    
 
     public void PrepareForRun()
     {

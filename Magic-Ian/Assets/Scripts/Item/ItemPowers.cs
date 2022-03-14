@@ -11,23 +11,28 @@ public class ItemPowers
     }
    public bool ActivateItemPower(Item item)
     {
-        if (item.itemName == ItemName.CYLINDER)
+        switch (item.itemName)
         {
-            return ShuffleDeck();
-        }
-        if (item.itemName == ItemName.CAPE)
-        {
+            case ItemName.CYLINDER:
+
+                return ShuffleDeck();
+
+            case ItemName.CAPE:
+
+
+
+            case ItemName.MONOCLE:
+
+
+
+            case ItemName.SLEEVE:
+
+
+
+            default:
+                return false;
 
         }
-        if (item.itemName == ItemName.MONOCLE)
-        {
-
-        }
-        if (item.itemName == ItemName.SLEEVE)
-        {
-
-        }
-        return false;
     }
     public bool ShuffleDeck()//Cylinder power
     {
