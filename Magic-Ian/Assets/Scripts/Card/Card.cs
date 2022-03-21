@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum Suit {CLUBS, DIAMONDS, HEARTS, SPADES,SPECIAL,EMPTY }
-public enum Rank {ACE,TWO,THREE,FOUR,FIVE,SIX,SEVEN,EIGHT,NINE,TEN,JACK,QUEEN,KING,JOKER,EMPTY }
+public enum Suit { CLUBS, DIAMONDS, HEARTS, SPADES, SPECIAL, EMPTY }
+public enum Rank { ACE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, TEN, JACK, QUEEN, KING, JOKER, EMPTY }
 
-[CreateAssetMenu(fileName = "new Card",menuName ="Card")]
+[CreateAssetMenu(fileName = "new Card", menuName = "Card")]
 public class Card : ScriptableObject
 {
     public Suit suit;
@@ -29,14 +29,14 @@ public class Card : ScriptableObject
     {
         SetCard();
     }
-    
+
     public Card(Suit _suit, Rank _rank)
     {
         rank = _rank;
         suit = _suit;
         SetCard();
     }
-    
+
     // Update is called once per frame
     public void SetCard()
     {
@@ -55,54 +55,54 @@ public class Card : ScriptableObject
         switch (rank)
         {
             case Rank.ACE:
-                
-                    damage = 1;
-                    break;
-                
+
+                damage = 1;
+                break;
+
             case Rank.TWO:
-                
-                    damage = 2;
-                    break;
-                
+
+                damage = 2;
+                break;
+
             case Rank.THREE:
-                
-                    damage = 3;
-                    break;
-                
+
+                damage = 3;
+                break;
+
             case Rank.FOUR:
-                
-                    damage = 4;
-                    break;
-                
+
+                damage = 4;
+                break;
+
             case Rank.FIVE:
-                
-                    damage = 5;
-                    break;
+
+                damage = 5;
+                break;
 
             case Rank.SIX:
-                
-                    damage = 6;
-                    break;
-                
+
+                damage = 6;
+                break;
+
             case Rank.SEVEN:
-                
-                    damage = 7;
-                    break;
-                
+
+                damage = 7;
+                break;
+
             case Rank.EIGHT:
-                
-                    damage = 8;
-                    break;
-                
+
+                damage = 8;
+                break;
+
             case Rank.NINE:
-                
-                    damage = 9;
-                    break;
-                
+
+                damage = 9;
+                break;
+
             case Rank.TEN:
-                
-                    damage = 10;
-                    break;
+
+                damage = 10;
+                break;
 
             default:
                 damage = 0;
