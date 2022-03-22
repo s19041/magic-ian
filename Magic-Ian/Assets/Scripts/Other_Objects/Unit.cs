@@ -64,5 +64,9 @@ public class Unit : MonoBehaviour
     {
         stunStacks += stacks;
     }
+    public void DamageUp(int additionalDamage)
+    {
+        damage += additionalDamage;
+    }
 
 }
