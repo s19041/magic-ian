@@ -46,7 +46,7 @@ public class BattleSystem : MonoBehaviour// WIELKA KLASA KTÓRA £¥CZY WSZYSTKO W 
 
     // Update is called once per frame
 
-    IEnumerator SetupBattle() 
+    IEnumerator SetupBattle()
     {
         Debug.Log(0);
         currentRoom = DungeonManager.Instance.GetCurrentCombatRoom();
@@ -57,15 +57,15 @@ public class BattleSystem : MonoBehaviour// WIELKA KLASA KTÓRA £¥CZY WSZYSTKO W 
 
 
         enemyPrefabs = currentRoom.GetOpponents();
-        List<GameObject> enemyGOs=new List<GameObject>();
-        for(int i = 0; i < enemyPrefabs.Count; i++)
+        List<GameObject> enemyGOs = new List<GameObject>();
+        for (int i = 0; i < enemyPrefabs.Count; i++)
         {
-            
-            enemyGOs.Add(Instantiate(enemyPrefabs[i], enemyBattleStationList[i]));
-            
+
+            enemyGOs.Add(Instantiate(enemyPrefabs[i], enemyBattleStationList[2 - i]));
+
         }
         enemyUnitList = new List<Unit>();
-        foreach(GameObject enemyGO in enemyGOs)
+        foreach (GameObject enemyGO in enemyGOs)
         {
             enemyUnitList.Add(enemyGO.GetComponent<Unit>());
         }
@@ -90,9 +90,14 @@ public class BattleSystem : MonoBehaviour// WIELKA KLASA KTÓRA £¥CZY WSZYSTKO W 
 
         for (int i = 0; i < enemyUnitList.Count; i++)
         {
-            enemyHUDList[i].SetHud(enemyUnitList[i]);
+            enemyBattleStationList[2 - i].GetComponentInChildren<BattleHUD>().SetHud(enemyUnitList[i]);//kolejnoœæ jest od prawej do lewej
         }
-        
+        for (int i = enemyUnitList.Count; i < 3; i++)//dezaktywacja niepotrzebnych hud
+        {
+            enemyBattleStationList[2-i].gameObject.SetActive(false);
+        }
+
+
         deck = Deck.Instance;
         deck.cardDisplay = combatCardDisplay;
         combatCardDisplay.updateDisplay();
@@ -110,7 +115,7 @@ public class BattleSystem : MonoBehaviour// WIELKA KLASA KTÓRA £¥CZY WSZYSTKO W 
     }
     void PlayerTurn()
     {
-      
+
         dialogueText.text = "Your turn";
         currentCard = deck.GetTopCard();
         //cardDisplay.card = currentCard;
@@ -125,10 +130,10 @@ public class BattleSystem : MonoBehaviour// WIELKA KLASA KTÓRA £¥CZY WSZYSTKO W 
 
         //currentCard = deck.GetTopCard();
         bool check = currentCard.hasAbility;
-        
+
         while (check)//logika dla kart specjalnych. Wp³ywaj¹ one na nastêpne karty a nawet czasami na nich dzia³aj¹ wiêc trzeba sprawdziæ czy ich nie pozamienia³y
         {
-            check=abilitySet.PlayAbility(currentCard);
+            check = abilitySet.PlayAbility(currentCard);
             Debug.Log("Ability casted");
             deck.SetTopCard();
             currentCard = deck.GetTopCard();
@@ -138,14 +143,14 @@ public class BattleSystem : MonoBehaviour// WIELKA KLASA KTÓRA £¥CZY WSZYSTKO W 
         playerUnit.ArmorUp(currentCard.armor);
 
         DealDamage();//pawe³
-        
+
         deck.CardPlayed();
 
         Debug.Log("Card played");
 
 
         playerHUD.SetStats(playerUnit.hp, playerUnit.maxHp, playerUnit.armor);
-        for(int i = 0; i < enemyUnitList.Count; i++)
+        for (int i = 0; i < enemyUnitList.Count; i++)
         {
             enemyHUDList[i].SetStats(enemyUnitList[i].hp, enemyUnitList[i].maxHp, enemyUnitList[i].armor);
         }
@@ -176,7 +181,7 @@ public class BattleSystem : MonoBehaviour// WIELKA KLASA KTÓRA £¥CZY WSZYSTKO W 
     }
     public void OnItemActivationButton()
     {
-        
+
         if (state != BattleState.PLAYERTURN)
             return;
         bool noActionPointsLeft = itemPowers.ActivateItemPower(deck.item);
@@ -186,7 +191,7 @@ public class BattleSystem : MonoBehaviour// WIELKA KLASA KTÓRA £¥CZY WSZYSTKO W 
             state = BattleState.ENEMYTURN;
             StartCoroutine(EnemyTurn());
         }
-            
+
 
     }
     public void OnPlayCardButton()
@@ -204,19 +209,19 @@ public class BattleSystem : MonoBehaviour// WIELKA KLASA KTÓRA £¥CZY WSZYSTKO W 
         dialogueText.text = currentRoom.encounterName + " move";
         bool isDead = false;
         yield return new WaitForSeconds(1f);
-        for (int i = enemyUnitList.Count-1; i >=0; i--)
+        for (int i = enemyUnitList.Count - 1; i >= 0; i--)
         {
             if (enemyUnitList[i].hp > 0)
             {
-                dialogueText.text = enemyUnitList[i].unitName+ " move";
+                dialogueText.text = enemyUnitList[i].unitName + " move";
                 yield return new WaitForSeconds(0.5f);
                 isDead = playerUnit.TakeDamage(enemyUnitList[i].combatAi.doSomething(playerUnit, turn, i, enemyUnitList[i].hp, dialogueText));
                 yield return new WaitForSeconds(1f);
             }
-            
+
         }
 
-        
+
 
 
         playerHUD.SetStats(playerUnit.hp, playerUnit.maxHp, playerUnit.armor);
@@ -277,11 +282,11 @@ public class BattleSystem : MonoBehaviour// WIELKA KLASA KTÓRA £¥CZY WSZYSTKO W 
 
             }
         }
-        
+
     }
     public bool GetUnitsLength()
     {
-        return enemyUnitList.Count==3;
+        return enemyUnitList.Count == 3;
     }
 
 }

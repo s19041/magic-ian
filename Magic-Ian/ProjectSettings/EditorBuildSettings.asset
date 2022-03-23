@@ -26,4 +26,13 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/GEJBOX 2.unity
     guid: e48c1cee09e8ed840ad455e23d005caf
+  - enabled: 1
+    path: Assets/Scenes/BOSS.unity
+    guid: 6ff2006b7bc00c24fa96fa48006cedda
+  - enabled: 1
+    path: Assets/Scenes/TRADER.unity
+    guid: 37348b0d9669d4841a5e87ea2e8e4d3d
+  - enabled: 1
+    path: Assets/Scenes/TREASUREROOM.unity
+    guid: e2773e897e3c3604d868d43620e5c5af
   m_configObjects: {}

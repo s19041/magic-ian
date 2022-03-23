@@ -31,7 +31,7 @@ public class DungeonCreator :MonoBehaviour
     {
         diff = _diff;
         length = _length;
-        dungeonRooms = new Room[5 + length*2];
+        dungeonRooms = new Room[6 + length*2];
         SetDungeonBalance();
     }
     public Room[] GetDungeon()
@@ -71,7 +71,8 @@ public class DungeonCreator :MonoBehaviour
                 dungeonRooms[i] = NeutralRoomCreator();
             }
         }
-        dungeonRooms[dungeonRooms.Length - 1] = BossRoomCreator();
+        dungeonRooms[dungeonRooms.Length - 2] = BossRoomCreator();
+        dungeonRooms[dungeonRooms.Length - 1] = TreasureRoomCreator();
     }
 
     private CombatRoom CombatRoomCreator()//napisaæ tu jak¹œ fajn¹ proceduralke
@@ -109,15 +110,15 @@ public class DungeonCreator :MonoBehaviour
         double d = Random.value;
         if (d >= 0.9)
         {
-            opponentLayout.Add(rabbitPrefab);
-            opponentLayout.Add(pigeonPrefab);
             opponentLayout.Add(assistantPrefab);
+            opponentLayout.Add(pigeonPrefab);
+            opponentLayout.Add(rabbitPrefab);
             _combatRoom.encounterName = "The unlucky Trio";
         }
         else if (d >= 0.7)
         {
-            opponentLayout.Add(rabbitPrefab);
             opponentLayout.Add(pigeonPrefab);
+            opponentLayout.Add(rabbitPrefab);
             _combatRoom.encounterName = "Dynamic Duo";
         }
         else if (d >= 0.35)
@@ -181,7 +182,9 @@ public class DungeonCreator :MonoBehaviour
     }
     private TreasureRoom TreasureRoomCreator()
     {
-        return ScriptableObject.CreateInstance<TreasureRoom>();
+        TreasureRoom treasureRoom = ScriptableObject.CreateInstance<TreasureRoom>();
+        return treasureRoom;
     }
+
     
 }

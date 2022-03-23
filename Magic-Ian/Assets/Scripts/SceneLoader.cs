@@ -37,7 +37,7 @@ public class SceneLoader : MonoBehaviour
 
             case Type.BOSS:
 
-                CombatScene();
+                BossScene();
                 break;
 
             case Type.SECRET:
@@ -85,12 +85,17 @@ public class SceneLoader : MonoBehaviour
     }
     public void TreasureScene()
     {
-        throw new NotImplementedException();
+        SceneManager.LoadScene(6);
 
     }
     public void TraderScene()
     {
-        throw new NotImplementedException();
+        SceneManager.LoadScene(5);
+
+    }
+    public void BossScene()
+    {
+        SceneManager.LoadScene(4);
 
     }
 
