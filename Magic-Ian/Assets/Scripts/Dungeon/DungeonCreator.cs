@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class DungeonCreator :MonoBehaviour
 {
@@ -10,6 +12,9 @@ public class DungeonCreator :MonoBehaviour
     public static DungeonCreator Instance;
     Room[] dungeonRooms;
     [SerializeField] GameObject pigeonPrefab;
+    [SerializeField] GameObject rabbitPrefab;
+    [SerializeField] GameObject assistantPrefab;
+    [SerializeField] GameObject leruaPrefab;
     //[SerializeField] GameObject evilMagicianPrefab;
     private double secretRoomChance;
     private double treasureRoomChance;
@@ -101,21 +106,34 @@ public class DungeonCreator :MonoBehaviour
 
         //np. tak
         List<GameObject> opponentLayout = new List<GameObject>();
-        if (true)
+        double d = Random.value;
+        if (d >= 0.9)
         {
-            
+            opponentLayout.Add(rabbitPrefab);
             opponentLayout.Add(pigeonPrefab);
-            opponentLayout.Add(pigeonPrefab);
-            opponentLayout.Add(pigeonPrefab);
-            _combatRoom.encounterName = "Mad pigeons";
-            
+            opponentLayout.Add(assistantPrefab);
+            _combatRoom.encounterName = "The unlucky Trio";
         }
-        else
+        else if (d >= 0.7)
         {
-            //opponentLayout.Add(evilMagicianPrefab);
-            //opponentLayout.Add(evilMagicianPrefab);
+            opponentLayout.Add(rabbitPrefab);
+            opponentLayout.Add(pigeonPrefab);
+            _combatRoom.encounterName = "Dynamic Duo";
         }
-        
+        else if (d >= 0.35)
+        {
+            opponentLayout.Add(rabbitPrefab);
+            _combatRoom.encounterName = "Killer rabbit";
+        }
+        else 
+        {
+            opponentLayout.Add(pigeonPrefab);
+            opponentLayout.Add(pigeonPrefab);
+            opponentLayout.Add(pigeonPrefab);
+            _combatRoom.encounterName = "Angry pigeons";
+        }
+
+      
 
         AdjustOpponentsDifficulty(opponentLayout);
 
@@ -147,7 +165,10 @@ public class DungeonCreator :MonoBehaviour
     }
     private BossRoom BossRoomCreator()
     {
-        return ScriptableObject.CreateInstance<BossRoom>();
+        BossRoom bossRoom = ScriptableObject.CreateInstance<BossRoom>();
+        bossRoom.AddOponent(leruaPrefab);
+        bossRoom.encounterName = "Lerua Merlin";
+        return bossRoom;
     }
    
     private TraderRoom TraderRoomCreator()
