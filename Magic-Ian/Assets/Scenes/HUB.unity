@@ -154,6 +154,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pigeonPrefab: {fileID: 1636514762991776171, guid: bc668ccd1860eca4987237cb4a8275c0, type: 3}
   rabbitPrefab: {fileID: 1636514762991776171, guid: b1aae88bc5bca2545ad22bb1bb7a40cf, type: 3}
+  princePrefab: {fileID: 1636514762991776171, guid: 040402b050a2e9a488fc85cf9daa753d, type: 3}
+  knowerPrefab: {fileID: 1636514762991776171, guid: 2090e364c7b463248ab99319d5af90bd, type: 3}
   assistantPrefab: {fileID: 1636514762991776171, guid: 6839ba0b43aec2041ad105cd2fddc326, type: 3}
   leruaPrefab: {fileID: 1636514762991776171, guid: d4d04e2ef5362cc42aab869a49e524a1, type: 3}
 --- !u!4 &176364795
@@ -431,7 +433,7 @@ PrefabInstance:
       objectReference: {fileID: 774338706}
     - target: {fileID: 3694436370050090459, guid: 9848f5b93efadd34c8d103f75c9c5a60, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -244.85005
+      value: -244.85004
       objectReference: {fileID: 0}
     - target: {fileID: 6539607446473684886, guid: 9848f5b93efadd34c8d103f75c9c5a60, type: 3}
       propertyPath: cards.Array.size

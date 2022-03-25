@@ -9,33 +9,43 @@ public class Unit : MonoBehaviour
     public int armor;
     public int damage;
     public int stunStacks;
+    public int barrierStacks;
 
     public int maxHp;
 
     public CombatAi combatAi;
     public Unit()
     {
+        barrierStacks = 0;
         armor = 0;
         stunStacks = 0;
     }
     public bool TakeDamage(int dmg)
     {
-        if (armor > 0)
+        if (barrierStacks > 0)
         {
-            if (armor > dmg)
-                armor -= dmg;
-            else
-            {
-
-                hp -= (dmg - armor);
-                armor = 0;
-            }
-
+            barrierStacks--;
         }
         else
         {
-            hp -= dmg;
+            if (armor > 0)
+            {
+                if (armor > dmg)
+                    armor -= dmg;
+                else
+                {
+
+                    hp -= (dmg - armor);
+                    armor = 0;
+                }
+
+            }
+            else
+            {
+                hp -= dmg;
+            }
         }
+        
 
 
         if (hp <= 0)
@@ -67,6 +77,10 @@ public class Unit : MonoBehaviour
     public void DamageUp(int additionalDamage)
     {
         damage += additionalDamage;
+    }
+    public void AddBarriers(int stacks)
+    {
+        barrierStacks += stacks;
     }
 
 }

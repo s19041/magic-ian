@@ -11,9 +11,14 @@ public class DungeonCreator :MonoBehaviour
     private int length;//chyba bez limitu
     public static DungeonCreator Instance;
     Room[] dungeonRooms;
+    //normal
     [SerializeField] GameObject pigeonPrefab;
     [SerializeField] GameObject rabbitPrefab;
+    [SerializeField] GameObject princePrefab;
+    //elite
+    [SerializeField] GameObject knowerPrefab;
     [SerializeField] GameObject assistantPrefab;
+    //bosses
     [SerializeField] GameObject leruaPrefab;
     //[SerializeField] GameObject evilMagicianPrefab;
     private double secretRoomChance;

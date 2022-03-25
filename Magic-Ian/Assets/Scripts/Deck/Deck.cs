@@ -140,13 +140,13 @@ public class Deck : MonoBehaviour
         return topCard;
 
     }
-    public void ThrowCard()
+    private void ThrowCard()
     {
         cards.Remove(topCard);
         graveyard.Add(topCard);
         lastCard = topCard;
     }
-    public void NextCard()
+    private void NextCard()
     {
         var isEmpty = SetTopCard();
         if (isEmpty)
@@ -164,7 +164,6 @@ public class Deck : MonoBehaviour
 
     public List<Card> GetCards()
     {
-
         return cards;
     }
     public bool CardInDeck(Card card)
