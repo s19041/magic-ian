@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4913019685362104527}
   - component: {fileID: 5157120479518985691}
   - component: {fileID: 3178744616297446573}
+  - component: {fileID: 1373135238757203283}
   m_Layer: 5
   m_Name: DeckDisplay
   m_TagString: Untagged
@@ -120,6 +121,36 @@ MonoBehaviour:
   jackCardPrefab: {fileID: 6264519110879240692, guid: d6ba1cf4096be6a4398d96abbd0bd731, type: 3}
   deck: {fileID: 6539607446473684886}
   deckBuilder: {fileID: 6539607446473684887}
+--- !u!114 &1373135238757203283
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5275587254418921612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1aa08ab6e0800fa44ae55d278d1423e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Content: {fileID: 7867937196103585131}
+  m_Horizontal: 0
+  m_Vertical: 1
+  m_MovementType: 1
+  m_Elasticity: 0.1
+  m_Inertia: 1
+  m_DecelerationRate: 0.135
+  m_ScrollSensitivity: 1
+  m_Viewport: {fileID: 0}
+  m_HorizontalScrollbar: {fileID: 0}
+  m_VerticalScrollbar: {fileID: 0}
+  m_HorizontalScrollbarVisibility: 0
+  m_VerticalScrollbarVisibility: 0
+  m_HorizontalScrollbarSpacing: 0
+  m_VerticalScrollbarSpacing: 0
+  m_OnValueChanged:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &6539607446473684968
 GameObject:
   m_ObjectHideFlags: 0
@@ -173,8 +204,11 @@ MonoBehaviour:
   - {fileID: 11400000, guid: a1e9623aa1908c64ca19262bce957da0, type: 2}
   - {fileID: 11400000, guid: 38d2c289cc411dc429fb540a92d1df65, type: 2}
   - {fileID: 11400000, guid: f2f10a703929caa458871a8b247e42af, type: 2}
+  deckSuits: 
+  cardsBackup: []
   graveyard: []
   topCard: {fileID: 0}
+  lastCard: {fileID: 0}
   item: {fileID: 11400000, guid: 75543d628adc4834ba256b447ad9b4e0, type: 2}
   cardDisplay: {fileID: 0}
 --- !u!114 &6539607446473684887
@@ -244,6 +278,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 4846bdd3490b8bd4c83df8102ef4edad, type: 2}
   - {fileID: 11400000, guid: 5e35071922d09c74eb08baea7aeb756b, type: 2}
   - {fileID: 11400000, guid: 47cd4e750abe5d143a25848059be780e, type: 2}
+  special: []
   avalibleCards: []
   deckDisplay: {fileID: 0}
   jackList: []
@@ -307,7 +342,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -360,6 +395,7 @@ GameObject:
   - component: {fileID: 7867937196103585127}
   - component: {fileID: 7867937196103585126}
   - component: {fileID: 7867937196103585129}
+  - component: {fileID: 4509217172977883715}
   m_Layer: 5
   m_Name: DeckDisplayPanel
   m_TagString: Untagged
@@ -407,7 +443,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.3882353}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -437,8 +473,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Padding:
-    m_Left: 30
-    m_Right: 30
+    m_Left: 270
+    m_Right: 270
     m_Top: 30
     m_Bottom: 30
   m_ChildAlignment: 0
@@ -448,3 +484,17 @@ MonoBehaviour:
   m_Spacing: {x: 15, y: 100}
   m_Constraint: 0
   m_ConstraintCount: 2
+--- !u!114 &4509217172977883715
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7867937196103585130}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HorizontalFit: 2
+  m_VerticalFit: 2
