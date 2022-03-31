@@ -42,8 +42,8 @@ public class AbilitySet1 : AbstractAbilitySet
     {
         int kingPower = 5;//tu zmieniac dla balansu
         int x = 2;//iloœæ zbufowanych kart
-        if (deck.GetCards().Count < x)
-            x = deck.GetCards().Count;
+        if (deck.GetCards().Count < x-1)
+            x = deck.GetCards().Count-1;
         for (int i = 1; i < x+1; i++)
         {
             if (deck.GetCards()[i].damage != 0)
