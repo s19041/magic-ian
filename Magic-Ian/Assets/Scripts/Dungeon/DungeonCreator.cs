@@ -64,12 +64,19 @@ public class DungeonCreator :MonoBehaviour
 
     public void CreateDungeon()
     {
+        bool eliteRoom = false;
         dungeonRooms[0] = ScriptableObject.CreateInstance<EntranceRoom>();
         for (int i = 1; i <= dungeonRooms.Length-2; i++)
         {
             if (i % 2 == 1&&i!=dungeonRooms.Length-1)
             {
                 dungeonRooms[i] = CombatRoomCreator();
+                if(i % 3 == 0 && !eliteRoom)
+                {
+                    dungeonRooms[i] = EliteCombatRoomCreator();
+                    eliteRoom = true;
+                }
+                    
             }
             else
             {
@@ -83,8 +90,10 @@ public class DungeonCreator :MonoBehaviour
     private CombatRoom CombatRoomCreator()//napisaæ tu jak¹œ fajn¹ proceduralke
     {
         CombatRoom combatRoom = ScriptableObject.CreateInstance<CombatRoom>();
+        
         int roomDifficulty;
         roomDifficulty = 1;
+        /*
         //tutaj zrobiæ jeszcze wybór przeciwnika
         if (diff != 0)
         {
@@ -95,6 +104,7 @@ public class DungeonCreator :MonoBehaviour
         {
             roomDifficulty++;
         }
+        */
         OpponentPicker(roomDifficulty, combatRoom);
           
         
@@ -113,23 +123,17 @@ public class DungeonCreator :MonoBehaviour
         //np. tak
         List<GameObject> opponentLayout = new List<GameObject>();
         double d = Random.value;
-        if (d >= 0.9)
-        {
-            opponentLayout.Add(assistantPrefab);
-            opponentLayout.Add(pigeonPrefab);
-            opponentLayout.Add(rabbitPrefab);
-            _combatRoom.encounterName = "The unlucky Trio";
-        }
-        else if (d >= 0.7)
-        {
-            opponentLayout.Add(pigeonPrefab);
-            opponentLayout.Add(rabbitPrefab);
-            _combatRoom.encounterName = "Dynamic Duo";
-        }
-        else if (d >= 0.35)
+        
+        if (d <0.33)
         {
             opponentLayout.Add(rabbitPrefab);
             _combatRoom.encounterName = "Killer rabbit";
+        }
+        else if (d < 0.66)
+        {
+            opponentLayout.Add(rabbitPrefab);
+            opponentLayout.Add(pigeonPrefab);
+            _combatRoom.encounterName = "Dynamic duo";
         }
         else 
         {
@@ -145,6 +149,70 @@ public class DungeonCreator :MonoBehaviour
 
 
         
+        foreach (GameObject opponent in opponentLayout)
+        {
+            _combatRoom.AddOponent(opponent);
+        }
+
+
+    }
+    private CombatRoom EliteCombatRoomCreator()//napisaæ tu jak¹œ fajn¹ proceduralke
+    {
+        CombatRoom combatRoom = ScriptableObject.CreateInstance<CombatRoom>();
+
+        int roomDifficulty;
+        roomDifficulty = 1;
+        /*
+        //tutaj zrobiæ jeszcze wybór przeciwnika
+        if (diff != 0)
+        {
+            roomDifficulty++;
+        }
+        double d  = Random.value;
+        if (d > 0.7)//szansza na trudniejszy pokój
+        {
+            roomDifficulty++;
+        }
+        */
+        EliteOpponentPicker(roomDifficulty, combatRoom);
+
+
+        combatRoom.goldReward = roomDifficulty;
+        return combatRoom;
+    }
+    private void EliteOpponentPicker(int roomDifficulty, CombatRoom _combatRoom)
+    {
+
+
+
+        //myslê ze tutaj trzeba jakieœ ustawienia przeciwników zrobiæ (w sensie rozne walki)
+        //np 3 go³êbie
+        //albo 2 króliki czy cos
+
+        //np. tak
+        List<GameObject> opponentLayout = new List<GameObject>();
+        double d = Random.value;
+        if (d >0.5)
+        {
+            opponentLayout.Add(assistantPrefab);
+            opponentLayout.Add(pigeonPrefab);
+            opponentLayout.Add(rabbitPrefab);
+            _combatRoom.encounterName = "The unlucky Trio";
+        }
+        else 
+        {
+            opponentLayout.Add(assistantPrefab);
+            opponentLayout.Add(assistantPrefab);
+            _combatRoom.encounterName = "There is two of them";
+        }
+    
+
+
+
+        AdjustOpponentsDifficulty(opponentLayout);
+
+
+
         foreach (GameObject opponent in opponentLayout)
         {
             _combatRoom.AddOponent(opponent);
@@ -172,6 +240,25 @@ public class DungeonCreator :MonoBehaviour
     private BossRoom BossRoomCreator()
     {
         BossRoom bossRoom = ScriptableObject.CreateInstance<BossRoom>();
+        double d = Random.value;
+        /*
+        if (d < 0.33)
+        {
+            bossRoom.AddOponent(leruaPrefab);
+            bossRoom.encounterName = "Lerua Merlin";
+        }
+        else if (d < 0.66)
+        {
+            bossRoom.AddOponent(drugiboss);
+            bossRoom.encounterName = "drugiboss";
+        }
+        else
+        {
+
+            bossRoom.AddOponent(trzeciboss);
+            bossRoom.encounterName = "trzeciboss";
+        }
+        */
         bossRoom.AddOponent(leruaPrefab);
         bossRoom.encounterName = "Lerua Merlin";
         return bossRoom;

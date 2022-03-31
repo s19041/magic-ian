@@ -97,10 +97,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unitName: Assistant
-  hp: 50
+  hp: 70
   armor: 0
   damage: 4
   stunStacks: 0
+  barrierStacks: 0
   maxHp: 50
   combatAi: {fileID: 2006027548549413465}
 --- !u!114 &2006027548549413465

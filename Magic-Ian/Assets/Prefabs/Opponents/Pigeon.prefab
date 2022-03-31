@@ -99,8 +99,9 @@ MonoBehaviour:
   unitName: Pigeon
   hp: 10
   armor: 5
-  damage: 3
+  damage: 6
   stunStacks: 0
+  barrierStacks: 0
   maxHp: 10
   combatAi: {fileID: 8040345460379690597}
 --- !u!114 &8040345460379690597

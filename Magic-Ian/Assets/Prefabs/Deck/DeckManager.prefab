@@ -140,7 +140,7 @@ MonoBehaviour:
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
-  m_ScrollSensitivity: 1
+  m_ScrollSensitivity: 20
   m_Viewport: {fileID: 0}
   m_HorizontalScrollbar: {fileID: 0}
   m_VerticalScrollbar: {fileID: 0}
@@ -197,13 +197,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cards:
-  - {fileID: 11400000, guid: 63ad889b063bd9d40a4c81eee01ff395, type: 2}
-  - {fileID: 11400000, guid: 10b502022d2a3474fa6ae53c69647489, type: 2}
-  - {fileID: 11400000, guid: 6f294ef5de0c0c04c827b93c0fa2c915, type: 2}
-  - {fileID: 11400000, guid: 47cd4e750abe5d143a25848059be780e, type: 2}
-  - {fileID: 11400000, guid: a1e9623aa1908c64ca19262bce957da0, type: 2}
+  - {fileID: 11400000, guid: 46e8cfcc85cd0a047928873cba3e974e, type: 2}
+  - {fileID: 11400000, guid: 893cbdc375e2adf4fb995a9aa2bc9c63, type: 2}
+  - {fileID: 11400000, guid: c4aa124417ca45648a5e1b36d9523330, type: 2}
+  - {fileID: 11400000, guid: e0d61c99e6ceb3748838ecf82d911748, type: 2}
+  - {fileID: 11400000, guid: f66df02fcb695fa4b92aeef83b8f2ae4, type: 2}
+  - {fileID: 11400000, guid: f76885a0388a94c4695f49844d09cd47, type: 2}
+  - {fileID: 11400000, guid: 9d65f406662d6d14a8a79c25465c7b2a, type: 2}
+  - {fileID: 11400000, guid: ab4ff3b0b6f685c449303b3572cda4bc, type: 2}
+  - {fileID: 11400000, guid: 0e7139998d7bbab46b1b7c094ad0cbd6, type: 2}
   - {fileID: 11400000, guid: 38d2c289cc411dc429fb540a92d1df65, type: 2}
-  - {fileID: 11400000, guid: f2f10a703929caa458871a8b247e42af, type: 2}
+  - {fileID: 11400000, guid: 76d9099a6813e7c42adfb1e6b168b79c, type: 2}
+  - {fileID: 11400000, guid: 444539d61f51ab14dbead97103241508, type: 2}
   deckSuits: 
   cardsBackup: []
   graveyard: []

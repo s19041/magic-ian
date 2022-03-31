@@ -90,7 +90,7 @@ public class BattleSystem : MonoBehaviour// WIELKA KLASA KTÓRA £¥CZY WSZYSTKO W 
 
         for (int i = 0; i < enemyUnitList.Count; i++)
         {
-            enemyBattleStationList[2 - i].GetComponentInChildren<BattleHUD>().SetHud(enemyUnitList[i]);//kolejnoœæ jest od prawej do lewej
+            enemyBattleStationList[2-i].GetComponentInChildren<BattleHUD>().SetHud(enemyUnitList[i]);//kolejnoœæ jest od prawej do lewej
         }
         for (int i = enemyUnitList.Count; i < 3; i++)//dezaktywacja niepotrzebnych hud
         {
@@ -149,11 +149,7 @@ public class BattleSystem : MonoBehaviour// WIELKA KLASA KTÓRA £¥CZY WSZYSTKO W 
         Debug.Log("Card played");
 
 
-        playerHUD.SetStats(playerUnit.hp, playerUnit.maxHp, playerUnit.armor);
-        for (int i = 0; i < enemyUnitList.Count; i++)
-        {
-            enemyHUDList[i].SetStats(enemyUnitList[i].hp, enemyUnitList[i].maxHp, enemyUnitList[i].armor);
-        }
+        UpdateHuds();
         Debug.Log("Hud updated");
         bool areDead = true;
 
@@ -224,11 +220,7 @@ public class BattleSystem : MonoBehaviour// WIELKA KLASA KTÓRA £¥CZY WSZYSTKO W 
 
 
 
-        playerHUD.SetStats(playerUnit.hp, playerUnit.maxHp, playerUnit.armor);
-        for (int i = 0; i < enemyUnitList.Count; i++)
-        {
-            enemyHUDList[i].SetStats(enemyUnitList[i].hp, enemyUnitList[i].maxHp, enemyUnitList[i].armor);
-        }
+        UpdateHuds();
 
 
         yield return new WaitForSeconds(1f);
@@ -249,7 +241,7 @@ public class BattleSystem : MonoBehaviour// WIELKA KLASA KTÓRA £¥CZY WSZYSTKO W 
         if (state == BattleState.WON)
         {
             dialogueText.text = "You won";
-
+            DungeonManager.Instance.EnableNextSceneButton();
         }
         else if (state == BattleState.LOST)
         {
@@ -271,7 +263,7 @@ public class BattleSystem : MonoBehaviour// WIELKA KLASA KTÓRA £¥CZY WSZYSTKO W 
         }
         else
         {
-            for (int i = enemyUnitList.Count - 1; i >= 0; i--)
+            for (int i = enemyUnitList.Count-1; i>=0 ; i--)
             {
                 if (enemyUnitList[i].hp > 0)
                 {
@@ -288,6 +280,16 @@ public class BattleSystem : MonoBehaviour// WIELKA KLASA KTÓRA £¥CZY WSZYSTKO W 
     {
         return enemyUnitList.Count == 3;
     }
+    private void UpdateHuds()
+    {
+        playerHUD.SetStats(playerUnit.hp, playerUnit.maxHp, playerUnit.armor);
+        for (int i = 0; i < enemyUnitList.Count; i++)
+        {
+            enemyHUDList[2 - i].SetStats(enemyUnitList[i].hp, enemyUnitList[i].maxHp, enemyUnitList[i].armor);
+        }
+    }
+
+
 
 }
 
