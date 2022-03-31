@@ -288,6 +288,14 @@ public class BattleSystem : MonoBehaviour// WIELKA KLASA KTÓRA £¥CZY WSZYSTKO W 
             enemyHUDList[2 - i].SetStats(enemyUnitList[i].hp, enemyUnitList[i].maxHp, enemyUnitList[i].armor);
         }
     }
+    public void ShowCardsInDeck()
+    {
+        DeckDisplay.Instance.ShowDeck();
+    }
+    public void ShowGraveyard()
+    {
+        DeckDisplay.Instance.ShowGraveyard();
+    }
 
 
 
