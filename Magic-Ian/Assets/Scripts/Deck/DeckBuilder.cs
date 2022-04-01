@@ -2,16 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DeckBuilder : MonoBehaviour
+public class DeckBuilder : MonoBehaviour// w tej klasie przechowujemy wszystkie karty w grze(te które s¹ odblokowane znajduj¹ siê w playerData)
 {
     public Deck deck;
-    [SerializeField] List<Card> hearts;
-    [SerializeField] List<Card> spades;
-    [SerializeField] List<Card> clubs;
-    [SerializeField] List<Card> diamonds;
-    [SerializeField] List<Card> special;
-    [SerializeField] List<List<Card>> colors;
-    public List<Card> avalibleCards;
+    public List<Card> hearts;
+    public List<Card> spades;
+    public List<Card> clubs;
+    public List<Card> diamonds;
+    public List<Card> special;
+    public List<List<Card>> colors;
 
     public DeckDisplay deckDisplay;
 
@@ -51,11 +50,6 @@ public class DeckBuilder : MonoBehaviour
         {
             deckDisplay = GameObject.FindObjectOfType<DeckDisplay>();
         }
-        avalibleCards.AddRange(hearts);
-        avalibleCards.AddRange(spades);
-        avalibleCards.AddRange(diamonds);
-        avalibleCards.AddRange(clubs);
-        avalibleCards.AddRange(special);
         //deck.addCard(avalibleCards[0]);
         //deck.addCard(avalibleCards[1]);
         //deck.addCard(avalibleCards[2]);
@@ -79,10 +73,7 @@ public class DeckBuilder : MonoBehaviour
         return false;
 
     }
-    public void addCardToAvalible(Card card)
-    {
-        avalibleCards.Add(card);
-    }
+
     public void addCardsFromJack()
     {
         deck.AddCardsFromJack(jackList);

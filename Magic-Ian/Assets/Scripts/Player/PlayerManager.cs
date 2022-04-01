@@ -1,24 +1,22 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.Xml.Serialization;
 using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    public int gold;
-    public int tutorialRuns;
-    public int succesfulRuns;
-    public int failedRuns;
+    [SerializeField]
+    PlayerData playerData;
 
-    // Update is called once per frame
-    public List<Rank> unlockedRanks;
-    public List<Suit> unlockedSuits;
+
     private static PlayerManager _instance;
-
     public static PlayerManager Instance { get { return _instance; } }
     private void Awake()
     {
-
         if (_instance != null && _instance != this)
         {
             Destroy(this.gameObject);
@@ -29,41 +27,44 @@ public class PlayerManager : MonoBehaviour
             _instance = this;
         }
         DontDestroyOnLoad(gameObject);
-        unlockedRanks = new List<Rank>();
-        unlockedSuits = new List<Suit>();
-        gold = 0;
-        tutorialRuns = 0;
-        succesfulRuns = 0;
-        failedRuns = 0;
-    }
-    public void NewGame()
-    {
-        unlockedRanks.Add(Rank.THREE);
-        unlockedRanks.Add(Rank.FOUR);
-        unlockedRanks.Add(Rank.FIVE);
-        unlockedRanks.Add(Rank.SIX);
-        unlockedRanks.Add(Rank.SEVEN);
 
-        unlockedSuits.Add(Suit.HEARTS);
-        unlockedSuits.Add(Suit.CLUBS);
+        playerData = new PlayerData();
+        LoadDataXML();
     }
     public bool UnlockCard(Card card)
     {
-        if (unlockedRanks.Contains(card.rank))
-            return false;
-        
-        
-        if ( card.suit == Suit.SPECIAL)
-            UnlockSuit(Suit.SPECIAL);
-        unlockedRanks.Add(card.rank);
-        return true;
+        return playerData.UnlockCard(card);
 
     }
     public bool UnlockSuit(Suit suit)
     {
-        if (unlockedSuits.Contains(suit))
-            return false;
-        unlockedSuits.Add(suit);
-        return true;
+        return playerData.UnlockSuit(suit);
     }
+    public List<Card> GetUnlockedCards()
+    {
+        return playerData.unlockedCards;
+    }
+    public void LoadDataXML()
+    {
+        XmlSerializer serializer = new XmlSerializer(typeof(PlayerData));
+        FileStream stream = new FileStream(Application.dataPath + "/../Saves/save.xml", FileMode.Open);
+
+        PlayerData tmp = serializer.Deserialize(stream) as PlayerData;
+        if (tmp != null)
+        {
+            playerData = tmp;
+        }
+
+        stream.Close();
+
+    }
+    public void SaveDataXML()
+    {
+
+        XmlSerializer serializer = new XmlSerializer(typeof(PlayerData));
+        FileStream stream = new FileStream(Application.dataPath + "/../Saves/save.xml", FileMode.Create);
+        serializer.Serialize(stream, playerData);
+        stream.Close();
+    }
+
 }

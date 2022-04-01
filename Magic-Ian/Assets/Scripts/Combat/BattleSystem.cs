@@ -51,25 +51,9 @@ public class BattleSystem : MonoBehaviour// WIELKA KLASA KTÓRA £¥CZY WSZYSTKO W 
         Debug.Log(0);
         currentRoom = DungeonManager.Instance.GetCurrentCombatRoom();
 
-        GameObject playerGO = MainCharacter.Instance.gameObject;
-        playerGO.transform.position = playerBattleStation.position;
-        playerUnit = playerGO.GetComponent<Unit>();
+        LoadPlayer();
 
-
-        enemyPrefabs = currentRoom.GetOpponents();
-        List<GameObject> enemyGOs = new List<GameObject>();
-        for (int i = 0; i < enemyPrefabs.Count; i++)
-        {
-
-            enemyGOs.Add(Instantiate(enemyPrefabs[i], enemyBattleStationList[2 - i]));
-
-        }
-        enemyUnitList = new List<Unit>();
-        foreach (GameObject enemyGO in enemyGOs)
-        {
-            enemyUnitList.Add(enemyGO.GetComponent<Unit>());
-        }
-
+        LoadEnemies();
 
 
         dialogueText.text = currentRoom.encounterName + " encountered";//fajnie by by³a jak¹œ klase machnaæ na czêœæ ui BattleSystem.
@@ -86,17 +70,7 @@ public class BattleSystem : MonoBehaviour// WIELKA KLASA KTÓRA £¥CZY WSZYSTKO W 
                                                                        //oddam siê pracy spo³ecznej i bêdê ot, choæby sadziæ… znaczy… marchew.
 
 
-        playerHUD.SetHud(playerUnit);
-
-        for (int i = 0; i < enemyUnitList.Count; i++)
-        {
-            enemyBattleStationList[2-i].GetComponentInChildren<BattleHUD>().SetHud(enemyUnitList[i]);//kolejnoœæ jest od prawej do lewej
-        }
-        for (int i = enemyUnitList.Count; i < 3; i++)//dezaktywacja niepotrzebnych hud
-        {
-            enemyBattleStationList[2-i].gameObject.SetActive(false);
-        }
-
+        
 
         deck = Deck.Instance;
         deck.cardDisplay = combatCardDisplay;
@@ -205,6 +179,7 @@ public class BattleSystem : MonoBehaviour// WIELKA KLASA KTÓRA £¥CZY WSZYSTKO W 
         dialogueText.text = currentRoom.encounterName + " move";
         bool isDead = false;
         yield return new WaitForSeconds(1f);
+
         for (int i = enemyUnitList.Count - 1; i >= 0; i--)
         {
             if (enemyUnitList[i].hp > 0)
@@ -295,6 +270,38 @@ public class BattleSystem : MonoBehaviour// WIELKA KLASA KTÓRA £¥CZY WSZYSTKO W 
     public void ShowGraveyard()
     {
         DeckDisplay.Instance.ShowGraveyard();
+    }
+    public void LoadPlayer()
+    {
+        GameObject playerGO = MainCharacter.Instance.gameObject;
+        playerGO.transform.position = playerBattleStation.position;
+        playerUnit = playerGO.GetComponent<Unit>();
+        playerHUD.SetHud(playerUnit);
+    }
+    public void LoadEnemies()
+    {
+        enemyPrefabs = currentRoom.GetOpponents();
+        List<GameObject> enemyGOs = new List<GameObject>();
+        for (int i = 0; i < enemyPrefabs.Count; i++)
+        {
+
+            enemyGOs.Add(Instantiate(enemyPrefabs[i], enemyBattleStationList[2 - i]));
+
+        }
+        enemyUnitList = new List<Unit>();
+        foreach (GameObject enemyGO in enemyGOs)
+        {
+            enemyUnitList.Add(enemyGO.GetComponent<Unit>());
+        }
+
+        for (int i = 0; i < enemyUnitList.Count; i++)
+        {
+            enemyBattleStationList[2 - i].GetComponentInChildren<BattleHUD>().SetHud(enemyUnitList[i]);//kolejnoœæ jest od prawej do lewej
+        }
+        for (int i = enemyUnitList.Count; i < 3; i++)//dezaktywacja niepotrzebnych hud
+        {
+            enemyBattleStationList[2 - i].gameObject.SetActive(false);
+        }
     }
 
 

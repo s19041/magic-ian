@@ -17,10 +17,12 @@ public class DungeonManager : MonoBehaviour//tutaj bêdzie ca³y gameloop(albo w g
 
     [SerializeField]
     Canvas nextSceneButtonCanvas;
+    [SerializeField]
+    Canvas leaveDungeonButtonCanvas;
 
     private SceneLoader sceneLoader;
     [SerializeField]
-    List<Room> dungeon;
+    List<Room> dungeonRooms;
     [SerializeField]
     int currentRoomIndex;
 
@@ -48,7 +50,7 @@ public class DungeonManager : MonoBehaviour//tutaj bêdzie ca³y gameloop(albo w g
     {
         DungeonCreator.Instance.SetupCreator(_diff, _length);
         DungeonCreator.Instance.CreateDungeon();
-        dungeon = new List<Room>(DungeonCreator.Instance.GetDungeon());
+        dungeonRooms = new List<Room>(DungeonCreator.Instance.GetDungeon());
     }
 
     public void OnCreateDungeonButton()
@@ -67,29 +69,52 @@ public class DungeonManager : MonoBehaviour//tutaj bêdzie ca³y gameloop(albo w g
     {
         
         currentRoomIndex++;
-        sceneLoader.LoadRoom(dungeon[currentRoomIndex]);
+        sceneLoader.LoadRoom(dungeonRooms[currentRoomIndex]);
         EnableNextSceneButton();
-        if(dungeon[currentRoomIndex].type != Type.ENTRANCE)
+        if(dungeonRooms[currentRoomIndex].type != Type.ENTRANCE)
             nextSceneButtonCanvas.gameObject.SetActive(false);
         
     }
     public CombatRoom GetCurrentCombatRoom()
     {
-        return (CombatRoom)dungeon[currentRoomIndex];
+        return (CombatRoom)dungeonRooms[currentRoomIndex];
     }
     public Room GetCurrentRoom()
     {
-        return dungeon[currentRoomIndex];
+        return dungeonRooms[currentRoomIndex];
     }
     public void StartDungeon()
     {
-        if (dungeon.Count>0)
-            OnLoadNextRoomButton();
+        if (Deck.Instance.GetCards().Count == 12)
+        {
+            if (dungeonRooms.Count > 0)
+                OnLoadNextRoomButton();
+        }
+        else
+        {
+            //tutaj zrobiæ jakiœ popup ¿e niewystarczaj¹ca iloœæ kart
+        }
+        
     }
     public void EnableNextSceneButton()
     {
         nextSceneButtonCanvas.gameObject.SetActive(true);
     }
-  
-    
+    public void OnExitDungeonButton()//przy wygranej
+    {
+        PlayerManager.Instance.SaveDataXML();
+        sceneLoader.HubScene();
+        dungeonRooms.Clear();
+
+    }
+    public void OnLeaveDungeonButton()//przy przegranej
+    {
+        PlayerManager.Instance.SaveDataXML();
+        sceneLoader.StartScene();
+        
+
+    }
+
+
+
 }

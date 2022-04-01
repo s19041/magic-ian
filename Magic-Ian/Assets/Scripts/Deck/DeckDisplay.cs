@@ -77,7 +77,7 @@ public class DeckDisplay : MonoBehaviour//note to self: wiêkszoœæ klas 'display'
         else
         {
             panel.SetActive(true);
-            ShowDeckBuilder(deckBuilder.avalibleCards, true);
+            ShowDeckBuilder(PlayerManager.Instance.GetUnlockedCards(), true);
 
 
         }
