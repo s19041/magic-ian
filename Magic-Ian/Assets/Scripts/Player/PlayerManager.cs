@@ -42,10 +42,11 @@ public class PlayerManager : MonoBehaviour
     }
     public List<Card> GetUnlockedCards()
     {
-        return playerData.unlockedCards;
+        return playerData.GetUnlockedCards();
     }
     public void LoadDataXML()
     {
+
         XmlSerializer serializer = new XmlSerializer(typeof(PlayerData));
         FileStream stream = new FileStream(Application.dataPath + "/../Saves/save.xml", FileMode.Open);
 
@@ -56,15 +57,16 @@ public class PlayerManager : MonoBehaviour
         }
 
         stream.Close();
-
+        playerData.Deserialize();
     }
     public void SaveDataXML()
     {
-
+        playerData.Serialize();
         XmlSerializer serializer = new XmlSerializer(typeof(PlayerData));
         FileStream stream = new FileStream(Application.dataPath + "/../Saves/save.xml", FileMode.Create);
         serializer.Serialize(stream, playerData);
         stream.Close();
+        
     }
 
 }

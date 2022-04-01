@@ -13,7 +13,12 @@ public class PlayerData
     public int failedRuns;
 
     [SerializeField]
-    public List<Card> unlockedCards;
+    private List<Card> unlockedCards;
+
+    [HideInInspector]
+    public List<Suit> unlockedCardsSuit;//wszystkie unlocked cards s¹ przek³adane na te dwie listy dla serializacji
+    [HideInInspector]
+    public List<Rank> unlockedCardsRank;
 
     public PlayerData()
     {
@@ -27,35 +32,18 @@ public class PlayerData
     public void NewGame()
     {
         DeckBuilder db = DeckBuilder.Instance;
-        /*
-        List<Rank>  unlockedRanks = new List<Rank>();
-        unlockedRanks.Add(Rank.THREE);
-        unlockedRanks.Add(Rank.FOUR);
-        unlockedRanks.Add(Rank.FIVE);
-        unlockedRanks.Add(Rank.SIX);
-        unlockedRanks.Add(Rank.SEVEN);
-
-        List<Suit> unlockedSuits = new List<Suit>();
-        unlockedSuits.Add(Suit.HEARTS);
-        unlockedSuits.Add(Suit.CLUBS);
-
-        foreach(Suit suit in unlockedSuits)
+     
+        for (int i = 2; i < 7; i++)
         {
-            foreach(Rank rank in unlockedRanks)
-            {
-                unlockedCards.Add(new Card(suit, rank));
-            }
+            unlockedCards.Add(db.hearts[i]);//king
         }
-        */
-        for (int i = 0; i < 10; i++)
-        {
-            unlockedCards.Add(db.hearts[i]);
-        }
-        for (int i = 0; i < 10; i++)
+        unlockedCards.Add(db.hearts[10]);
+        for (int i = 2; i < 7; i++)
         {
             unlockedCards.Add(db.clubs[i]);
         }
-        
+        unlockedCards.Add(db.clubs[10]);//king
+
     }
     
     public bool UnlockCard(Card card)
@@ -78,6 +66,59 @@ public class PlayerData
         }
         return true;
 
+    }
+    public List<Card> GetUnlockedCards()
+    {
+        return unlockedCards;
+    }
+    //rozwi¹zania znalezione na necie by³ nadmiarowe wiêc serializacja w taki dziwny sposób 
+    public void Serialize()
+    {
+        unlockedCardsRank = new List<Rank>();
+        unlockedCardsSuit = new List<Suit>();
+        foreach(Card card in unlockedCards)
+        {
+            unlockedCardsRank.Add(card.rank);
+            unlockedCardsSuit.Add(card.suit);
+        }
+    }
+    public void Deserialize()
+    {
+        unlockedCards = new List<Card>();
+        DeckBuilder db = DeckBuilder.Instance;
+        for (int i = 0; i < unlockedCardsRank.Count; i++)
+        {
+            switch (unlockedCardsSuit[i])
+            {
+                case Suit.HEARTS:
+
+                    unlockedCards.Add(db.hearts.Find(x => x.rank == unlockedCardsRank[i]));
+                    break;
+
+                case Suit.CLUBS:
+
+                    unlockedCards.Add(db.clubs.Find(x => x.rank == unlockedCardsRank[i]));
+                    break;
+
+                case Suit.SPADES:
+
+                    unlockedCards.Add(db.spades.Find(x => x.rank == unlockedCardsRank[i]));
+                    break;
+
+                case Suit.DIAMONDS:
+
+                    unlockedCards.Add(db.diamonds.Find(x => x.rank == unlockedCardsRank[i]));
+                    break;
+                case Suit.SPECIAL:
+
+                    unlockedCards.Add(db.special.Find(x => x.rank == unlockedCardsRank[i]));
+                    break;
+
+                default:
+                    break;
+
+            }
+        }
     }
 
 }
