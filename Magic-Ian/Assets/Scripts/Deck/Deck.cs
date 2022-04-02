@@ -11,9 +11,8 @@ public class Deck : MonoBehaviour
     [SerializeField]
     Suit[] deckSuits;
     [SerializeField]
-    List<Card> cardsBackup;
-    [SerializeField]
     List<Card> graveyard;
+    List<Card> cardsBackup;
 
     public Card topCard;
 
@@ -68,7 +67,6 @@ public class Deck : MonoBehaviour
         cardsBackup = new List<Card>();
         cardsBackup.AddRange(cards);
         cardDisplay = cd;
-        cardDisplay.setItemButtonText(item);
         Shuffle();
         SetTopCard();
     }

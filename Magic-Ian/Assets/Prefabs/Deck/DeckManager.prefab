@@ -210,7 +210,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 76d9099a6813e7c42adfb1e6b168b79c, type: 2}
   - {fileID: 11400000, guid: 444539d61f51ab14dbead97103241508, type: 2}
   deckSuits: 
-  cardsBackup: []
   graveyard: []
   topCard: {fileID: 0}
   lastCard: {fileID: 0}
@@ -250,6 +249,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ab4ff3b0b6f685c449303b3572cda4bc, type: 2}
   - {fileID: 11400000, guid: 0e7139998d7bbab46b1b7c094ad0cbd6, type: 2}
   - {fileID: 11400000, guid: 38d2c289cc411dc429fb540a92d1df65, type: 2}
+  - {fileID: 11400000, guid: 76d9099a6813e7c42adfb1e6b168b79c, type: 2}
+  - {fileID: 11400000, guid: 3fbe4a57b27d3e248a2e9f4b2c794744, type: 2}
   - {fileID: 11400000, guid: a03cd9de54c102440a0e6e942c84ccb2, type: 2}
   - {fileID: 11400000, guid: 88dba883994f9d4419a5e772c40e9045, type: 2}
   - {fileID: 11400000, guid: 444539d61f51ab14dbead97103241508, type: 2}
@@ -283,11 +284,16 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 4846bdd3490b8bd4c83df8102ef4edad, type: 2}
   - {fileID: 11400000, guid: 5e35071922d09c74eb08baea7aeb756b, type: 2}
   - {fileID: 11400000, guid: 47cd4e750abe5d143a25848059be780e, type: 2}
-  special: []
-  avalibleCards: []
+  special:
+  - {fileID: 11400000, guid: f94b0832ef1b93d4183738b21e8d6729, type: 2}
   deckDisplay: {fileID: 0}
   jackList: []
   jackListCount: 0
+  items:
+  - {fileID: 11400000, guid: 75543d628adc4834ba256b447ad9b4e0, type: 2}
+  - {fileID: 11400000, guid: 62485abd4f979c64e874840efe1791c3, type: 2}
+  - {fileID: 11400000, guid: 964118dd208f42b438360439b309ea86, type: 2}
+  - {fileID: 11400000, guid: 0b3ad24c71b2e9a469f43655c2cccef9, type: 2}
 --- !u!1 &7694737039843250584
 GameObject:
   m_ObjectHideFlags: 0

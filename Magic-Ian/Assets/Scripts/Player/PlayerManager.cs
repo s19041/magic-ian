@@ -6,6 +6,7 @@ using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Xml.Serialization;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerManager : MonoBehaviour
 {
@@ -29,6 +30,8 @@ public class PlayerManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
 
         playerData = new PlayerData();
+        playerData.NewGame();
+        SaveDataXML();
         LoadDataXML();
     }
     public bool UnlockCard(Card card)
@@ -67,6 +70,10 @@ public class PlayerManager : MonoBehaviour
         serializer.Serialize(stream, playerData);
         stream.Close();
         
+    }
+    public int GetRuns()
+    {
+        return playerData.runs;
     }
 
 }

@@ -227,7 +227,7 @@ MonoBehaviour:
   descriptionText: {fileID: 6264519111537690695}
   itemButtonText: {fileID: 0}
   inDeck: 0
-  building: 0
+  inDeckColor: 0
 --- !u!1 &6264519111537690697
 GameObject:
   m_ObjectHideFlags: 0

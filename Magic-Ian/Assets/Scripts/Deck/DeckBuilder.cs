@@ -19,6 +19,8 @@ public class DeckBuilder : MonoBehaviour// w tej klasie przechowujemy wszystkie 
 
     private static DeckBuilder _instance;
 
+    public List<Item> items;
+
     public static DeckBuilder Instance { get { return _instance; } }
     private void Awake()
     {

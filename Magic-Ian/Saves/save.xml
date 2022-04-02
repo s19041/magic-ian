@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <PlayerData xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <gold>0</gold>
-  <tutorialRuns>0</tutorialRuns>
+  <runs>0</runs>
   <succesfulRuns>0</succesfulRuns>
   <failedRuns>0</failedRuns>
   <unlockedCardsSuit>
@@ -32,4 +32,7 @@
     <Rank>SEVEN</Rank>
     <Rank>KING</Rank>
   </unlockedCardsRank>
+  <unlockedItemEnums>
+    <ItemName>CYLINDER</ItemName>
+  </unlockedItemEnums>
 </PlayerData>

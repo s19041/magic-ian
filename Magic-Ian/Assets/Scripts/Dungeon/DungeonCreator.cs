@@ -76,7 +76,6 @@ public class DungeonCreator :MonoBehaviour
                     dungeonRooms[i] = EliteCombatRoomCreator();
                     eliteRoom = true;
                 }
-                    
             }
             else
             {

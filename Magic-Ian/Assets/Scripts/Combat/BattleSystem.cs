@@ -23,6 +23,7 @@ public class BattleSystem : MonoBehaviour// WIELKA KLASA KTÓRA £¥CZY WSZYSTKO W 
     public CardDisplay combatCardDisplay;
 
     public TextMeshProUGUI dialogueText;
+    public Text itemButtonText;
     Unit playerUnit;
     [SerializeField]
     List<Unit> enemyUnitList;
@@ -82,6 +83,7 @@ public class BattleSystem : MonoBehaviour// WIELKA KLASA KTÓRA £¥CZY WSZYSTKO W 
         itemPowers = new ItemPowers();
         deck.Shuffle();
         deck.SetDeckForCombat(combatCardDisplay);
+        SetItemButtonText(deck.item);
 
         yield return new WaitForSeconds(2f);
         state = BattleState.PLAYERTURN;
@@ -302,6 +304,10 @@ public class BattleSystem : MonoBehaviour// WIELKA KLASA KTÓRA £¥CZY WSZYSTKO W 
         {
             enemyBattleStationList[2 - i].gameObject.SetActive(false);
         }
+    }
+    public void SetItemButtonText(Item item)
+    {
+        itemButtonText.text = item.buttonText;
     }
 
 

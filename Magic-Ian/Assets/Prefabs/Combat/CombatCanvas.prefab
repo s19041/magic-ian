@@ -2928,7 +2928,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Rzu\u0107 kart\u0119"
+  m_Text: Throw
 --- !u!1 &6083209590396891604
 GameObject:
   m_ObjectHideFlags: 0
@@ -3951,9 +3951,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3527795179378667962}
     - target: {fileID: 7079882847660468039, guid: 181965e0875049448853517229226d19, type: 3}
+      propertyPath: itemButtonText
+      value: 
+      objectReference: {fileID: 6752500483705994066}
+    - target: {fileID: 7079882847660468039, guid: 181965e0875049448853517229226d19, type: 3}
       propertyPath: combatCardDisplay
       value: 
       objectReference: {fileID: 3782844217667740659}
+    - target: {fileID: 7079882847660468039, guid: 181965e0875049448853517229226d19, type: 3}
+      propertyPath: playerBattleStation
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 7079882847660468039, guid: 181965e0875049448853517229226d19, type: 3}
       propertyPath: enemyHUDs.Array.size
       value: 3

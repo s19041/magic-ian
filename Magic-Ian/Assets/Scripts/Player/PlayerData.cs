@@ -8,24 +8,29 @@ public class PlayerData
 {
     // Start is called before the first frame update
     public int gold;
-    public int tutorialRuns;
+    public int runs;
     public int succesfulRuns;
     public int failedRuns;
 
     [SerializeField]
     private List<Card> unlockedCards;
+    [SerializeField]
+    private List<Item> unlockedItems;
 
     [HideInInspector]
     public List<Suit> unlockedCardsSuit;//wszystkie unlocked cards s¹ przek³adane na te dwie listy dla serializacji
     [HideInInspector]
     public List<Rank> unlockedCardsRank;
+    [HideInInspector]
+    public List<ItemName> unlockedItemEnums;//do serializacji
 
     public PlayerData()
     {
         unlockedCards = new List<Card>();
+        unlockedItems= new List<Item>();
 
         gold = 0;
-        tutorialRuns = 0;
+        runs = 0;
         succesfulRuns = 0;
         failedRuns = 0;
     }
@@ -43,6 +48,7 @@ public class PlayerData
             unlockedCards.Add(db.clubs[i]);
         }
         unlockedCards.Add(db.clubs[10]);//king
+        unlockedItems.Add(db.items[0]);
 
     }
     
@@ -81,9 +87,15 @@ public class PlayerData
             unlockedCardsRank.Add(card.rank);
             unlockedCardsSuit.Add(card.suit);
         }
+        unlockedItemEnums = new List<ItemName>();
+        foreach(Item item in unlockedItems)
+        {
+            unlockedItemEnums.Add(item.itemName);
+        }
     }
     public void Deserialize()
     {
+
         unlockedCards = new List<Card>();
         DeckBuilder db = DeckBuilder.Instance;
         for (int i = 0; i < unlockedCardsRank.Count; i++)
@@ -118,6 +130,11 @@ public class PlayerData
                     break;
 
             }
+        }
+        unlockedItems = new List<Item>();
+        foreach(ItemName itemName in unlockedItemEnums)
+        {
+            unlockedItems.Add(db.items.Find(x => x.itemName == itemName));
         }
     }
 

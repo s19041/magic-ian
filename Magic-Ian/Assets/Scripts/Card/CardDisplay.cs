@@ -11,8 +11,6 @@ public class CardDisplay : MonoBehaviour
 
     [SerializeField] Text descriptionText;
 
-    public Text itemButtonText;// nie jestem przekonany ze to tutaj powinno byc ale nie mam pomys³u
-    // Start is called before the first frame update
     public bool inDeck;
     public bool inDeckColor;//zmienna robi¹ca to ¿e tylko podczas pokazywania deckBuilder karty w decku s¹ zielone
     DeckBuilder db;
@@ -34,10 +32,7 @@ public class CardDisplay : MonoBehaviour
 
         descriptionText.text = card.description;
     }
-    public void setItemButtonText(Item item)
-    {
-        itemButtonText.text = item.buttonText;
-    }
+
     public void addToDeckOnClick()
     {
         if (inDeck == false)
@@ -89,6 +84,12 @@ public class CardDisplay : MonoBehaviour
             db.deck.SetTopCard();
         }
 
+
+    }
+    public void UnlockCardOnClick()
+    {
+        PlayerManager.Instance.UnlockCard(card);
+        GetComponent<Button>().interactable = false;
 
     }
 

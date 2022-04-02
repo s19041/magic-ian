@@ -485,11 +485,7 @@ RectTransform:
   - {fileID: 790555662}
   - {fileID: 287935009}
   m_Father: {fileID: 0}
-<<<<<<< HEAD
   m_RootOrder: 6
-=======
-  m_RootOrder: 5
->>>>>>> storebranch
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -641,7 +637,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4a6f46aa24ecd542989a8f343018228, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-<<<<<<< HEAD
 --- !u!1 &1651449918
 GameObject:
   m_ObjectHideFlags: 0
@@ -732,8 +727,7 @@ MonoBehaviour:
   deckDisplay: {fileID: 0}
   jackList: []
   jackListCount: 0
-=======
->>>>>>> storebranch
+
 --- !u!1 &1805619626
 GameObject:
   m_ObjectHideFlags: 0
@@ -915,11 +909,7 @@ Transform:
   m_LocalScale: {x: 1.4, y: 1.4, z: 1.4}
   m_Children: []
   m_Father: {fileID: 0}
-<<<<<<< HEAD
   m_RootOrder: 4
-=======
-  m_RootOrder: 3
->>>>>>> storebranch
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1980796760
 PrefabInstance:
@@ -1066,11 +1056,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 758344585978243000, guid: db81fcd06bb0aa7438655b3fe3d33071, type: 3}
       propertyPath: m_RootOrder
-<<<<<<< HEAD
       value: 5
-=======
-      value: 4
->>>>>>> storebranch
       objectReference: {fileID: 0}
     - target: {fileID: 758344585978243000, guid: db81fcd06bb0aa7438655b3fe3d33071, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1135,11 +1121,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8403566282142732790, guid: acbdb579e1967e4449f8cb84c6cb8e77, type: 3}
       propertyPath: m_RootOrder
-<<<<<<< HEAD
       value: 3
-=======
-      value: 2
->>>>>>> storebranch
       objectReference: {fileID: 0}
     - target: {fileID: 8403566282142732790, guid: acbdb579e1967e4449f8cb84c6cb8e77, type: 3}
       propertyPath: m_LocalPosition.x
