@@ -23,11 +23,7 @@ public class Deck : MonoBehaviour
 
     public CardDisplay cardDisplay;
 
-    static Deck instance;
-    //myœli na temat tej klasy:
-    //mo¿e by rozdzielic to na graveyard i deck ale trochê useless
-    //fajnie by zrobiæ jakieœ przekl¹danie graveyard ¿eby sprawdziæ jakie karty siê zagra³o
-    //nawet bardzo fajnie /\
+
     private static Deck _instance;
 
     public static Deck Instance { get { return _instance; } }
@@ -70,7 +66,7 @@ public class Deck : MonoBehaviour
         Shuffle();
         SetTopCard();
     }
-    public void AddCard(Card card)
+    public void AddCard(Card card)//to istnieje dla walidacji czy powinny zmienic sie kolory decku
     {
         if (card.suit != Suit.SPECIAL)
         {
@@ -89,7 +85,7 @@ public class Deck : MonoBehaviour
         }        
         cards.Add(card);
     }
-    public bool RemoveCard(Card card)
+    public bool RemoveCard(Card card)//to istnieje dla walidacji czy powinny zmienic sie kolory decku
     {
         Card c = cards.Find(x => x.suit == card.suit && x.rank == card.rank);
         bool tmp = cards.Remove(c);
@@ -114,7 +110,7 @@ public class Deck : MonoBehaviour
         {
             topCard = cards[0];
             cardDisplay.card = topCard;
-            cardDisplay.updateDisplay();// nie jestem pewien czy display powinien tutaj byæ ale chyba lepiej tutaj niz w battle system(nawet napewno lepiej)
+            cardDisplay.updateDisplay();// nie jestem pewien czy display powinien tutaj byæ ale chyba lepiej tutaj niz w battle system(nawet na pewno lepiej)
             return false;
         }
         return true;
@@ -127,7 +123,7 @@ public class Deck : MonoBehaviour
         SetTopCard();
     }
 
-    public void ReShuffle()
+    public void FromGraveyardToDeck()
     {
         cards = graveyard;
         graveyard = new List<Card>();//z tego bêdzie animacja powrotu z graveyard do decku
@@ -138,25 +134,18 @@ public class Deck : MonoBehaviour
         return topCard;
 
     }
-    private void ThrowCard()
+    public void CardPlayed()
     {
         cards.Remove(topCard);
         graveyard.Add(topCard);
         lastCard = topCard;
-    }
-    private void NextCard()
-    {
+
         var isEmpty = SetTopCard();
         if (isEmpty)
         {
-            ReShuffle();
+            FromGraveyardToDeck();
             SetTopCard();
         }
-    }
-    public void CardPlayed()
-    {
-        ThrowCard();
-        NextCard();
 
     }
 
@@ -191,30 +180,7 @@ public class Deck : MonoBehaviour
         if(index==0)
             SetTopCard();
     }
-    public void SetCardAoe(int index)
-    {
-        if(cards.Count>index)
-            cards[index].aoe = true;
-    }
-    public void AddStatOfSuit(Suit suit, int power, int cardIndex)
-    {
-        if (suit == Suit.HEARTS)
-        {
-            cards[cardIndex].heal += (int)(power / 2);
-        }
-        if (suit == Suit.CLUBS)
-        {
-            cards[cardIndex].armor += power;
-        }
-        if (suit == Suit.SPADES)
-        {
-            cards[cardIndex].damage += (int)(power / 2);
-        }
-        if (suit == Suit.DIAMONDS)
-        {
-            cards[cardIndex].stunStacks = power;
-        }
-    }
+
     public bool HasSuit(Suit suit)
     {
         if (deckSuits[0] == Suit.EMPTY || deckSuits[0] == suit)

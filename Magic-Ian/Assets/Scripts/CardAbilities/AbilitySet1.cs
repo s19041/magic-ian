@@ -4,15 +4,18 @@ using UnityEngine;
 
 public class AbilitySet1 : AbstractAbilitySet
 {
-    
-
+    List<Card> cards;
+    public AbilitySet1()
+    {
+        List<Card> cards = deck.GetCards();
+    }
     public override bool JackAbility(Card card)//
     {
         Time.timeScale = 0;//NAD TYM SIÊ ZASTANOWIÆ BO TO CHYBA ŒREDNIE
         int count = 3;
 
-        if (count > deck.GetCards().Count - 1)//-1 poniewa¿ .Count zwróci razem z górn¹ kart¹ a jej nie jestesmy w stanie przestasowaæ
-            count = deck.GetCards().Count - 1;//dziwna logika ale dzia³a
+        if (count > cards.Count - 1)//-1 poniewa¿ .Count zwróci razem z górn¹ kart¹ a jej nie jestesmy w stanie przestasowaæ
+            count = cards.Count - 1;//dziwna logika ale dzia³a
         deckbuilder.jackListCount = count;
 
 
@@ -25,11 +28,12 @@ public class AbilitySet1 : AbstractAbilitySet
 
     public override bool JokerAbility(Card card)// nastêpna ZADAJ¥CA OBRA¯ENIA karta bêdzie aoe a¿ do jej zagrania.
     {
-        for(int i=1;i<deck.GetCards().Count;i++)//i=1 poniewa¿ chcemy ¿eby nastêpna karta by³a aoe a nie aktualna
+        for(int i=1;i< cards.Count;i++)//i=1 poniewa¿ chcemy ¿eby nastêpna karta by³a aoe a nie aktualna
         {
-            if (deck.GetCards()[i].damage != 0)
+            if (cards[i].damage != 0)
             {
-                deck.SetCardAoe(i);
+                if (cards.Count >i)
+                    cards[i].aoe = true;
                 break;
             }
             
@@ -42,17 +46,17 @@ public class AbilitySet1 : AbstractAbilitySet
     {
         int kingPower = 5;//tu zmieniac dla balansu
         int x = 2;//iloœæ zbufowanych kart
-        if (deck.GetCards().Count < x-1)
-            x = deck.GetCards().Count-1;
+        if (cards.Count < x-1)
+            x = cards.Count-1;
         for (int i = 1; i < x+1; i++)
         {
-            if (deck.GetCards()[i].damage != 0)
+            if (cards[i].damage != 0)
             {
-                deck.AddStatOfSuit(card.suit, kingPower, i);
+                AddStatOfSuit(card.suit, kingPower, i);
             }
             else
             {
-                if (x <= deck.GetCards().Count)
+                if (x <= cards.Count)
                     x++;
             }
                 
@@ -69,5 +73,24 @@ public class AbilitySet1 : AbstractAbilitySet
         }
         return false;
         
+    }
+    public void AddStatOfSuit(Suit suit, int power, int cardIndex)
+    {
+        if (suit == Suit.HEARTS)
+        {
+            cards[cardIndex].heal += (int)(power / 2);
+        }
+        if (suit == Suit.CLUBS)
+        {
+            cards[cardIndex].armor += power;
+        }
+        if (suit == Suit.SPADES)
+        {
+            cards[cardIndex].damage += (int)(power / 2);
+        }
+        if (suit == Suit.DIAMONDS)
+        {
+            cards[cardIndex].stunStacks = power;
+        }
     }
 }

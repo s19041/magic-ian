@@ -253,10 +253,6 @@ public class BattleSystem : MonoBehaviour// WIELKA KLASA KTÓRA £¥CZY WSZYSTKO W 
         }
 
     }
-    public bool GetUnitsLength()
-    {
-        return enemyUnitList.Count == 3;
-    }
     private void UpdateHuds()
     {
         playerHUD.SetStats(playerUnit.hp, playerUnit.maxHp, playerUnit.armor);
