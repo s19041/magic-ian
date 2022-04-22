@@ -5,9 +5,11 @@ using UnityEngine;
 public class ItemPowers 
 {
     private int shuffleCount;
+    Card sleeve;
     public ItemPowers()
     {
         shuffleCount = 0;
+        sleeve = null;
     }
    public bool ActivateItemPower(Item item)
     {
@@ -26,7 +28,7 @@ public class ItemPowers
 
 
             case ItemName.SLEEVE:
-
+                return UseSleeve();
 
 
             default:
@@ -45,5 +47,23 @@ public class ItemPowers
         }
         return false;
             
+    }
+    public bool UseSleeve()
+    {
+        if (sleeve == null)
+        {
+            sleeve = Deck.Instance.topCard;
+            Deck.Instance.ThrowOutTopCard();
+
+            return false;
+        }
+        else
+        {
+            Deck.Instance.GetCards().Insert(0,sleeve);
+            Deck.Instance.SetTopCard();
+            sleeve = null;
+            return false;
+        }
+
     }
 }

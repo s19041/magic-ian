@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   descriptionText: {fileID: 0}
   itemName: 1
-  buttonText: 
+  buttonText: Hide/Use
   artworkImage: {fileID: 0}

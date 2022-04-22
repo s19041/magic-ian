@@ -72,7 +72,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: aea4ab6722d71174e82adcbd079584c7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4a22c87517dbe714f9bb7348960a5ee7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -100,5 +100,6 @@ MonoBehaviour:
   armor: 0
   damage: 0
   stunStacks: 0
+  barrierStacks: 0
   maxHp: 50
   combatAi: {fileID: 0}

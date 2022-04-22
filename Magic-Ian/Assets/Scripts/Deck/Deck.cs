@@ -66,6 +66,7 @@ public class Deck : MonoBehaviour
         Shuffle();
         SetTopCard();
     }
+
     public void AddCard(Card card)//to istnieje dla walidacji czy powinny zmienic sie kolory decku
     {
         if (card.suit != Suit.SPECIAL)
@@ -149,6 +150,18 @@ public class Deck : MonoBehaviour
 
     }
 
+    public void ThrowOutTopCard()
+    {
+        cards.Remove(topCard);
+        
+        var isEmpty = SetTopCard();
+        if (isEmpty)
+        {
+            FromGraveyardToDeck();
+            SetTopCard();
+        }
+
+    }
     public List<Card> GetCards()
     {
         return cards;
