@@ -188,7 +188,7 @@ public class BattleSystem : MonoBehaviour// WIELKA KLASA KTÓRA £¥CZY WSZYSTKO W 
             {
                 dialogueText.text = enemyUnitList[i].unitName + " move";
                 yield return new WaitForSeconds(0.5f);
-                isDead = playerUnit.TakeDamage(enemyUnitList[i].combatAi.doSomething(playerUnit, turn, i, enemyUnitList[i].hp, dialogueText));
+                isDead = playerUnit.TakeDamage(enemyUnitList[i].combatAi.doSomething(playerUnit, enemyUnitList, turn, i, enemyUnitList[i].hp, dialogueText));
                 yield return new WaitForSeconds(1f);
             }
 

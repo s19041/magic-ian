@@ -6,7 +6,7 @@ using UnityEngine;
 public class LeruaMerlinAi : CombatAi
 {
 
-    public override int doSomething(Unit playerUnit, int turn, int indexPosition, int unitHp, TextMeshProUGUI dialogueText)
+    public override int doSomething(Unit playerUnit, List<Unit> opponentUnits, int turn, int indexPosition, int unitHp, TextMeshProUGUI dialogueText)
     {
         //turn += indexPosition;//pierwszy oponent ma pierwsz¹ turê, drugi ma drug¹ turê itd...
         if (turn % 5 == 1)
