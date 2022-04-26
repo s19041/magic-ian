@@ -177,6 +177,7 @@ public class BattleSystem : MonoBehaviour// WIELKA KLASA KTÓRA £¥CZY WSZYSTKO W 
 
     IEnumerator EnemyTurn()
     {
+        itemPowers.shuffleCount = 0;
         Debug.Log("Enemy turn");
         dialogueText.text = currentRoom.encounterName + " move";
         bool isDead = false;
@@ -218,6 +219,8 @@ public class BattleSystem : MonoBehaviour// WIELKA KLASA KTÓRA £¥CZY WSZYSTKO W 
         if (state == BattleState.WON)
         {
             dialogueText.text = "You won";
+            MainCharacter.Instance.ResetStats();
+            PlayerManager.Instance.AddGold(currentRoom.goldReward);
             DungeonManager.Instance.EnableNextSceneButton();
         }
         else if (state == BattleState.LOST)

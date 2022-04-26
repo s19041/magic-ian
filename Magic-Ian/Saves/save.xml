@@ -17,6 +17,10 @@
     <Suit>CLUBS</Suit>
     <Suit>CLUBS</Suit>
     <Suit>CLUBS</Suit>
+    <Suit>SPADES</Suit>
+    <Suit>SPADES</Suit>
+    <Suit>SPADES</Suit>
+    <Suit>SPADES</Suit>
   </unlockedCardsSuit>
   <unlockedCardsRank>
     <Rank>THREE</Rank>
@@ -31,6 +35,10 @@
     <Rank>SIX</Rank>
     <Rank>SEVEN</Rank>
     <Rank>KING</Rank>
+    <Rank>JACK</Rank>
+    <Rank>KING</Rank>
+    <Rank>QUEEN</Rank>
+    <Rank>QUEEN</Rank>
   </unlockedCardsRank>
   <unlockedItemEnums>
     <ItemName>CYLINDER</ItemName>

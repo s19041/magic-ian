@@ -16,10 +16,12 @@ public class DungeonCreator :MonoBehaviour
     [SerializeField] GameObject rabbitPrefab;
     [SerializeField] GameObject princePrefab;
     //elite
+    [SerializeField] GameObject activistPrefab;
     [SerializeField] GameObject knowerPrefab;
     [SerializeField] GameObject assistantPrefab;
     //bosses
     [SerializeField] GameObject leruaPrefab;
+    [SerializeField] GameObject groubiniPrefab;
     //[SerializeField] GameObject evilMagicianPrefab;
     private double secretRoomChance;
     private double treasureRoomChance;
@@ -36,7 +38,7 @@ public class DungeonCreator :MonoBehaviour
     {
         diff = _diff;
         length = _length;
-        dungeonRooms = new Room[6 + length*2];
+        dungeonRooms = new Room[7 + length*2];
         SetDungeonBalance();
     }
     public Room[] GetDungeon()
@@ -107,7 +109,7 @@ public class DungeonCreator :MonoBehaviour
         OpponentPicker(roomDifficulty, combatRoom);
           
         
-        combatRoom.goldReward = roomDifficulty;
+        combatRoom.goldReward = 75;
         return combatRoom;
     }
     private void OpponentPicker(int roomDifficulty, CombatRoom _combatRoom)
@@ -123,16 +125,21 @@ public class DungeonCreator :MonoBehaviour
         List<GameObject> opponentLayout = new List<GameObject>();
         double d = Random.value;
         
-        if (d <0.33)
+        if (d <0.25)
         {
             opponentLayout.Add(rabbitPrefab);
-            _combatRoom.encounterName = "Killer rabbit";
+            _combatRoom.encounterName = "The Killer Rabbit";
         }
-        else if (d < 0.66)
+        else if (d < 0.50)
         {
             opponentLayout.Add(rabbitPrefab);
             opponentLayout.Add(pigeonPrefab);
-            _combatRoom.encounterName = "Dynamic duo";
+            _combatRoom.encounterName = "The Dynamic duo";
+        }
+        else if (d < 0.75)
+        {
+            opponentLayout.Add(princePrefab);
+            _combatRoom.encounterName = "The Frog Prince";
         }
         else 
         {
@@ -176,7 +183,7 @@ public class DungeonCreator :MonoBehaviour
         EliteOpponentPicker(roomDifficulty, combatRoom);
 
 
-        combatRoom.goldReward = roomDifficulty;
+        combatRoom.goldReward = 125;
         return combatRoom;
     }
     private void EliteOpponentPicker(int roomDifficulty, CombatRoom _combatRoom)
@@ -191,18 +198,32 @@ public class DungeonCreator :MonoBehaviour
         //np. tak
         List<GameObject> opponentLayout = new List<GameObject>();
         double d = Random.value;
-        if (d >0.5)
+        if (d >0.99)
         {
             opponentLayout.Add(assistantPrefab);
             opponentLayout.Add(pigeonPrefab);
             opponentLayout.Add(rabbitPrefab);
             _combatRoom.encounterName = "The unlucky Trio";
         }
-        else 
+        else if (d > 0.6)
         {
             opponentLayout.Add(assistantPrefab);
-            opponentLayout.Add(assistantPrefab);
-            _combatRoom.encounterName = "There is two of them";
+
+            _combatRoom.encounterName = "The unpaid one";
+        }
+        else if(d > 0.3)
+        {
+            opponentLayout.Add(rabbitPrefab);
+            opponentLayout.Add(pigeonPrefab);
+            opponentLayout.Add(activistPrefab);
+
+            _combatRoom.encounterName = "The hypocrite";
+        }
+        else
+        {
+            opponentLayout.Add(knowerPrefab);
+
+            _combatRoom.encounterName = "The know it all";
         }
     
 
@@ -240,26 +261,17 @@ public class DungeonCreator :MonoBehaviour
     {
         BossRoom bossRoom = ScriptableObject.CreateInstance<BossRoom>();
         double d = Random.value;
-        /*
-        if (d < 0.33)
+        if (d > 1)
         {
             bossRoom.AddOponent(leruaPrefab);
             bossRoom.encounterName = "Lerua Merlin";
         }
-        else if (d < 0.66)
-        {
-            bossRoom.AddOponent(drugiboss);
-            bossRoom.encounterName = "drugiboss";
-        }
         else
         {
-
-            bossRoom.AddOponent(trzeciboss);
-            bossRoom.encounterName = "trzeciboss";
+            bossRoom.AddOponent(groubiniPrefab);
+            bossRoom.encounterName = "Larry Groubini";
         }
-        */
-        bossRoom.AddOponent(leruaPrefab);
-        bossRoom.encounterName = "Lerua Merlin";
+        
         return bossRoom;
     }
    

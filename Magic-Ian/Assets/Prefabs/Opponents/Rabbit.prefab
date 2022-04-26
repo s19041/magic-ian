@@ -99,7 +99,7 @@ MonoBehaviour:
   unitName: Rabbit
   hp: 25
   armor: 0
-  damage: 8
+  damage: 2
   stunStacks: 0
   barrierStacks: 0
   maxHp: 25

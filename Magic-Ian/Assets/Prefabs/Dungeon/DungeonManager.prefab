@@ -353,7 +353,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c381003f84cb0f4182e007ec381b738, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerPrefab: {fileID: 0}
+  playerPrefab: {fileID: 4897434664256905212, guid: d023213d23e25354d8fcdfd4b3e1d660, type: 3}
   playerBattleStation: {fileID: 0}
   diff: 0
   additionalCombatRooms: 0

@@ -96,7 +96,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4722e03ddba4caf49bcbd1267000d340, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unitName: Rabbit
+  unitName: Knower
   hp: 35
   armor: 0
   damage: 4

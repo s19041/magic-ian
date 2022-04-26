@@ -67,8 +67,15 @@ public class DungeonManager : MonoBehaviour//tutaj bêdzie ca³y gameloop(albo w g
     }
     public void OnLoadNextRoomButton()
     {
-        
         currentRoomIndex++;
+        if (currentRoomIndex>=dungeonRooms.Count)
+        {
+            sceneLoader.HubScene();
+            nextSceneButtonCanvas.gameObject.SetActive(false);
+            PlayerManager.Instance.SaveDataXML();
+            return;
+        }
+        
         sceneLoader.LoadRoom(dungeonRooms[currentRoomIndex]);
         EnableNextSceneButton();
         if(dungeonRooms[currentRoomIndex].type != Type.ENTRANCE)
@@ -93,6 +100,7 @@ public class DungeonManager : MonoBehaviour//tutaj bêdzie ca³y gameloop(albo w g
         else
         {
             //tutaj zrobiæ jakiœ popup ¿e niewystarczaj¹ca iloœæ kart
+            Debug.Log("Niewystarczaj¹ca iloœæ kart w decku do wystartowania dungeona");
         }
         
     }

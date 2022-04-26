@@ -30,8 +30,9 @@ public class PlayerManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
 
         playerData = new PlayerData();
-        playerData.NewGame();
-        SaveDataXML();
+        //playerData.NewGame();
+        
+        //SaveDataXML();
         LoadDataXML();
     }
     public bool UnlockCard(Card card)
@@ -74,6 +75,19 @@ public class PlayerManager : MonoBehaviour
     public int GetRuns()
     {
         return playerData.runs;
+    }
+
+    public int GetGold()
+    {
+        return playerData.gold;
+    }
+    public void AddGold(int amount)
+    {
+        playerData.gold += amount;
+    }
+    public void RemoveGold(int amount)
+    {
+        playerData.gold -= amount;
     }
 
 }

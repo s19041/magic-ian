@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ItemPowers 
 {
-    private int shuffleCount;
+    public int shuffleCount;
     Card sleeve;
     public ItemPowers()
     {

@@ -27,7 +27,6 @@ public class MainCharacter : Unit
     public void ResetStats()
     {
         armor = 0;
-        stunStacks = 0;
     }
 
 

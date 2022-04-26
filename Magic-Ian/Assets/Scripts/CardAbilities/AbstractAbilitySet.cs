@@ -6,10 +6,12 @@ public abstract class AbstractAbilitySet
 {
     protected Deck deck;
     protected DeckBuilder deckbuilder;
+    protected List<Card> cards;
     public AbstractAbilitySet()
     {
         deck = Deck.Instance;
         deckbuilder = DeckBuilder.Instance;
+        cards = deck.GetCards();
     }
     public bool PlayAbility(Card card)
     {

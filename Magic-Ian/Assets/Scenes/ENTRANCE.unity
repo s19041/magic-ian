@@ -123,7 +123,7 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1001 &872711
+--- !u!1001 &92537624
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -140,11 +140,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5301430430046262003, guid: d023213d23e25354d8fcdfd4b3e1d660, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.09
+      value: 0.03
       objectReference: {fileID: 0}
     - target: {fileID: 5301430430046262003, guid: d023213d23e25354d8fcdfd4b3e1d660, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.06
+      value: -0.24
       objectReference: {fileID: 0}
     - target: {fileID: 5301430430046262003, guid: d023213d23e25354d8fcdfd4b3e1d660, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3657,6 +3657,10 @@ PrefabInstance:
     - target: {fileID: 6539607446473684969, guid: 9848f5b93efadd34c8d103f75c9c5a60, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7867937196103585131, guid: 9848f5b93efadd34c8d103f75c9c5a60, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.00012207031
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9848f5b93efadd34c8d103f75c9c5a60, type: 3}

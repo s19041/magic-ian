@@ -138,4 +138,9 @@ public class PlayerData
         }
     }
 
+    public int GetGold()
+    {
+        return gold;
+    }
+
 }

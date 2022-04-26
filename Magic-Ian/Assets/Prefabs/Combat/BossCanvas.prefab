@@ -4755,6 +4755,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3527795179378667962}
     - target: {fileID: 7079882847660468039, guid: 181965e0875049448853517229226d19, type: 3}
+      propertyPath: itemButtonText
+      value: 
+      objectReference: {fileID: 6752500483705994066}
+    - target: {fileID: 7079882847660468039, guid: 181965e0875049448853517229226d19, type: 3}
       propertyPath: combatCardDisplay
       value: 
       objectReference: {fileID: 3782844217667740659}

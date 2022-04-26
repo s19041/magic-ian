@@ -4,11 +4,7 @@ using UnityEngine;
 
 public class AbilitySet1 : AbstractAbilitySet
 {
-    List<Card> cards;
-    public AbilitySet1()
-    {
-        List<Card> cards = deck.GetCards();
-    }
+
     public override bool JackAbility(Card card)//
     {
         Time.timeScale = 0;//NAD TYM SIÊ ZASTANOWIÆ BO TO CHYBA ŒREDNIE
@@ -44,6 +40,7 @@ public class AbilitySet1 : AbstractAbilitySet
 
     public override bool KingAbility(Card card)// Daje do x kart buff swojego koloru (np krol serce daje ka¿dej karcie dodatkowo efekt serca00) // na razie 2 nastêpne karty
     {
+        
         int kingPower = 5;//tu zmieniac dla balansu
         int x = 2;//iloœæ zbufowanych kart
         if (cards.Count < x-1)
