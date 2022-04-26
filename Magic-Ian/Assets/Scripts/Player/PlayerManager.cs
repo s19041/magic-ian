@@ -76,4 +76,9 @@ public class PlayerManager : MonoBehaviour
         return playerData.runs;
     }
 
+    public int GetGold()
+    {
+        return playerData.gold;
+    }
+
 }

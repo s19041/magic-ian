@@ -8,8 +8,11 @@ public class GoldDisplay : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
-        this.GetComponent<Text>().text = gold.ToString();
+        if (FindObjectOfType<PlayerManager>() != null)
+        {
+            gold = FindObjectOfType<PlayerManager>().GetGold();
+        }
+        RefreshDisplay();
     }
 
    public void RefreshDisplay()
