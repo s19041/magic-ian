@@ -46,4 +46,23 @@ public class HubManager : MonoBehaviour
         displayCanvas.gameObject.SetActive(true);
         mainCanvas.gameObject.SetActive(false);
     }
+    public int itemNumber = 1;
+    public void OnWearItemButton(Item item)
+    {
+        if (Deck.Instance.item1.itemName == item.itemName || Deck.Instance.item1.itemName == item.itemName)
+            return;
+        if (itemNumber == 1)
+        {
+            Deck.Instance.item1 = item;
+            itemNumber = 2;
+        }
+        else
+        {
+            Deck.Instance.item2 = item;
+            itemNumber = 1;
+        }
+            //tutaj jakaœ logika oznaczenia w Hubie ¿e item jest za³o¿ony (np zielona poœwiata)
+
+
+    }
 }
