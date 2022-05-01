@@ -23,7 +23,8 @@ public class BattleSystem : MonoBehaviour// WIELKA KLASA KTÓRA £¥CZY WSZYSTKO W 
     public CardDisplay combatCardDisplay;
 
     public TextMeshProUGUI dialogueText;
-    public Text itemButtonText;
+    public Text itemButtonText1;
+    public Text itemButtonText2;
     Unit playerUnit;
     [SerializeField]
     List<Unit> enemyUnitList;
@@ -83,7 +84,7 @@ public class BattleSystem : MonoBehaviour// WIELKA KLASA KTÓRA £¥CZY WSZYSTKO W 
         itemPowers = new ItemPowers();
         deck.Shuffle();
         deck.SetDeckForCombat(combatCardDisplay);
-        SetItemButtonText(deck.item);
+        SetItemButtonsText(deck.item1,deck.item2);
 
         yield return new WaitForSeconds(2f);
         state = BattleState.PLAYERTURN;
@@ -120,7 +121,8 @@ public class BattleSystem : MonoBehaviour// WIELKA KLASA KTÓRA £¥CZY WSZYSTKO W 
 
         DealDamage();//pawe³
 
-        deck.CardPlayed();
+        if(currentCard==deck.topCard)//w przypadku podmiany current card, nie przestawi karty w decku
+            deck.CardPlayed();
 
         Debug.Log("Card played");
 
@@ -151,19 +153,34 @@ public class BattleSystem : MonoBehaviour// WIELKA KLASA KTÓRA £¥CZY WSZYSTKO W 
         }
 
     }
-    public void OnItemActivationButton()
+    public void OnFirstItemActivationButton()
+    {
+        ActivateItem(deck.item1);
+
+    }
+    public void OnSecondItemActivationButton()
     {
 
+        ActivateItem(deck.item2);
+
+
+    }
+    public void ActivateItem(Item item)
+    {
         if (state != BattleState.PLAYERTURN)
             return;
-        bool noActionPointsLeft = itemPowers.ActivateItemPower(deck.item);
+        bool noActionPointsLeft = itemPowers.ActivateItemPower(item);
         currentCard = deck.GetTopCard();
+        if (item.itemName == ItemName.CAPE)
+        {
+            currentCard = itemPowers.capeCard;
+            StartCoroutine(PlayerPlayCard());
+        }
         if (noActionPointsLeft)
         {
             state = BattleState.ENEMYTURN;
             StartCoroutine(EnemyTurn());
         }
-
 
     }
     public void OnPlayCardButton()
@@ -264,9 +281,9 @@ public class BattleSystem : MonoBehaviour// WIELKA KLASA KTÓRA £¥CZY WSZYSTKO W 
             enemyHUDList[2 - i].SetStats(enemyUnitList[i].hp, enemyUnitList[i].maxHp, enemyUnitList[i].armor);
         }
     }
-    public void ShowCardsInDeck()
+    public void ShowShuffledCardsInDeck()
     {
-        DeckDisplay.Instance.ShowDeck();
+        DeckDisplay.Instance.ShowDeckShuffled();
     }
     public void ShowGraveyard()
     {
@@ -304,9 +321,10 @@ public class BattleSystem : MonoBehaviour// WIELKA KLASA KTÓRA £¥CZY WSZYSTKO W 
             enemyBattleStationList[2 - i].gameObject.SetActive(false);
         }
     }
-    public void SetItemButtonText(Item item)
+    public void SetItemButtonsText(Item item1,Item item2)
     {
-        itemButtonText.text = item.buttonText;
+        itemButtonText1.text = item1.buttonText;
+        itemButtonText2.text = item2.buttonText;
     }
 
 

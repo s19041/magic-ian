@@ -67,6 +67,33 @@ public class DeckDisplay : MonoBehaviour//note to self: wiêkszoœæ klas 'display'
 
 
     }
+    public void ShowDeckShuffled()
+    {
+        ClearDeckDisplay();
+        if (panel.activeSelf)
+        {
+            panel.SetActive(false);
+        }
+        else
+        {
+            panel.SetActive(true);
+            List<Card> cards = new List<Card>();
+            cards.AddRange(deck.GetCards()); ;
+            for (int i = 0; i < cards.Count; i++)
+            {
+                Card temp = cards[i];
+                int randomIndex = Random.Range(i, cards.Count);
+                cards[i] = cards[randomIndex];
+                cards[randomIndex] = temp;
+            }
+            
+            ShowDeckBuilder(cards, false);
+
+
+        }
+
+
+    }
     public void ShowDeckBuilder()
     {
         ClearDeckDisplay();

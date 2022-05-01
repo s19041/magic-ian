@@ -15,4 +15,4 @@ MonoBehaviour:
   descriptionText: {fileID: 0}
   itemName: 1
   buttonText: Hide/Use
-  artworkImage: {fileID: 0}
+  artwork: {fileID: 21300000, guid: f670a016018ca9e49bf855e084a4905f, type: 3}

@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   descriptionText: {fileID: 0}
   itemName: 2
-  buttonText: 
-  artworkImage: {fileID: 0}
+  buttonText: Ressurect
+  artwork: {fileID: 21300000, guid: 7df44d77ab5c14d438d0feb918a0ad0c, type: 3}

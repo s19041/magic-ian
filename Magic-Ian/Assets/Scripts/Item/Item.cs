@@ -10,6 +10,6 @@ public class Item : ScriptableObject
     public Text descriptionText;
     public ItemName itemName;
     public string buttonText;
-    public Image artworkImage;
+    public Sprite artwork;
 
 }

@@ -15,4 +15,4 @@ MonoBehaviour:
   descriptionText: {fileID: 0}
   itemName: 0
   buttonText: Shuffle
-  artworkImage: {fileID: 0}
+  artwork: {fileID: 21300000, guid: 80a0c60373c94ed46af927bd441316d5, type: 3}

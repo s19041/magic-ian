@@ -19,7 +19,9 @@ public class Deck : MonoBehaviour
 
     public Card lastCard;
 
-    public Item item;
+    public Item item1;
+
+    public Item item2;
 
     public CardDisplay cardDisplay;
 
