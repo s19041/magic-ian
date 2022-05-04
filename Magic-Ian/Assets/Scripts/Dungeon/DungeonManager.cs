@@ -72,8 +72,7 @@ public class DungeonManager : MonoBehaviour//tutaj bêdzie ca³y gameloop(albo w g
         {
             
             nextSceneButtonCanvas.gameObject.SetActive(false);
-            PlayerManager.Instance.SaveDataXML();
-            EndRun();
+            OnWinDungeonButton();
             return;
         }
         
@@ -96,7 +95,12 @@ public class DungeonManager : MonoBehaviour//tutaj bêdzie ca³y gameloop(albo w g
         if (Deck.Instance.GetCards().Count == 12)
         {
             if (dungeonRooms.Count > 0)
+            {
                 OnLoadNextRoomButton();
+                PlayerManager.Instance.IncrementRuns();
+            }
+                
+
         }
         else
         {
@@ -109,24 +113,24 @@ public class DungeonManager : MonoBehaviour//tutaj bêdzie ca³y gameloop(albo w g
     {
         nextSceneButtonCanvas.gameObject.SetActive(true);
     }
-    public void OnExitDungeonButton()//przy wygranej
+    public void OnWinDungeonButton()//przy wygranej
     {
-        PlayerManager.Instance.SaveDataXML();
-        sceneLoader.HubScene();
-        dungeonRooms.Clear();
+        PlayerManager.Instance.SuccesfulRun();
+        EndRun();
 
     }
     public void OnLeaveDungeonButton()//przy przegranej
     {
-        PlayerManager.Instance.SaveDataXML();
-        sceneLoader.StartScene();
+        EndRun();
         
 
     }
     private void EndRun()
     {
+        PlayerManager.Instance.SaveDataXML();
         Destroy(PlayerManager.Instance);
         Destroy(GameObject.Find("Ian"));
+        dungeonRooms.Clear();
         currentRoomIndex = -1;
         sceneLoader.HubScene();
     }

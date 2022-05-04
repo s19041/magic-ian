@@ -352,6 +352,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1114710683}
+        m_TargetAssemblyTypeName: Chest, Assembly-CSharp
+        m_MethodName: OnUnlockNextUnlockableButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &408452221
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -683,11 +695,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cards: []
   deckSuits: 
-  cardsBackup: []
   graveyard: []
   topCard: {fileID: 0}
   lastCard: {fileID: 0}
-  item: {fileID: 11400000, guid: 75543d628adc4834ba256b447ad9b4e0, type: 2}
+  item1: {fileID: 0}
+  item2: {fileID: 0}
   cardDisplay: {fileID: 0}
 --- !u!114 &1651449921
 MonoBehaviour:
@@ -723,11 +735,10 @@ MonoBehaviour:
   diamonds:
   - {fileID: 11400000, guid: 4bc4db40800659d459a22a4bbefeeb16, type: 2}
   special: []
-  avalibleCards: []
   deckDisplay: {fileID: 0}
   jackList: []
   jackListCount: 0
-
+  items: []
 --- !u!1 &1805619626
 GameObject:
   m_ObjectHideFlags: 0

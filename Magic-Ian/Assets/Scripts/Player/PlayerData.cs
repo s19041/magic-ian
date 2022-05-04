@@ -73,6 +73,15 @@ public class PlayerData
         return true;
 
     }
+    public bool UnlockItem(Item item)
+    {
+        if (!unlockedItems.Exists(x => x.itemName == item.itemName))
+        {
+            unlockedItems.Add(item);
+            return true;
+        }
+        return false;
+    }
     public List<Card> GetUnlockedCards()
     {
         return unlockedCards;

@@ -29,5 +29,9 @@ public class Chest : MonoBehaviour
     {
         text.SetActive(true);
     }
+    public void OnUnlockNextUnlockableButton()
+    {
+        PlayerManager.Instance.UnlockNextUnlockables();
+    }
 
 }

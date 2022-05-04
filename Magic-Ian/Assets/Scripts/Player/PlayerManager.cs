@@ -89,5 +89,66 @@ public class PlayerManager : MonoBehaviour
     {
         playerData.gold -= amount;
     }
+    public void IncrementRuns()
+    {
+        playerData.runs++;
+    }
+    public void SuccesfulRun()
+    {
+        playerData.succesfulRuns++;
+    }
+    public void UnlockNextUnlockables()
+    {
+        DeckBuilder db=DeckBuilder.Instance;
+        int succesfulRuns = playerData.succesfulRuns;
+        if (succesfulRuns > 5)
+        {
+            return;
+        }
+        if (succesfulRuns == 0) //serca i pik 2,8,9 
+        {
+            UnlockCard(db.hearts[1]);
+            UnlockCard(db.hearts[7]);
+            UnlockCard(db.hearts[8]);
+
+            UnlockCard(db.spades[1]);
+            UnlockCard(db.spades[7]);
+            UnlockCard(db.spades[8]);
+        }
+        else if(succesfulRuns == 1)//serca i pi, 1,10
+        {
+            UnlockCard(db.hearts[0]);
+            UnlockCard(db.hearts[9]);
+
+            UnlockCard(db.spades[0]);
+            UnlockCard(db.spades[9]);
+        }
+        else if (succesfulRuns == 2)//deck kier(1-10)
+        {
+            for(int i = 0; i <= 9; i++)
+            {
+                UnlockCard(db.clubs[0]);
+            }
+            
+        }
+        else if (succesfulRuns == 3)//item(Sleeve)
+        {
+            playerData.UnlockItem(db.items[1]);
+        }
+        else if (succesfulRuns == 4)//dama serce i pik
+        {
+            UnlockCard(db.hearts[11]);
+
+            UnlockCard(db.spades[11]);
+        }
+        else if (succesfulRuns == 5)//walet serce i pik
+        {
+            UnlockCard(db.hearts[12]);
+
+            UnlockCard(db.spades[12]);
+        }
+
+
+    }
 
 }
