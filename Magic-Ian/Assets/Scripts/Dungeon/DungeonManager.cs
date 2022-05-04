@@ -70,9 +70,10 @@ public class DungeonManager : MonoBehaviour//tutaj bêdzie ca³y gameloop(albo w g
         currentRoomIndex++;
         if (currentRoomIndex>=dungeonRooms.Count)
         {
-            sceneLoader.HubScene();
+            
             nextSceneButtonCanvas.gameObject.SetActive(false);
             PlayerManager.Instance.SaveDataXML();
+            EndRun();
             return;
         }
         
@@ -121,6 +122,13 @@ public class DungeonManager : MonoBehaviour//tutaj bêdzie ca³y gameloop(albo w g
         sceneLoader.StartScene();
         
 
+    }
+    private void EndRun()
+    {
+        Destroy(PlayerManager.Instance);
+        Destroy(GameObject.Find("Ian"));
+        currentRoomIndex = -1;
+        sceneLoader.HubScene();
     }
   
 
