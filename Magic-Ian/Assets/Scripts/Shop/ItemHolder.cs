@@ -5,15 +5,15 @@ using UnityEngine.UI;
 
 public class ItemHolder : MonoBehaviour
 {
-    [SerializeField] ShopItem item;
-    [SerializeField] Image logo;
-    [SerializeField] Text price;
+    public ShopItem item;
+    public Image logo;
+    public Text price;
     int gold;
     
 
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         logo.sprite = item.GetComponent<Image>().sprite;
         price.text = item.GetPrice();
@@ -24,11 +24,7 @@ public class ItemHolder : MonoBehaviour
         
     }
 
-    public void BuyHeal()
-    {
-        
 
-    }
 
 
    

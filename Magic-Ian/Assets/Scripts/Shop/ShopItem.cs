@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ShopItem : MonoBehaviour
 {
-    [SerializeField] int price;
+    public int price;
     [SerializeField] string name;
 
 

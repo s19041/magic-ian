@@ -5,6 +5,7 @@ using UnityEngine;
 public class DeckBuilder : MonoBehaviour// w tej klasie przechowujemy wszystkie karty w grze(te które s¹ odblokowane znajduj¹ siê w playerData)
 {
     public Deck deck;
+    public List<Card> savedDeckCards;
     public List<Card> hearts;
     public List<Card> spades;
     public List<Card> clubs;
@@ -81,6 +82,12 @@ public class DeckBuilder : MonoBehaviour// w tej klasie przechowujemy wszystkie 
         deck.AddCardsFromJack(jackList);
         jackList.Clear();
 
+    }
+    public void ResetDeckAfterRun()
+    {
+        Deck.Instance.GetCards().Clear();
+        Deck.Instance.GetCards().AddRange(savedDeckCards);
+        Deck.Instance.PrepareDeck();
     }
 
 

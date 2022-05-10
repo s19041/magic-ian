@@ -79,9 +79,9 @@ public class BattleSystem : MonoBehaviour// WIELKA KLASA KTÓRA £¥CZY WSZYSTKO W 
         combatCardDisplay.updateDisplay();
 
 
-        abilitySet = new AbilitySet1();
+        abilitySet = deck.abilitySet;
+        itemPowers = deck.itemPowers;
 
-        itemPowers = new ItemPowers();
         deck.Shuffle();
         deck.SetDeckForCombat(combatCardDisplay);
         SetItemButtonsText(deck.item1,deck.item2);

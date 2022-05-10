@@ -1584,6 +1584,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 609240011, guid: 5b393f40c06f43d4b89f0cb421ecda32, type: 3}
+      propertyPath: logo
+      value: 
+      objectReference: {fileID: 572088025529615292}
     - target: {fileID: 572088025782069899, guid: 5b393f40c06f43d4b89f0cb421ecda32, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -1696,5 +1700,20 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0.21960786
       objectReference: {fileID: 0}
+    - target: {fileID: 6597712937952287926, guid: 5b393f40c06f43d4b89f0cb421ecda32, type: 3}
+      propertyPath: buffImages.Array.size
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5b393f40c06f43d4b89f0cb421ecda32, type: 3}
+--- !u!114 &572088025529615292 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6921415521147745912, guid: 5b393f40c06f43d4b89f0cb421ecda32, type: 3}
+  m_PrefabInstance: {fileID: 572088025529615291}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

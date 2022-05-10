@@ -77,7 +77,6 @@ public class DungeonManager : MonoBehaviour//tutaj b璠zie ca造 gameloop(albo w g
         }
         
         sceneLoader.LoadRoom(dungeonRooms[currentRoomIndex]);
-        EnableNextSceneButton();
         if(dungeonRooms[currentRoomIndex].type != Type.ENTRANCE)
             nextSceneButtonCanvas.gameObject.SetActive(false);
         
@@ -96,6 +95,7 @@ public class DungeonManager : MonoBehaviour//tutaj b璠zie ca造 gameloop(albo w g
         {
             if (dungeonRooms.Count > 0)
             {
+                DeckBuilder.Instance.savedDeckCards.AddRange(Deck.Instance.GetCards());
                 OnLoadNextRoomButton();
                 PlayerManager.Instance.IncrementRuns();
             }
@@ -117,7 +117,7 @@ public class DungeonManager : MonoBehaviour//tutaj b璠zie ca造 gameloop(albo w g
     {
         PlayerManager.Instance.SuccesfulRun();
         EndRun();
-
+       
     }
     public void OnLeaveDungeonButton()//przy przegranej
     {
@@ -133,6 +133,7 @@ public class DungeonManager : MonoBehaviour//tutaj b璠zie ca造 gameloop(albo w g
         dungeonRooms.Clear();
         currentRoomIndex = -1;
         sceneLoader.HubScene();
+        DeckBuilder.Instance.ResetDeckAfterRun();
     }
   
 

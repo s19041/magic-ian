@@ -15,6 +15,8 @@ public class Deck : MonoBehaviour
     List<Card> cardsBackup;
 
     public Card topCard;
+    public AbstractAbilitySet abilitySet;
+    public ItemPowers itemPowers;
 
 
     public Card lastCard;
@@ -42,22 +44,20 @@ public class Deck : MonoBehaviour
             _instance = this;
         }
         DontDestroyOnLoad(gameObject);
+        graveyard = new List<Card>();
+        cardsBackup = new List<Card>();
         deckSuits = new Suit[2];
         deckSuits[0] = Suit.EMPTY;
         deckSuits[1] = Suit.EMPTY;
+        abilitySet = new AbilitySet1();
+        itemPowers = new ItemPowers();
 
     }
 
     private void Start()
     {
-        
-        graveyard = new List<Card>();
-        cardsBackup = new List<Card>();
-        for(int i = 0; i < cards.Count; i++)
-        {
-            cards[i] = Instantiate(cards[i]);//kopiowanie scriptable object ¿eby na nich nie pracowaæ a na ich obiektach
-            cards[i].SetCard();
-        }
+
+        PrepareDeck();
     }
     public void SetDeckForCombat(CardDisplay cd)
     {
@@ -204,4 +204,19 @@ public class Deck : MonoBehaviour
             return true;
         return false;
     }
+    public void SaveDeckToBackup()
+    {
+        cardsBackup = new List<Card>();
+        cardsBackup.AddRange(cards);
+    }
+    public void PrepareDeck()
+    {
+        
+        for (int i = 0; i < cards.Count; i++)
+        {
+            cards[i] = Instantiate(cards[i]);//kopiowanie scriptable object ¿eby na nich nie pracowaæ a na ich obiektach
+            cards[i].SetCard();
+        }
+    }
+    
 }
