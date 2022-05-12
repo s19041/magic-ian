@@ -21,7 +21,7 @@ public class PigeonAi : CombatAi
         if (turn % 3 == 0)
         {
             dialogueText.text = thisUnit.unitName + " powers up";
-            thisUnit.damage += 3;
+            thisUnit.DamageUp(3);
         }
         return 0;
     }

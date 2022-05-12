@@ -123,6 +123,54 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &73600915
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 73600917}
+  - component: {fileID: 73600916}
+  m_Layer: 0
+  m_Name: UnitUiPopupsManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &73600916
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 73600915}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19c0ab848277cea4fa48d22f21a3a6d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damagePopup: {fileID: 8824423289899236969, guid: f364416c06bd9bb4dbcfc31243dd4ae3, type: 3}
+  healPopup: {fileID: 108628239557612809, guid: 391e181fd9a054f4a9eda0260d48e0e8, type: 3}
+  armorPopup: {fileID: 108628239557612809, guid: 5925bd02a73eee64b937c8f1d1a1c386, type: 3}
+  damageUpPopup: {fileID: 108628239557612809, guid: 63e89d177f06510478c4a6debb9cfbae, type: 3}
+  damageNumber: {fileID: 4167822517260315188, guid: 44ea479e8af79d74db11f6f758533f98, type: 3}
+--- !u!4 &73600917
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 73600915}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 8.632859, y: 4.120244, z: -41.32522}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &145309291
 GameObject:
   m_ObjectHideFlags: 0

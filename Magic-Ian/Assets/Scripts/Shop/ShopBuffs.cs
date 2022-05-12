@@ -11,7 +11,7 @@ public class ShopBuffs : MonoBehaviour
         deck = Deck.Instance;
     }
 
-    public void BuffAllCardDmg(int amount)
+    public void BuffAllCardDmg(int amount)//wzmocnienie dmg kart (1-10)
     {
         foreach (Card card in deck.GetCards())
         {
@@ -22,7 +22,7 @@ public class ShopBuffs : MonoBehaviour
         }
         deck.SaveDeckToBackup();
     }
-    public void BuffAllSuitPower(Suit suit)
+    public void BuffAllSuitPower(Suit suit)//wzmocnienie koloru kart (1-10)
     {
         foreach (Card card in deck.GetCards())
         {

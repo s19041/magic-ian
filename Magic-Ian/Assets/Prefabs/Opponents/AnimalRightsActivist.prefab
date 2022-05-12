@@ -102,6 +102,12 @@ MonoBehaviour:
   damage: 0
   stunStacks: 0
   barrierStacks: 3
+  damagePopup: {fileID: 8824423289899236969, guid: f364416c06bd9bb4dbcfc31243dd4ae3, type: 3}
+  healPopup: {fileID: 108628239557612809, guid: 391e181fd9a054f4a9eda0260d48e0e8, type: 3}
+  armorPopup: {fileID: 108628239557612809, guid: 5925bd02a73eee64b937c8f1d1a1c386, type: 3}
+  damageUpPopup: {fileID: 108628239557612809, guid: 63e89d177f06510478c4a6debb9cfbae, type: 3}
+  damageNumber: {fileID: 4167822517260315188, guid: 44ea479e8af79d74db11f6f758533f98, type: 3}
+  numberPosition: {x: 0, y: 0, z: 0}
   maxHp: 15
   combatAi: {fileID: 1328308211620735092}
 --- !u!114 &1328308211620735092

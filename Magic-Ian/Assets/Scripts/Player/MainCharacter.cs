@@ -22,6 +22,7 @@ public class MainCharacter : Unit
             _instance = this;
         }
         DontDestroyOnLoad(gameObject);
+        base.Awake();
 
     }
     public void ResetStats()
