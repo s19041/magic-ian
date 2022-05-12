@@ -23,11 +23,22 @@ public class ItemHolder : MonoBehaviour
         
         
     }
+    private void Update()
+    {
+        if (gold < item.GetPriceInt())
+        {
+            gameObject.GetComponentInChildren<Button>().interactable=false;
+        }
+        else
+        {
+            gameObject.GetComponentInChildren<Button>().interactable = true;
+        }
+    }
 
 
 
 
-   
 
-    
+
+
 }

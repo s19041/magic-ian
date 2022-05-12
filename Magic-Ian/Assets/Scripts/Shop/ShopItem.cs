@@ -16,6 +16,10 @@ public class ShopItem : MonoBehaviour
     {
         return price.ToString();
     }
+    public int GetPriceInt()
+    {
+        return price;
+    }
 
 
     public void BuyHeal()
@@ -53,6 +57,7 @@ public class ShopItem : MonoBehaviour
             FindObjectOfType<GoldDisplay>().RefreshDisplay();
         }
     }
+
 
 
 }

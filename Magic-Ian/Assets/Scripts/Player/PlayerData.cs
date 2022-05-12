@@ -86,6 +86,10 @@ public class PlayerData
     {
         return unlockedCards;
     }
+    public List<Item> GetUnlockedItems()
+    {
+        return unlockedItems;
+    }
     //rozwi¹zania znalezione na necie by³ nadmiarowe wiêc serializacja w taki dziwny sposób 
     public void Serialize()
     {

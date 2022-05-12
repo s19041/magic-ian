@@ -48,6 +48,10 @@ public class PlayerManager : MonoBehaviour
     {
         return playerData.GetUnlockedCards();
     }
+    public List<Item> GetUnlockedItems()
+    {
+        return playerData.GetUnlockedItems();
+    }
     public void LoadDataXML()
     {
 
@@ -96,6 +100,10 @@ public class PlayerManager : MonoBehaviour
     public void SuccesfulRun()
     {
         playerData.succesfulRuns++;
+    }
+    public void UnlockItem(Item item)
+    {
+        playerData.UnlockItem(item);
     }
     public void UnlockNextUnlockables()
     {

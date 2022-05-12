@@ -6,11 +6,11 @@ public class GoldDisplay : MonoBehaviour
 {
     public int gold;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         if (FindObjectOfType<PlayerManager>() != null)
         {
-            gold = FindObjectOfType<PlayerManager>().GetGold();
+            gold = PlayerManager.Instance.GetGold();
         }
         RefreshDisplay();
     }

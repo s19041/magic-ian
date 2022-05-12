@@ -15,11 +15,6 @@ public class BuffsPicker : MonoBehaviour
         PickBuffs();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     public void PickBuffs()
     {
         int index=Random.Range(0, buffSprites.Count);

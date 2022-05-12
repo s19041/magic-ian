@@ -2,11 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShopBuffs : MonoBehaviour
+public class ShopBuffs
 {
     Deck deck;
 
-    void Awake()
+
+    public ShopBuffs()
     {
         deck = Deck.Instance;
     }
