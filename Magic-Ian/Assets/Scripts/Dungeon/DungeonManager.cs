@@ -25,7 +25,7 @@ public class DungeonManager : MonoBehaviour//tutaj bêdzie ca³y gameloop(albo w g
     List<Room> dungeonRooms;
     [SerializeField]
     int currentRoomIndex;
-
+    
     private static DungeonManager _instance;
     public static DungeonManager Instance { get { return _instance; } }
 

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShopItem : MonoBehaviour
+public class ShopItem : MonoBehaviour//listenery dla usuwania golda s¹ w ItemHolder
 {
     public int price;
     [SerializeField] string name;
@@ -16,46 +16,20 @@ public class ShopItem : MonoBehaviour
     {
         return price.ToString();
     }
-    public int GetPriceInt()
-    {
-        return price;
-    }
-
 
     public void BuyHeal()
     {
-        int gold = PlayerManager.Instance.GetGold();
-
-        if (price <= gold)
-        {
-            FindObjectOfType<MainCharacter>().Heal(10);
-            PlayerManager.Instance.RemoveGold(price);
-
-            FindObjectOfType<GoldDisplay>().RefreshDisplay();
-        }
+        FindObjectOfType<MainCharacter>().Heal(10);
     }
 
     public void BuyArmor()
     {
-        int gold = PlayerManager.Instance.GetGold();
-        if (price <= gold)
-        {
-            FindObjectOfType<MainCharacter>().ArmorUp(10);
-            PlayerManager.Instance.RemoveGold(price);
-
-            FindObjectOfType<GoldDisplay>().RefreshDisplay();
-        }
+        FindObjectOfType<MainCharacter>().ArmorUp(10);
     }
     public void BuyStunClear()
     {
-        int gold = PlayerManager.Instance.GetGold();
-        if (price <= gold)
-        {
-            FindObjectOfType<MainCharacter>().stunStacks=0;
-            PlayerManager.Instance.RemoveGold(price);
-                
-            FindObjectOfType<GoldDisplay>().RefreshDisplay();
-        }
+        FindObjectOfType<MainCharacter>().stunStacks = 0;
+        
     }
 
 

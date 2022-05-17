@@ -19,13 +19,14 @@ public class ItemHolder : MonoBehaviour
         price.text = item.GetPrice();
 
         gold = FindObjectOfType<GoldDisplay>().gold;
-
+        RemoveGoldListener();
         
         
     }
     private void Update()
     {
-        if (gold < item.GetPriceInt())
+        
+        if (PlayerManager.Instance.GetGold() < item.price)
         {
             gameObject.GetComponentInChildren<Button>().interactable=false;
         }
@@ -33,6 +34,16 @@ public class ItemHolder : MonoBehaviour
         {
             gameObject.GetComponentInChildren<Button>().interactable = true;
         }
+        
+    }
+    public void RemoveGoldListener()
+    {
+        gameObject.GetComponentInChildren<Button>().onClick.AddListener(() =>
+        {
+            PlayerManager.Instance.RemoveGold(item.price);
+
+            FindObjectOfType<GoldDisplay>().RefreshDisplay();
+        });
     }
 
 

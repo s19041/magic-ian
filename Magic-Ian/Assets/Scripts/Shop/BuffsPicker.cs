@@ -6,12 +6,13 @@ using UnityEngine.UI;
 public class BuffsPicker : MonoBehaviour
 {
     public List<GameObject> buffItemSpots;//3 œrodkowe
+    public Button slotButton1;
     public List<Sprite> buffSprites;
     
-    ShopBuffs shopBuffs;
-    void Start()
+    public ShopBuffs shopBuffs;
+    private void Awake()
     {
-        shopBuffs = new ShopBuffs();
+        //shopBuffs = new ShopBuffs();
         PickBuffs();
     }
 
@@ -27,8 +28,10 @@ public class BuffsPicker : MonoBehaviour
     }
     public void AssignButton(int index,GameObject go)
     {
+        index = 1;
         go.GetComponent<ItemHolder>().logo.sprite = buffSprites[index];
         go.GetComponent<ItemHolder>().item.price = 100;
+        slotButton1.onClick.AddListener(() => shopBuffs.BuffAllSuitPower(Suit.HEARTS));
         Button button = go.GetComponentInChildren<Button>();
         if (index == 0)
         {
@@ -38,6 +41,7 @@ public class BuffsPicker : MonoBehaviour
         if (index == 1)
         {
             button.onClick.AddListener(() => shopBuffs.BuffAllSuitPower(Suit.HEARTS));
+            
         }
         if (index == 2)
         {
