@@ -38,7 +38,10 @@ public class HubManager : MonoBehaviour
     {
         displayCanvas.gameObject.SetActive(false);
         tableCanvas.gameObject.SetActive(false);
+        DeckDisplay.Instance.CloseDeckDisplay();
+
         mainCanvas.gameObject.SetActive(true);
+
 
     }
     public void OnDisplayButton()

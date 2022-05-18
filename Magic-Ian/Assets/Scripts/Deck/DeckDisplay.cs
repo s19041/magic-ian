@@ -110,6 +110,11 @@ public class DeckDisplay : MonoBehaviour//note to self: wiêkszoœæ klas 'display'
         }
 
     }
+    public void CloseDeckDisplay()
+    {
+        ClearDeckDisplay();
+        panel.SetActive(false);
+    }
     public void ShowDeckBuilder(List<Card> list, bool isEnabled)//deck, czy przyciski s¹ klikalne
     {
 
