@@ -98,6 +98,7 @@ public class DungeonManager : MonoBehaviour//tutaj bêdzie ca³y gameloop(albo w g
                 DeckBuilder.Instance.savedDeckCards.AddRange(Deck.Instance.GetCards());
                 OnLoadNextRoomButton();
                 PlayerManager.Instance.IncrementRuns();
+                PlayerManager.Instance.AddGold(100);
             }
                 
 
@@ -112,6 +113,10 @@ public class DungeonManager : MonoBehaviour//tutaj bêdzie ca³y gameloop(albo w g
     public void EnableNextSceneButton()
     {
         nextSceneButtonCanvas.gameObject.SetActive(true);
+    }
+    public void DisableNextSceneButton()
+    {
+        nextSceneButtonCanvas.gameObject.SetActive(false);
     }
     public void OnWinDungeonButton()//przy wygranej
     {

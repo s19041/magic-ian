@@ -9,17 +9,19 @@ public class ItemHolder : MonoBehaviour
     public Image logo;
     public Text price;
     int gold;
-    
+
 
 
     // Start is called before the first frame update
-    void Awake()
+    public void Awake()
+    {
+        gold = FindObjectOfType<GoldDisplay>().gold;
+        RemoveGoldListener();
+    }
+    public void Setup()
     {
         logo.sprite = item.GetComponent<Image>().sprite;
         price.text = item.GetPrice();
-
-        gold = FindObjectOfType<GoldDisplay>().gold;
-        RemoveGoldListener();
         
         
     }

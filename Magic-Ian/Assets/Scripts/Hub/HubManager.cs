@@ -70,6 +70,7 @@ public class HubManager : MonoBehaviour
     }
     public void OnStartDungeonButton()
     {
+        DungeonManager.Instance.OnCreateDungeonButton();
         DungeonManager.Instance.StartDungeon();
     }
 }

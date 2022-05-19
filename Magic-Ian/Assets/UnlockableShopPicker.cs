@@ -18,12 +18,18 @@ public class UnlockableShopPicker : MonoBehaviour//chyba brzydszej klasy to jesz
         unlockablesCount = 10;
         int index = Random.Range(0, unlockablesCount);
         AssignButton(index);
+        Button button = unlockableSpot.GetComponentInChildren<Button>();
+        button.onClick.AddListener(() => button.interactable = false) ;
     }
     public void AssignButton(int index)
     {
         safeGuard++;
         if (safeGuard > unlockablesCount)
+        {
+            gameObject.SetActive(false);
             return;
+        }
+            
         unlockableSpot.GetComponent<ItemHolder>().item.price = 200;
         Button button = unlockableSpot.GetComponentInChildren<Button>();
         if (index == 0)

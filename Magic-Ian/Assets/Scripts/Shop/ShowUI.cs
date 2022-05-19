@@ -10,12 +10,14 @@ public class ShowUI : MonoBehaviour
     {
         UI.SetActive(true);
         itemUI.SetActive(true);
+        DungeonManager.Instance.DisableNextSceneButton();
     }
 
     public void TurnOffUI()
     {
         UI.SetActive(false);
         itemUI.SetActive(false);
+        DungeonManager.Instance.EnableNextSceneButton();
 
     }
 }

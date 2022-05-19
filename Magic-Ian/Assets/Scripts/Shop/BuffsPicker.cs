@@ -5,14 +5,19 @@ using UnityEngine.UI;
 
 public class BuffsPicker : MonoBehaviour
 {
-    public List<GameObject> buffItemSpots;//3 œrodkowe
-    public Button slotButton1;
+    public List<GameObject> recoveryItemSpots;//3 górne
+    public List<GameObject> buffItemSpots;//3 dolne
+    
     public List<Sprite> buffSprites;
     
     public ShopBuffs shopBuffs;
-    private void Awake()
+    private void Start()
     {
         //shopBuffs = new ShopBuffs();
+        foreach(GameObject go in recoveryItemSpots)
+        {
+            go.GetComponent<ItemHolder>().Setup();
+        }
         PickBuffs();
     }
 
@@ -28,10 +33,9 @@ public class BuffsPicker : MonoBehaviour
     }
     public void AssignButton(int index,GameObject go)
     {
-        index = 1;
-        go.GetComponent<ItemHolder>().logo.sprite = buffSprites[index];
+        go.GetComponent<ItemHolder>().item.GetComponent<Image>().sprite = buffSprites[index];
         go.GetComponent<ItemHolder>().item.price = 100;
-        slotButton1.onClick.AddListener(() => shopBuffs.BuffAllSuitPower(Suit.HEARTS));
+        go.GetComponent<ItemHolder>().Setup();
         Button button = go.GetComponentInChildren<Button>();
         if (index == 0)
         {
