@@ -292,7 +292,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 176364795}
-  - component: {fileID: 176364794}
   m_Layer: 0
   m_Name: DungeonCreator
   m_TagString: Untagged
@@ -300,26 +299,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &176364794
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 176364793}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 255bb5480b9c2ce4c94bacfffcfc65e5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pigeonPrefab: {fileID: 1636514762991776171, guid: bc668ccd1860eca4987237cb4a8275c0, type: 3}
-  rabbitPrefab: {fileID: 1636514762991776171, guid: b1aae88bc5bca2545ad22bb1bb7a40cf, type: 3}
-  princePrefab: {fileID: 1636514762991776171, guid: 040402b050a2e9a488fc85cf9daa753d, type: 3}
-  activistPrefab: {fileID: 1636514762991776171, guid: 8a1c94959ac2a8a4cb7afc1681e59521, type: 3}
-  knowerPrefab: {fileID: 1636514762991776171, guid: 2090e364c7b463248ab99319d5af90bd, type: 3}
-  assistantPrefab: {fileID: 1636514762991776171, guid: 6839ba0b43aec2041ad105cd2fddc326, type: 3}
-  leruaPrefab: {fileID: 1636514762991776171, guid: d4d04e2ef5362cc42aab869a49e524a1, type: 3}
-  groubiniPrefab: {fileID: 1636514762991776171, guid: 1f15f512d36225b4fa7d8aa4a5215c75, type: 3}
 --- !u!4 &176364795
 Transform:
   m_ObjectHideFlags: 0
@@ -1882,6 +1861,22 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2189189961745519746, guid: ff0a83580dfcaac4e87840ddeec0bf4d, type: 3}
+      propertyPath: m_Name
+      value: anotherFightButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 2189189961745519746, guid: ff0a83580dfcaac4e87840ddeec0bf4d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2349997560204140110, guid: ff0a83580dfcaac4e87840ddeec0bf4d, type: 3}
+      propertyPath: m_Name
+      value: nextSceneButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 2349997560204140110, guid: ff0a83580dfcaac4e87840ddeec0bf4d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2642892492225923814, guid: ff0a83580dfcaac4e87840ddeec0bf4d, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
@@ -1900,7 +1895,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6946015392639412447, guid: ff0a83580dfcaac4e87840ddeec0bf4d, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7054564765188256785, guid: ff0a83580dfcaac4e87840ddeec0bf4d, type: 3}
       propertyPath: m_RootOrder
@@ -1951,20 +1946,12 @@ PrefabInstance:
       value: DungeonManager
       objectReference: {fileID: 0}
     - target: {fileID: 7054564765188256787, guid: ff0a83580dfcaac4e87840ddeec0bf4d, type: 3}
-      propertyPath: playerPrefab
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 7054564765188256787, guid: ff0a83580dfcaac4e87840ddeec0bf4d, type: 3}
       propertyPath: nextSceneButton
       value: 
       objectReference: {fileID: 1597554044}
     - target: {fileID: 7054564765188256787, guid: ff0a83580dfcaac4e87840ddeec0bf4d, type: 3}
       propertyPath: dungeon.Array.size
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7344069319057029461, guid: ff0a83580dfcaac4e87840ddeec0bf4d, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 7559034643388874336, guid: ff0a83580dfcaac4e87840ddeec0bf4d, type: 3}
       propertyPath: m_Camera

@@ -16,7 +16,9 @@ public class DungeonManager : MonoBehaviour//tutaj bêdzie ca³y gameloop(albo w g
     public int additionalCombatRooms;
 
     [SerializeField]
-    Canvas nextSceneButtonCanvas;
+    Button nextSceneButtonCanvas;
+    [SerializeField]
+    Button anotherCombatButtonCanvas;
     [SerializeField]
     Canvas leaveDungeonButtonCanvas;
 
@@ -112,11 +114,15 @@ public class DungeonManager : MonoBehaviour//tutaj bêdzie ca³y gameloop(albo w g
     }
     public void EnableNextSceneButton()
     {
+        if (GetCurrentRoom().type == Type.COMBAT)
+            anotherCombatButtonCanvas.gameObject.SetActive(true);
         nextSceneButtonCanvas.gameObject.SetActive(true);
     }
     public void DisableNextSceneButton()
     {
+        anotherCombatButtonCanvas.gameObject.SetActive(false);
         nextSceneButtonCanvas.gameObject.SetActive(false);
+        
     }
     public void OnWinDungeonButton()//przy wygranej
     {
@@ -139,6 +145,17 @@ public class DungeonManager : MonoBehaviour//tutaj bêdzie ca³y gameloop(albo w g
         currentRoomIndex = -1;
         sceneLoader.HubScene();
         DeckBuilder.Instance.ResetDeckAfterRun();
+    }
+    public void AnotherCombatRoom()
+    {
+        if (GetCurrentRoom().type == Type.COMBAT)
+        {
+            CombatRoom cr = DungeonCreator.Instance.CreateAnotherFightRoom();
+            cr.goldReward += (int)(GetCurrentCombatRoom().goldReward / 4);
+            dungeonRooms[currentRoomIndex] = cr;
+            sceneLoader.LoadRoom(dungeonRooms[currentRoomIndex]);
+        }
+            
     }
   
 

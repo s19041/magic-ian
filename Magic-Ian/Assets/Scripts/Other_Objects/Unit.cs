@@ -16,6 +16,7 @@ public class Unit : MonoBehaviour
     public HealPopup damageUpPopup;
     public DamageNumber damageNumber;
     public Vector3 numberPosition;
+    public Animator animator;
 
 
     public int maxHp;
@@ -34,6 +35,7 @@ public class Unit : MonoBehaviour
         armorPopup = UnitUiPopupsManager.Instance.armorPopup;
         damageUpPopup = UnitUiPopupsManager.Instance.damageUpPopup;
         damageNumber = UnitUiPopupsManager.Instance.damageNumber;
+        animator = GetComponent<Animator>();
 
         if (damage != 0)
         {
@@ -73,11 +75,14 @@ public class Unit : MonoBehaviour
 
         if(dmg>0)
         damagePopup.Create(this.gameObject.transform.position, dmg);
-        
+
 
 
         if (hp <= 0)
+        {
+            animator.SetBool("IsDead", true);
             return true;
+        }
         return false;
     }
     public void Heal(int healAmount)

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 9214647820295611071}
   - component: {fileID: 8426688494155829229}
   - component: {fileID: 5467241418953671834}
+  - component: {fileID: -3438772062641878500}
   m_Layer: 0
   m_Name: Rabbit
   m_TagString: Untagged
@@ -73,7 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 65e50df5f7f65ef48b3a9cf51c2999a5, type: 3}
+  m_Sprite: {fileID: 21300000, guid: de1162816826542418b08c573ec820ed, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -102,6 +103,13 @@ MonoBehaviour:
   damage: 2
   stunStacks: 0
   barrierStacks: 0
+  damagePopup: {fileID: 0}
+  healPopup: {fileID: 0}
+  armorPopup: {fileID: 0}
+  damageUpPopup: {fileID: 0}
+  damageNumber: {fileID: 0}
+  numberPosition: {x: 0, y: 0, z: 0}
+  animator: {fileID: 0}
   maxHp: 25
   combatAi: {fileID: 5467241418953671834}
 --- !u!114 &5467241418953671834
@@ -116,3 +124,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2853f1b4f09b4334596f9c916a7d9d31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 0}
+--- !u!95 &-3438772062641878500
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1636514762991776171}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ae38c0a552705bf448f659a08ac729ee, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

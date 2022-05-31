@@ -288,6 +288,20 @@ public class DungeonCreator :MonoBehaviour
         TreasureRoom treasureRoom = ScriptableObject.CreateInstance<TreasureRoom>();
         return treasureRoom;
     }
+    public CombatRoom CreateAnotherFightRoom()
+    {
+        double d = Random.value;
+        CombatRoom combatRoom = ScriptableObject.CreateInstance<CombatRoom>();
+        if (d < 0.7)
+        {
+            combatRoom = CombatRoomCreator();
+        }
+        else
+        {
+            combatRoom = EliteCombatRoomCreator();
+        }
+        return combatRoom;
+    }
 
     
 }
