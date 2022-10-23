@@ -27,17 +27,15 @@ public class DungeonManager : MonoBehaviour//tutaj bêdzie ca³y gameloop(albo w g
     List<Room> dungeonRooms;
     [SerializeField]
     int currentRoomIndex;
-    
+
     private static DungeonManager _instance;
     public static DungeonManager Instance { get { return _instance; } }
 
     private void Awake()
     {
-
         if (_instance != null && _instance != this)
         {
             Destroy(this.gameObject);
-
         }
         else
         {
@@ -46,9 +44,9 @@ public class DungeonManager : MonoBehaviour//tutaj bêdzie ca³y gameloop(albo w g
         DontDestroyOnLoad(gameObject);
         currentRoomIndex = -1;
         sceneLoader = SceneLoader.Instance;
-        //CreateDungeon(diff, additionalCombatRooms);
     }
-    public void CreateDungeon(int _diff,int _length)
+
+    public void CreateDungeon(int _diff, int _length)
     {
         DungeonCreator.Instance.SetupCreator(_diff, _length);
         DungeonCreator.Instance.CreateDungeon();
@@ -59,9 +57,6 @@ public class DungeonManager : MonoBehaviour//tutaj bêdzie ca³y gameloop(albo w g
     {
         CreateDungeon(diff, additionalCombatRooms);
     }
-    
-    
-    
 
     public void PrepareForRun()
     {
@@ -70,18 +65,17 @@ public class DungeonManager : MonoBehaviour//tutaj bêdzie ca³y gameloop(albo w g
     public void OnLoadNextRoomButton()
     {
         currentRoomIndex++;
-        if (currentRoomIndex>=dungeonRooms.Count)
+        if (currentRoomIndex >= dungeonRooms.Count)
         {
-            
+
             nextSceneButtonCanvas.gameObject.SetActive(false);
             OnWinDungeonButton();
             return;
         }
-        
         sceneLoader.LoadRoom(dungeonRooms[currentRoomIndex]);
-        if(dungeonRooms[currentRoomIndex].type != Type.ENTRANCE)
+        if (dungeonRooms[currentRoomIndex].type != Type.ENTRANCE)
             nextSceneButtonCanvas.gameObject.SetActive(false);
-        
+
     }
     public CombatRoom GetCurrentCombatRoom()
     {
@@ -102,40 +96,38 @@ public class DungeonManager : MonoBehaviour//tutaj bêdzie ca³y gameloop(albo w g
                 PlayerManager.Instance.IncrementRuns();
                 PlayerManager.Instance.AddGold(100);
             }
-                
-
         }
         else
         {
             //tutaj zrobiæ jakiœ popup ¿e niewystarczaj¹ca iloœæ kart
             Debug.Log("Niewystarczaj¹ca iloœæ kart w decku do wystartowania dungeona");
         }
-        
     }
+
     public void EnableNextSceneButton()
     {
         if (GetCurrentRoom().type == Type.COMBAT)
             anotherCombatButtonCanvas.gameObject.SetActive(true);
         nextSceneButtonCanvas.gameObject.SetActive(true);
     }
+
     public void DisableNextSceneButton()
     {
         anotherCombatButtonCanvas.gameObject.SetActive(false);
         nextSceneButtonCanvas.gameObject.SetActive(false);
-        
     }
+
     public void OnWinDungeonButton()//przy wygranej
     {
         PlayerManager.Instance.SuccesfulRun();
         EndRun();
-       
     }
+
     public void OnLeaveDungeonButton()//przy przegranej
     {
         EndRun();
-        
-
     }
+
     private void EndRun()
     {
         PlayerManager.Instance.SaveDataXML();
@@ -146,6 +138,7 @@ public class DungeonManager : MonoBehaviour//tutaj bêdzie ca³y gameloop(albo w g
         sceneLoader.HubScene();
         DeckBuilder.Instance.ResetDeckAfterRun();
     }
+
     public void AnotherCombatRoom()
     {
         if (GetCurrentRoom().type == Type.COMBAT)
@@ -155,9 +148,9 @@ public class DungeonManager : MonoBehaviour//tutaj bêdzie ca³y gameloop(albo w g
             dungeonRooms[currentRoomIndex] = cr;
             sceneLoader.LoadRoom(dungeonRooms[currentRoomIndex]);
         }
-            
+
     }
-  
+
 
 
 

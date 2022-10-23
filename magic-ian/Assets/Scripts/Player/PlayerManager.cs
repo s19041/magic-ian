@@ -13,7 +13,6 @@ public class PlayerManager : MonoBehaviour
     [SerializeField]
     PlayerData playerData;
 
-
     private static PlayerManager _instance;
     public static PlayerManager Instance { get { return _instance; } }
     private void Awake()
@@ -21,7 +20,6 @@ public class PlayerManager : MonoBehaviour
         if (_instance != null && _instance != this)
         {
             Destroy(this.gameObject);
-
         }
         else
         {
@@ -30,28 +28,33 @@ public class PlayerManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
 
         playerData = new PlayerData();
-        //playerData.NewGame();
-        
-        //SaveDataXML();
-        LoadDataXML();
+    }
+
+    public void NewGame()
+    {
+        playerData.NewGame();
+        SaveDataXML();
     }
     public bool UnlockCard(Card card)
     {
         return playerData.UnlockCard(card);
-
     }
+
     public bool UnlockSuit(Suit suit)
     {
         return playerData.UnlockSuit(suit);
     }
+
     public List<Card> GetUnlockedCards()
     {
         return playerData.GetUnlockedCards();
     }
+
     public List<Item> GetUnlockedItems()
     {
         return playerData.GetUnlockedItems();
     }
+
     public void LoadDataXML()
     {
 
@@ -74,8 +77,9 @@ public class PlayerManager : MonoBehaviour
         FileStream stream = new FileStream(Application.dataPath + "/../Saves/save.xml", FileMode.Create);
         serializer.Serialize(stream, playerData);
         stream.Close();
-        
+
     }
+
     public int GetRuns()
     {
         return playerData.runs;
@@ -93,21 +97,25 @@ public class PlayerManager : MonoBehaviour
     {
         playerData.gold -= amount;
     }
+
     public void IncrementRuns()
     {
         playerData.runs++;
     }
+
     public void SuccesfulRun()
     {
         playerData.succesfulRuns++;
     }
+
     public void UnlockItem(Item item)
     {
         playerData.UnlockItem(item);
     }
+
     public void UnlockNextUnlockables()
     {
-        DeckBuilder db=DeckBuilder.Instance;
+        DeckBuilder db = DeckBuilder.Instance;
         int succesfulRuns = playerData.succesfulRuns;
         if (succesfulRuns > 5)
         {
@@ -123,7 +131,7 @@ public class PlayerManager : MonoBehaviour
             UnlockCard(db.spades[7]);
             UnlockCard(db.spades[8]);
         }
-        else if(succesfulRuns == 1)//serca i pi, 1,10
+        else if (succesfulRuns == 1)//serca i pi, 1,10
         {
             UnlockCard(db.hearts[0]);
             UnlockCard(db.hearts[9]);
@@ -133,11 +141,11 @@ public class PlayerManager : MonoBehaviour
         }
         else if (succesfulRuns == 2)//deck kier(1-10)
         {
-            for(int i = 0; i <= 9; i++)
+            for (int i = 0; i <= 9; i++)
             {
                 UnlockCard(db.clubs[0]);
             }
-            
+
         }
         else if (succesfulRuns == 3)//item(Sleeve)
         {
@@ -155,8 +163,6 @@ public class PlayerManager : MonoBehaviour
 
             UnlockCard(db.spades[12]);
         }
-
-
     }
 
 }

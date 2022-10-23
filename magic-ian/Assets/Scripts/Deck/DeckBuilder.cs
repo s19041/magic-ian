@@ -37,6 +37,9 @@ public class DeckBuilder : MonoBehaviour// w tej klasie przechowujemy wszystkie 
         }
         deckDisplay = DeckDisplay.Instance;
         //DontDestroyOnLoad(gameObject);
+        PlayerManager.Instance.LoadDataXML();
+        if (PlayerManager.Instance.GetUnlockedCards().Count < 1)
+            PlayerManager.Instance.();
     }
 
     // Start is called before the first frame update
