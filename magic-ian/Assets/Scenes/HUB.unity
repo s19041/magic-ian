@@ -640,14 +640,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7867937196103585131, guid: 9848f5b93efadd34c8d103f75c9c5a60, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7867937196103585131, guid: 9848f5b93efadd34c8d103f75c9c5a60, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9848f5b93efadd34c8d103f75c9c5a60, type: 3}
 --- !u!114 &1252496880 stripped
@@ -900,30 +892,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 722355229841947946, guid: b79b93556c82b424985da07800e76966, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 722355229841947946, guid: b79b93556c82b424985da07800e76966, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 722355229841947946, guid: b79b93556c82b424985da07800e76966, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 722355229841947946, guid: b79b93556c82b424985da07800e76966, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 722355229841947946, guid: b79b93556c82b424985da07800e76966, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 722355229841947946, guid: b79b93556c82b424985da07800e76966, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4685485774205375289, guid: b79b93556c82b424985da07800e76966, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -1036,30 +1004,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: HubCanvas
       objectReference: {fileID: 0}
-    - target: {fileID: 6561377714919205718, guid: b79b93556c82b424985da07800e76966, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6561377714919205718, guid: b79b93556c82b424985da07800e76966, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6561377714919205718, guid: b79b93556c82b424985da07800e76966, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6561377714919205718, guid: b79b93556c82b424985da07800e76966, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6561377714919205718, guid: b79b93556c82b424985da07800e76966, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6561377714919205718, guid: b79b93556c82b424985da07800e76966, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b79b93556c82b424985da07800e76966, type: 3}
 --- !u!1001 &7054564764428220226
@@ -1069,10 +1013,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3981027501652374106, guid: ff0a83580dfcaac4e87840ddeec0bf4d, type: 3}
-      propertyPath: m_BlockingObjects
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 4252786191428275268, guid: ff0a83580dfcaac4e87840ddeec0bf4d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -1081,10 +1021,6 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 774338706}
-    - target: {fileID: 5262226726631464648, guid: ff0a83580dfcaac4e87840ddeec0bf4d, type: 3}
-      propertyPath: m_RenderMode
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6602602669132009374, guid: ff0a83580dfcaac4e87840ddeec0bf4d, type: 3}
       propertyPath: m_Camera
       value: 
@@ -1143,34 +1079,3 @@ PrefabInstance:
       objectReference: {fileID: 774338706}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ff0a83580dfcaac4e87840ddeec0bf4d, type: 3}
---- !u!1 &7054564764428220227 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8913990232462334258, guid: ff0a83580dfcaac4e87840ddeec0bf4d, type: 3}
-  m_PrefabInstance: {fileID: 7054564764428220226}
-  m_PrefabAsset: {fileID: 0}
---- !u!61 &7054564764428220228
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7054564764428220227}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
