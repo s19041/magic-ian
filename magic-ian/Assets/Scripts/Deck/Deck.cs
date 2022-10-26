@@ -162,7 +162,6 @@ public class Deck : MonoBehaviour
             FromGraveyardToDeck();
             SetTopCard();
         }
-
     }
     public List<Card> GetCards()
     {
@@ -204,14 +203,15 @@ public class Deck : MonoBehaviour
             return true;
         return false;
     }
+
     public void SaveDeckToBackup()
     {
         cardsBackup = new List<Card>();
         cardsBackup.AddRange(cards);
     }
+
     public void PrepareDeck()
     {
-        
         for (int i = 0; i < cards.Count; i++)
         {
             cards[i] = Instantiate(cards[i]);//kopiowanie scriptable object ¿eby na nich nie pracowaæ a na ich obiektach

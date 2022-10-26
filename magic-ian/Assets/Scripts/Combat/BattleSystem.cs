@@ -78,7 +78,6 @@ public class BattleSystem : MonoBehaviour// WIELKA KLASA KTÓRA £¥CZY WSZYSTKO W 
         deck.cardDisplay = combatCardDisplay;
         combatCardDisplay.updateDisplay();
 
-
         abilitySet = deck.abilitySet;
         itemPowers = deck.itemPowers;
 
@@ -90,9 +89,9 @@ public class BattleSystem : MonoBehaviour// WIELKA KLASA KTÓRA £¥CZY WSZYSTKO W 
         state = BattleState.PLAYERTURN;
         PlayerTurn();
     }
+
     void PlayerTurn()
     {
-
         dialogueText.text = "Your turn";
         currentCard = deck.GetTopCard();
         //cardDisplay.card = currentCard;
@@ -126,7 +125,6 @@ public class BattleSystem : MonoBehaviour// WIELKA KLASA KTÓRA £¥CZY WSZYSTKO W 
 
         Debug.Log("Card played");
 
-
         UpdateHuds();
         Debug.Log("Hud updated");
         bool areDead = true;
@@ -153,44 +151,44 @@ public class BattleSystem : MonoBehaviour// WIELKA KLASA KTÓRA £¥CZY WSZYSTKO W 
         }
 
     }
+
     public void OnFirstItemActivationButton()
     {
         ActivateItem(deck.item1);
-
     }
+
     public void OnSecondItemActivationButton()
     {
-
         ActivateItem(deck.item2);
-
-
     }
+
     public void ActivateItem(Item item)
     {
         if (state != BattleState.PLAYERTURN)
             return;
+
         bool noActionPointsLeft = itemPowers.ActivateItemPower(item);
         currentCard = deck.GetTopCard();
+
         if (item.itemName == ItemName.CAPE)
         {
             currentCard = itemPowers.capeCard;
             StartCoroutine(PlayerPlayCard());
         }
+
         if (noActionPointsLeft)
         {
             state = BattleState.ENEMYTURN;
             StartCoroutine(EnemyTurn());
         }
-
     }
+
     public void OnPlayCardButton()
     {
         if (state != BattleState.PLAYERTURN)
             return;
         StartCoroutine(PlayerPlayCard());
-
     }
-
 
     IEnumerator EnemyTurn()
     {
@@ -212,11 +210,7 @@ public class BattleSystem : MonoBehaviour// WIELKA KLASA KTÓRA £¥CZY WSZYSTKO W 
 
         }
 
-
-
-
         UpdateHuds();
-
 
         yield return new WaitForSeconds(1f);
 
@@ -231,6 +225,7 @@ public class BattleSystem : MonoBehaviour// WIELKA KLASA KTÓRA £¥CZY WSZYSTKO W 
             PlayerTurn();
         }
     }
+
     void EndBattle()
     {
         if (state == BattleState.WON)
@@ -271,7 +266,6 @@ public class BattleSystem : MonoBehaviour// WIELKA KLASA KTÓRA £¥CZY WSZYSTKO W 
 
             }
         }
-
     }
     private void UpdateHuds()
     {
@@ -281,14 +275,17 @@ public class BattleSystem : MonoBehaviour// WIELKA KLASA KTÓRA £¥CZY WSZYSTKO W 
             enemyHUDList[2 - i].SetStats(enemyUnitList[i].hp, enemyUnitList[i].maxHp, enemyUnitList[i].armor);
         }
     }
+
     public void ShowShuffledCardsInDeck()
     {
         DeckDisplay.Instance.ShowDeckShuffled();
     }
+
     public void ShowGraveyard()
     {
         DeckDisplay.Instance.ShowGraveyard();
     }
+
     public void LoadPlayer()
     {
         GameObject playerGO = MainCharacter.Instance.gameObject;
@@ -321,13 +318,11 @@ public class BattleSystem : MonoBehaviour// WIELKA KLASA KTÓRA £¥CZY WSZYSTKO W 
             enemyBattleStationList[2 - i].gameObject.SetActive(false);
         }
     }
+
     public void SetItemButtonsText(Item item1,Item item2)
     {
         itemButtonText1.text = item1.buttonText;
         itemButtonText2.text = item2.buttonText;
     }
-
-
-
 }
 

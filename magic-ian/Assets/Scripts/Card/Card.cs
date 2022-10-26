@@ -144,7 +144,6 @@ public class Card : ScriptableObject
 
             default:
                 break;
-
         }
     }
     public void SetHasAbility()

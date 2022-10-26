@@ -150,8 +150,4 @@ public class DungeonManager : MonoBehaviour//tutaj bêdzie ca³y gameloop(albo w g
         }
 
     }
-
-
-
-
 }

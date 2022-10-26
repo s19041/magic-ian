@@ -12,8 +12,6 @@ public class BattleHUD : MonoBehaviour
     public TextMeshProUGUI nameText;
     public TextMeshProUGUI armorText;
     
-    
-
     public void SetHud(Unit unit)
     {
         hpText.text = unit.hp.ToString()+"/"+ unit.maxHp.ToString();
