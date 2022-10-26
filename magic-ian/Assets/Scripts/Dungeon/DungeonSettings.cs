@@ -1,11 +1,12 @@
 using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class DungeonSettings : MonoBehaviour
 {
     [SerializeField]
-    private InputField difficulty;
+    private TMP_Dropdown difficulty;
 
     [SerializeField]
     private InputField additionalCombatRooms;//ta nazwa jest okropna
@@ -15,9 +16,7 @@ public class DungeonSettings : MonoBehaviour
 
     public void OnDifficultyEdit()
     {
-        if (Int32.Parse(difficulty.text) > 3)
-            difficulty.text = "3";
-        DungeonManager.Instance.diff = Int32.Parse(difficulty.text);
+        DungeonManager.Instance.diff = difficulty.value;
         generateButton.enabled = true;
     }
 

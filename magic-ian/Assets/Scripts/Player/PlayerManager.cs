@@ -1,17 +1,20 @@
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Xml.Serialization;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerManager : MonoBehaviour
 {
     [SerializeField]
-    private PlayerData playerData;
+    PlayerData playerData;
 
     private static PlayerManager _instance;
-    public static PlayerManager Instance
-    { get { return _instance; } }
-
+    public static PlayerManager Instance { get { return _instance; } }
     private void Awake()
     {
         if (_instance != null && _instance != this)
@@ -32,7 +35,6 @@ public class PlayerManager : MonoBehaviour
         playerData.NewGame();
         SaveDataXML();
     }
-
     public bool UnlockCard(Card card)
     {
         return playerData.UnlockCard(card);
@@ -55,6 +57,7 @@ public class PlayerManager : MonoBehaviour
 
     public void LoadDataXML()
     {
+
         XmlSerializer serializer = new XmlSerializer(typeof(PlayerData));
         FileStream stream = new FileStream(Application.dataPath + "/../Saves/save.xml", FileMode.Open);
 
@@ -67,7 +70,6 @@ public class PlayerManager : MonoBehaviour
         stream.Close();
         playerData.Deserialize();
     }
-
     public void SaveDataXML()
     {
         playerData.Serialize();
@@ -75,6 +77,7 @@ public class PlayerManager : MonoBehaviour
         FileStream stream = new FileStream(Application.dataPath + "/../Saves/save.xml", FileMode.Create);
         serializer.Serialize(stream, playerData);
         stream.Close();
+
     }
 
     public int GetRuns()
@@ -86,12 +89,10 @@ public class PlayerManager : MonoBehaviour
     {
         return playerData.gold;
     }
-
     public void AddGold(int amount)
     {
         playerData.gold += amount;
     }
-
     public void RemoveGold(int amount)
     {
         playerData.gold -= amount;
@@ -120,7 +121,7 @@ public class PlayerManager : MonoBehaviour
         {
             return "To_Be_Implemented";
         }
-        if (succesfulRuns == 0) //serca i pik 2,8,9
+        if (succesfulRuns == 0) //serca i pik 2,8,9 
         {
             UnlockCard(db.hearts[1]);
             UnlockCard(db.hearts[7]);
@@ -147,6 +148,7 @@ public class PlayerManager : MonoBehaviour
                 UnlockCard(db.clubs[0]);
             }
             return "Deck of Hearts";
+
         }
         else if (succesfulRuns == 3)//item(Sleeve)
         {
@@ -169,4 +171,5 @@ public class PlayerManager : MonoBehaviour
         }
         return "nothing";
     }
+
 }
