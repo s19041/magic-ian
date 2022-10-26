@@ -1,16 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ShopItem : MonoBehaviour//listenery dla usuwania golda s¹ w ItemHolder
 {
     public int price;
-    [SerializeField] string name;
-
-
-
-
-
+    [SerializeField] private string name;
 
     public string GetPrice()
     {
@@ -26,12 +19,9 @@ public class ShopItem : MonoBehaviour//listenery dla usuwania golda s¹ w ItemHol
     {
         FindObjectOfType<MainCharacter>().ArmorUp(10);
     }
+
     public void BuyStunClear()
     {
         FindObjectOfType<MainCharacter>().stunStacks = 0;
-        
     }
-
-
-
 }

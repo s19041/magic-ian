@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Unit : MonoBehaviour
@@ -18,16 +16,17 @@ public class Unit : MonoBehaviour
     public Vector3 numberPosition;
     public Animator animator;
 
-
     public int maxHp;
 
     public CombatAi combatAi;
+
     public Unit()
     {
         barrierStacks = 0;
         armor = 0;
         stunStacks = 0;
     }
+
     protected void Awake()
     {
         damagePopup = UnitUiPopupsManager.Instance.damagePopup;
@@ -42,11 +41,8 @@ public class Unit : MonoBehaviour
             numberPosition = this.transform.TransformPoint(-2, -2.7f, 0);
             damageNumber.Create(numberPosition, damage);
         }
-        
-
-        
     }
-  
+
     public bool TakeDamage(int dmg)
     {
         if (barrierStacks > 0)
@@ -61,11 +57,9 @@ public class Unit : MonoBehaviour
                     armor -= dmg;
                 else
                 {
-
                     hp -= (dmg - armor);
                     armor = 0;
                 }
-
             }
             else
             {
@@ -73,10 +67,8 @@ public class Unit : MonoBehaviour
             }
         }
 
-        if(dmg>0)
-        damagePopup.Create(this.gameObject.transform.position, dmg);
-
-
+        if (dmg > 0)
+            damagePopup.Create(this.gameObject.transform.position, dmg);
 
         if (hp <= 0)
         {
@@ -85,6 +77,7 @@ public class Unit : MonoBehaviour
         }
         return false;
     }
+
     public void Heal(int healAmount)
     {
         if (hp < maxHp)
@@ -101,30 +94,30 @@ public class Unit : MonoBehaviour
             }
         }
     }
+
     public void ArmorUp(int armorAmount)
     {
         armor += armorAmount;
-        if(armorAmount>0)
-        armorPopup.Create(this.gameObject.transform.position);
+        if (armorAmount > 0)
+            armorPopup.Create(this.gameObject.transform.position);
     }
+
     public void AddStunStacks(int stacks)
     {
         stunStacks += stacks;
     }
+
     public void DamageUp(int additionalDamage)
     {
         damage += additionalDamage;
         if (additionalDamage > 0)
         {
             damageUpPopup.Create(this.gameObject.transform.position);
-            
         }
     }
+
     public void AddBarriers(int stacks)
     {
         barrierStacks += stacks;
     }
-
-    
-
 }

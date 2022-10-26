@@ -1,35 +1,39 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class DungeonManager : MonoBehaviour//tutaj bêdzie ca³y gameloop(albo w game manager(jeœli taka klasa powstanie))
 {
+    [SerializeField]
+    private GameObject playerPrefab;
 
     [SerializeField]
-    GameObject playerPrefab;
-    [SerializeField]
-    Transform playerBattleStation;
+    private Transform playerBattleStation;
 
     public int diff;
     public int additionalCombatRooms;
 
     [SerializeField]
-    Button nextSceneButtonCanvas;
+    private Button nextSceneButtonCanvas;
+
     [SerializeField]
-    Button anotherCombatButtonCanvas;
+    private Button anotherCombatButtonCanvas;
+
     [SerializeField]
-    Canvas leaveDungeonButtonCanvas;
+    private Canvas leaveDungeonButtonCanvas;
 
     private SceneLoader sceneLoader;
+
     [SerializeField]
-    List<Room> dungeonRooms;
+    private List<Room> dungeonRooms;
+
     [SerializeField]
-    int currentRoomIndex;
+    private int currentRoomIndex;
 
     private static DungeonManager _instance;
-    public static DungeonManager Instance { get { return _instance; } }
+
+    public static DungeonManager Instance
+    { get { return _instance; } }
 
     private void Awake()
     {
@@ -62,12 +66,12 @@ public class DungeonManager : MonoBehaviour//tutaj bêdzie ca³y gameloop(albo w g
     {
         GameObject playerGO = Instantiate(playerPrefab, playerBattleStation);
     }
+
     public void OnLoadNextRoomButton()
     {
         currentRoomIndex++;
         if (currentRoomIndex >= dungeonRooms.Count)
         {
-
             nextSceneButtonCanvas.gameObject.SetActive(false);
             OnWinDungeonButton();
             return;
@@ -75,16 +79,18 @@ public class DungeonManager : MonoBehaviour//tutaj bêdzie ca³y gameloop(albo w g
         sceneLoader.LoadRoom(dungeonRooms[currentRoomIndex]);
         if (dungeonRooms[currentRoomIndex].type != Type.ENTRANCE)
             nextSceneButtonCanvas.gameObject.SetActive(false);
-
     }
+
     public CombatRoom GetCurrentCombatRoom()
     {
         return (CombatRoom)dungeonRooms[currentRoomIndex];
     }
+
     public Room GetCurrentRoom()
     {
         return dungeonRooms[currentRoomIndex];
     }
+
     public void StartDungeon()
     {
         if (Deck.Instance.GetCards().Count == 12)
@@ -148,6 +154,5 @@ public class DungeonManager : MonoBehaviour//tutaj bêdzie ca³y gameloop(albo w g
             dungeonRooms[currentRoomIndex] = cr;
             sceneLoader.LoadRoom(dungeonRooms[currentRoomIndex]);
         }
-
     }
 }

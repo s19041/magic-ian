@@ -1,11 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ShowUI : MonoBehaviour
 {
-    [SerializeField] GameObject UI;
-    [SerializeField] GameObject itemUI;
+    [SerializeField] private GameObject UI;
+    [SerializeField] private GameObject itemUI;
+
     public void TurnOnUI()
     {
         UI.SetActive(true);
@@ -18,6 +17,5 @@ public class ShowUI : MonoBehaviour
         UI.SetActive(false);
         itemUI.SetActive(false);
         DungeonManager.Instance.EnableNextSceneButton();
-
     }
 }

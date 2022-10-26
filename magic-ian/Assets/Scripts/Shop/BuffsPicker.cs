@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -7,14 +6,15 @@ public class BuffsPicker : MonoBehaviour
 {
     public List<GameObject> recoveryItemSpots;//3 górne
     public List<GameObject> buffItemSpots;//3 dolne
-    
+
     public List<Sprite> buffSprites;
-    
+
     public ShopBuffs shopBuffs;
+
     private void Start()
     {
         //shopBuffs = new ShopBuffs();
-        foreach(GameObject go in recoveryItemSpots)
+        foreach (GameObject go in recoveryItemSpots)
         {
             go.GetComponent<ItemHolder>().Setup();
         }
@@ -23,15 +23,15 @@ public class BuffsPicker : MonoBehaviour
 
     public void PickBuffs()
     {
-        int index=Random.Range(0, buffSprites.Count);
+        int index = Random.Range(0, buffSprites.Count);
         AssignButton(index, buffItemSpots[0]);
         index = Random.Range(0, buffSprites.Count);
         AssignButton(index, buffItemSpots[1]);
         index = Random.Range(0, buffSprites.Count);
         AssignButton(index, buffItemSpots[2]);
-
     }
-    public void AssignButton(int index,GameObject go)
+
+    public void AssignButton(int index, GameObject go)
     {
         go.GetComponent<ItemHolder>().item.GetComponent<Image>().sprite = buffSprites[index];
         go.GetComponent<ItemHolder>().item.price = 100;
@@ -40,12 +40,10 @@ public class BuffsPicker : MonoBehaviour
         if (index == 0)
         {
             button.onClick.AddListener(() => shopBuffs.BuffAllCardDmg(1));
-           
         }
         if (index == 1)
         {
             button.onClick.AddListener(() => shopBuffs.BuffAllSuitPower(Suit.HEARTS));
-            
         }
         if (index == 2)
         {
@@ -74,8 +72,6 @@ public class BuffsPicker : MonoBehaviour
         if (index == 8)
         {
             button.onClick.AddListener(() => shopBuffs.BuffJokers(1));
-            
-            
         }
     }
 }

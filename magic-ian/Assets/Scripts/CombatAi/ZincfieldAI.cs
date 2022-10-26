@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -6,7 +5,7 @@ using UnityEngine;
 public class ZincfieldAI : CombatAi
 {
     public Animator animator;
-    Card card;
+    private Card card;
 
     public void Start()
     {
@@ -51,16 +50,12 @@ public class ZincfieldAI : CombatAi
             dialogueText.text = thisUnit.unitName + " :Now i will vanish you!";//double attack
             animator.SetTrigger("Attacking");
             return (thisUnit.damage);
-
-
         }
         if (turn % 5 == 0)
         {
             dialogueText.text = thisUnit.unitName + " starts levitating!";//double attack
             thisUnit.Heal(5);
             thisUnit.ArmorUp(5);
-
-
         }
         return 0;
     }

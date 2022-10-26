@@ -1,11 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class ShopBuffs :MonoBehaviour
+public class ShopBuffs : MonoBehaviour
 {
-    Deck deck;
-
+    private Deck deck;
 
     public void Awake()
     {
@@ -23,6 +20,7 @@ public class ShopBuffs :MonoBehaviour
         }
         deck.SaveDeckToBackup();
     }
+
     public void BuffAllSuitPower(Suit suit)//wzmocnienie koloru kart (1-10)
     {
         foreach (Card card in deck.GetCards())
@@ -53,31 +51,32 @@ public class ShopBuffs :MonoBehaviour
 
                 default:
                     break;
-
             }
         }
         deck.SaveDeckToBackup();
     }
+
     public void BuffKings(int amount)
     {
-        deck.abilitySet.kingCards+=amount;//zwiêkszenie iloœci kart na jakie dzia³a król
+        deck.abilitySet.kingCards += amount;//zwiêkszenie iloœci kart na jakie dzia³a król
         deck.SaveDeckToBackup();
     }
+
     public void QueensGivesBarrier()//zagranie królowej daje bariere
     {
         deck.abilitySet.barierQueen = true;
         deck.SaveDeckToBackup();
     }
+
     public void BuffJacks(int amount)
     {
         deck.abilitySet.jackCards += amount;//zwiêkszenie iloœci kart na jakie dzia³a walet
         deck.SaveDeckToBackup();
     }
+
     public void BuffJokers(int amount)
     {
         deck.abilitySet.jokerCards += amount;//zwiêkszenie iloœci kart na jakie dzia³a joker
         deck.SaveDeckToBackup();
     }
-
-
 }

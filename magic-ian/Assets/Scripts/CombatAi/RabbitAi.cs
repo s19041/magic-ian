@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -35,11 +34,7 @@ public class RabbitAi : CombatAi
             dialogueText.text = thisUnit.unitName + " attacks with ferocity";//double attack
             animator.SetTrigger("Attacking");
             return (thisUnit.damage * 2);
-            
-
         }
         return 0;
     }
-
-
 }

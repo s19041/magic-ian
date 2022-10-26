@@ -1,8 +1,6 @@
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
-public abstract class AbstractAbilitySet 
+public abstract class AbstractAbilitySet
 {
     protected Deck deck;
     protected DeckBuilder deckbuilder;
@@ -11,6 +9,7 @@ public abstract class AbstractAbilitySet
     public int jokerCards;
     public bool barierQueen;
     public int jackCards;
+
     public AbstractAbilitySet()
     {
         deck = Deck.Instance;
@@ -19,12 +18,11 @@ public abstract class AbstractAbilitySet
         kingCards = 2;//iloœæ kart na jakie dzia³a król
         kingCards = 1;//iloœæ kart na jakie dzia³a joker
         jackCards = 3;//iloœæ kart jakie pokazuje walet
-        barierQueen =false;//czy królowa daje bariere
+        barierQueen = false;//czy królowa daje bariere
     }
 
     public bool PlayAbility(Card card)
     {
-
         if (!card.hasAbility)
             return false;
         switch (card.rank)
@@ -43,13 +41,14 @@ public abstract class AbstractAbilitySet
 
             default:
                 return false;
-
         }
     }
 
     public abstract bool KingAbility(Card card);
-    public abstract bool QueenAbility(Card card);
-    public abstract bool JackAbility(Card card);
-    public abstract bool JokerAbility(Card card);
 
+    public abstract bool QueenAbility(Card card);
+
+    public abstract bool JackAbility(Card card);
+
+    public abstract bool JokerAbility(Card card);
 }

@@ -1,79 +1,85 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class DungeonCreator :MonoBehaviour
+public class DungeonCreator : MonoBehaviour
 {
-
     private int diff;//myœlê ¿e wstêpinie 0,1,2,3
     private int length;//chyba bez limitu
     public static DungeonCreator Instance;
-    Room[] dungeonRooms;
+    private Room[] dungeonRooms;
+
     //normal
-    [SerializeField] GameObject pigeonPrefab;
-    [SerializeField] GameObject rabbitPrefab;
-    [SerializeField] GameObject princePrefab;
+    [SerializeField] private GameObject pigeonPrefab;
+
+    [SerializeField] private GameObject rabbitPrefab;
+    [SerializeField] private GameObject princePrefab;
+
     //elite
-    [SerializeField] GameObject activistPrefab;
-    [SerializeField] GameObject knowerPrefab;
-    [SerializeField] GameObject assistantPrefab;
+    [SerializeField] private GameObject activistPrefab;
+
+    [SerializeField] private GameObject knowerPrefab;
+    [SerializeField] private GameObject assistantPrefab;
+
     //bosses
-    [SerializeField] GameObject leruaPrefab;
-    [SerializeField] GameObject groubiniPrefab;
+    [SerializeField] private GameObject leruaPrefab;
+
+    [SerializeField] private GameObject groubiniPrefab;
+
     //[SerializeField] GameObject evilMagicianPrefab;
     private double secretRoomChance;
+
     private double treasureRoomChance;
 
     //dungeon creation variables
-
-
 
     public void Awake()
     {
         Instance = this;
     }
+
     public void SetupCreator(int _diff, int _length)
     {
         diff = _diff;
         length = _length;
-        dungeonRooms = new Room[7 + length*2];
+        dungeonRooms = new Room[7 + length * 2];
         SetDungeonBalance();
     }
+
     public Room[] GetDungeon()
     {
         return dungeonRooms;
     }
+
     private void SetDungeonBalance()
     {
         secretRoomChance = 0.95;
         treasureRoomChance = 0.5;
     }
+
     private void AdjustOpponentsDifficulty(List<GameObject> opponents)
     {
-        foreach(GameObject opponentObject in opponents)
+        foreach (GameObject opponentObject in opponents)
         {
             if (diff > 0)
                 opponentObject.GetComponent<Unit>().maxHp += (int)(opponentObject.GetComponent<Unit>().maxHp / 5);
-            if(diff>1)
+            if (diff > 1)
                 opponentObject.GetComponent<Unit>().damage += (int)(opponentObject.GetComponent<Unit>().damage / 4);
             if (diff > 2)
                 opponentObject.GetComponent<Unit>().armor += 10;
         }
-        
     }
 
     public void CreateDungeon()
     {
         bool eliteRoom = false;
         dungeonRooms[0] = ScriptableObject.CreateInstance<EntranceRoom>();
-        for (int i = 1; i <= dungeonRooms.Length-2; i++)
+        for (int i = 1; i <= dungeonRooms.Length - 2; i++)
         {
-            if (i % 2 == 1&&i!=dungeonRooms.Length-1)
+            if (i % 2 == 1 && i != dungeonRooms.Length - 1)
             {
                 dungeonRooms[i] = CombatRoomCreator();
-                if(i % 3 == 0 && !eliteRoom)
+                if (i % 3 == 0 && !eliteRoom)
                 {
                     dungeonRooms[i] = EliteCombatRoomCreator();
                     eliteRoom = true;
@@ -91,7 +97,7 @@ public class DungeonCreator :MonoBehaviour
     private CombatRoom CombatRoomCreator()//napisaæ tu jak¹œ fajn¹ proceduralke
     {
         CombatRoom combatRoom = ScriptableObject.CreateInstance<CombatRoom>();
-        
+
         int roomDifficulty;
         roomDifficulty = 1;
         /*
@@ -107,16 +113,13 @@ public class DungeonCreator :MonoBehaviour
         }
         */
         OpponentPicker(roomDifficulty, combatRoom);
-          
-        
+
         combatRoom.goldReward = 75;
         return combatRoom;
     }
+
     private void OpponentPicker(int roomDifficulty, CombatRoom _combatRoom)
     {
-
-
-
         //myslê ze tutaj trzeba jakieœ ustawienia przeciwników zrobiæ (w sensie rozne walki)
         //np 3 go³êbie
         //albo 2 króliki czy cos
@@ -124,8 +127,8 @@ public class DungeonCreator :MonoBehaviour
         //np. tak
         List<GameObject> opponentLayout = new List<GameObject>();
         double d = Random.value;
-        
-        if (d <0.25)
+
+        if (d < 0.25)
         {
             opponentLayout.Add(rabbitPrefab);
             _combatRoom.encounterName = "The Killer Rabbit";
@@ -141,7 +144,7 @@ public class DungeonCreator :MonoBehaviour
             opponentLayout.Add(princePrefab);
             _combatRoom.encounterName = "The Frog Prince";
         }
-        else 
+        else
         {
             opponentLayout.Add(pigeonPrefab);
             opponentLayout.Add(pigeonPrefab);
@@ -149,19 +152,14 @@ public class DungeonCreator :MonoBehaviour
             _combatRoom.encounterName = "Angry pigeons";
         }
 
-      
-
         AdjustOpponentsDifficulty(opponentLayout);
 
-
-        
         foreach (GameObject opponent in opponentLayout)
         {
             _combatRoom.AddOponent(opponent);
         }
-
-
     }
+
     private CombatRoom EliteCombatRoomCreator()//napisaæ tu jak¹œ fajn¹ proceduralke
     {
         CombatRoom combatRoom = ScriptableObject.CreateInstance<CombatRoom>();
@@ -182,15 +180,12 @@ public class DungeonCreator :MonoBehaviour
         */
         EliteOpponentPicker(roomDifficulty, combatRoom);
 
-
         combatRoom.goldReward = 125;
         return combatRoom;
     }
+
     private void EliteOpponentPicker(int roomDifficulty, CombatRoom _combatRoom)
     {
-
-
-
         //myslê ze tutaj trzeba jakieœ ustawienia przeciwników zrobiæ (w sensie rozne walki)
         //np 3 go³êbie
         //albo 2 króliki czy cos
@@ -198,7 +193,7 @@ public class DungeonCreator :MonoBehaviour
         //np. tak
         List<GameObject> opponentLayout = new List<GameObject>();
         double d = Random.value;
-        if (d >0.99)
+        if (d > 0.99)
         {
             opponentLayout.Add(assistantPrefab);
             opponentLayout.Add(pigeonPrefab);
@@ -211,7 +206,7 @@ public class DungeonCreator :MonoBehaviour
 
             _combatRoom.encounterName = "The unpaid one";
         }
-        else if(d > 0.3)
+        else if (d > 0.3)
         {
             opponentLayout.Add(rabbitPrefab);
             opponentLayout.Add(pigeonPrefab);
@@ -225,38 +220,29 @@ public class DungeonCreator :MonoBehaviour
 
             _combatRoom.encounterName = "The know it all";
         }
-    
-
-
 
         AdjustOpponentsDifficulty(opponentLayout);
-
-
 
         foreach (GameObject opponent in opponentLayout)
         {
             _combatRoom.AddOponent(opponent);
         }
-
-
     }
+
     private Room NeutralRoomCreator()//napisaæ tu jak¹œ fajn¹ proceduralke
     {
         Room room = TraderRoomCreator();
-        
-        
-        
+
         double d = Random.value;
-        if (d > 1-treasureRoomChance+secretRoomChance)
+        if (d > 1 - treasureRoomChance + secretRoomChance)
         {
             room = TreasureRoomCreator();
-            if (d > 1-secretRoomChance)
+            if (d > 1 - secretRoomChance)
                 room = SecretRoomCreator();
         }
         return room;
-
-        
     }
+
     private BossRoom BossRoomCreator()
     {
         BossRoom bossRoom = ScriptableObject.CreateInstance<BossRoom>();
@@ -271,23 +257,26 @@ public class DungeonCreator :MonoBehaviour
             bossRoom.AddOponent(groubiniPrefab);
             bossRoom.encounterName = "Larry Groubini";
         }
-        
+
         return bossRoom;
     }
-   
+
     private TraderRoom TraderRoomCreator()
     {
         return ScriptableObject.CreateInstance<TraderRoom>();
     }
+
     private SecretRoom SecretRoomCreator()
     {
         return ScriptableObject.CreateInstance<SecretRoom>();
     }
+
     private TreasureRoom TreasureRoomCreator()
     {
         TreasureRoom treasureRoom = ScriptableObject.CreateInstance<TreasureRoom>();
         return treasureRoom;
     }
+
     public CombatRoom CreateAnotherFightRoom()
     {
         double d = Random.value;
@@ -302,6 +291,4 @@ public class DungeonCreator :MonoBehaviour
         }
         return combatRoom;
     }
-
-    
 }

@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -22,14 +21,14 @@ public class DeckBuilder : MonoBehaviour// w tej klasie przechowujemy wszystkie 
 
     public List<Item> items;
 
-    public static DeckBuilder Instance { get { return _instance; } }
+    public static DeckBuilder Instance
+    { get { return _instance; } }
+
     private void Awake()
     {
-
         if (_instance != null && _instance != this)
         {
             Destroy(this.gameObject);
-
         }
         else
         {
@@ -43,9 +42,8 @@ public class DeckBuilder : MonoBehaviour// w tej klasie przechowujemy wszystkie 
     }
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {//ta metoda wymaga przerobienia bo to placeholder do sprawdzania czy dzia³a
-
         colors = new List<List<Card>>();
         colors.Add(hearts);
         colors.Add(spades);
@@ -59,42 +57,30 @@ public class DeckBuilder : MonoBehaviour// w tej klasie przechowujemy wszystkie 
         //deck.addCard(avalibleCards[0]);
         //deck.addCard(avalibleCards[1]);
         //deck.addCard(avalibleCards[2]);
-
-
-
-
-
     }
 
     public bool addCardToDeck(Card card)
     {
-        
-        if (deck.GetCards().Count < 12 
-            && deck.HasSuit(card.suit) 
-            &&!deck.CardInDeck(card))//tutaj trzeba zmienic chyba
+        if (deck.GetCards().Count < 12
+            && deck.HasSuit(card.suit)
+            && !deck.CardInDeck(card))//tutaj trzeba zmienic chyba
         {
             deck.AddCard(card);
             return true;
         }
         return false;
-
     }
 
     public void addCardsFromJack()
     {
         deck.AddCardsFromJack(jackList);
         jackList.Clear();
-
     }
+
     public void ResetDeckAfterRun()
     {
         Deck.Instance.GetCards().Clear();
         Deck.Instance.GetCards().AddRange(savedDeckCards);
         Deck.Instance.PrepareDeck();
     }
-
-
-
-
-
 }

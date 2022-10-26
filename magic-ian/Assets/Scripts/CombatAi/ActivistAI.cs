@@ -1,11 +1,8 @@
-using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using UnityEngine;
 
 public class ActivistAI : CombatAi
 {
-
     public override int doSomething(Unit playerUnit, List<Unit> opponentUnits, int turn, int indexPosition, int unitHp, TextMeshProUGUI dialogueText)
     {
         turn += indexPosition;//pierwszy oponent ma pierwsz¹ turê, drugi ma drug¹ turê itd...
@@ -25,7 +22,7 @@ public class ActivistAI : CombatAi
         if (turn % 4 == 1)
         {
             dialogueText.text = thisUnit.unitName + " : Go get him";
-            for(int i=0; i < opponentUnits.Count; i++)
+            for (int i = 0; i < opponentUnits.Count; i++)
             {
                 if (i != indexPosition)
                 {
@@ -51,6 +48,4 @@ public class ActivistAI : CombatAi
         }
         return 0;
     }
-
-
 }

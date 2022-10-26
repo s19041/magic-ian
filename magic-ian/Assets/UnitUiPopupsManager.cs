@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class UnitUiPopupsManager : MonoBehaviour
@@ -12,13 +10,14 @@ public class UnitUiPopupsManager : MonoBehaviour
     // Start is called before the first frame update
 
     private static UnitUiPopupsManager _instance;
-    public static UnitUiPopupsManager Instance { get { return _instance; } }
-    void Awake()
+    public static UnitUiPopupsManager Instance
+    { get { return _instance; } }
+
+    private void Awake()
     {
         if (_instance != null && _instance != this)
         {
             Destroy(this.gameObject);
-
         }
         else
         {
@@ -26,6 +25,4 @@ public class UnitUiPopupsManager : MonoBehaviour
         }
         DontDestroyOnLoad(gameObject);
     }
-
-
 }

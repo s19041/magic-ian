@@ -1,11 +1,8 @@
-using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using UnityEngine;
 
 public class KnowerAi : CombatAi
 {
-
     public override int doSomething(Unit playerUnit, List<Unit> opponentUnits, int turn, int indexPosition, int unitHp, TextMeshProUGUI dialogueText)
     {
         turn += indexPosition;//pierwszy oponent ma pierwsz¹ turê, drugi ma drug¹ turê itd...
@@ -14,7 +11,6 @@ public class KnowerAi : CombatAi
             dialogueText.text = thisUnit.unitName + " : I know how you did that!";
             thisUnit.ArmorUp(8);
             thisUnit.DamageUp(4);
-            
         }
         if (turn % 3 == 1)
         {
@@ -31,9 +27,7 @@ public class KnowerAi : CombatAi
             dialogueText.text = thisUnit.unitName + " rants about how magic is for children";
             playerUnit.AddStunStacks(8);
         }
-       
+
         return 0;
     }
-
-
 }

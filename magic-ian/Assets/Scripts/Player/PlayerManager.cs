@@ -1,20 +1,17 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.IO;
-using System.Runtime.Serialization;
-using System.Runtime.Serialization.Formatters.Binary;
 using System.Xml.Serialization;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class PlayerManager : MonoBehaviour
 {
     [SerializeField]
-    PlayerData playerData;
+    private PlayerData playerData;
 
     private static PlayerManager _instance;
-    public static PlayerManager Instance { get { return _instance; } }
+    public static PlayerManager Instance
+    { get { return _instance; } }
+
     private void Awake()
     {
         if (_instance != null && _instance != this)
@@ -35,6 +32,7 @@ public class PlayerManager : MonoBehaviour
         playerData.NewGame();
         SaveDataXML();
     }
+
     public bool UnlockCard(Card card)
     {
         return playerData.UnlockCard(card);
@@ -57,7 +55,6 @@ public class PlayerManager : MonoBehaviour
 
     public void LoadDataXML()
     {
-
         XmlSerializer serializer = new XmlSerializer(typeof(PlayerData));
         FileStream stream = new FileStream(Application.dataPath + "/../Saves/save.xml", FileMode.Open);
 
@@ -70,6 +67,7 @@ public class PlayerManager : MonoBehaviour
         stream.Close();
         playerData.Deserialize();
     }
+
     public void SaveDataXML()
     {
         playerData.Serialize();
@@ -77,7 +75,6 @@ public class PlayerManager : MonoBehaviour
         FileStream stream = new FileStream(Application.dataPath + "/../Saves/save.xml", FileMode.Create);
         serializer.Serialize(stream, playerData);
         stream.Close();
-
     }
 
     public int GetRuns()
@@ -89,10 +86,12 @@ public class PlayerManager : MonoBehaviour
     {
         return playerData.gold;
     }
+
     public void AddGold(int amount)
     {
         playerData.gold += amount;
     }
+
     public void RemoveGold(int amount)
     {
         playerData.gold -= amount;
@@ -113,15 +112,15 @@ public class PlayerManager : MonoBehaviour
         playerData.UnlockItem(item);
     }
 
-    public void UnlockNextUnlockables()
+    public string UnlockNextUnlockables()
     {
         DeckBuilder db = DeckBuilder.Instance;
         int succesfulRuns = playerData.succesfulRuns;
         if (succesfulRuns > 5)
         {
-            return;
+            return "To_Be_Implemented";
         }
-        if (succesfulRuns == 0) //serca i pik 2,8,9 
+        if (succesfulRuns == 0) //serca i pik 2,8,9
         {
             UnlockCard(db.hearts[1]);
             UnlockCard(db.hearts[7]);
@@ -130,14 +129,16 @@ public class PlayerManager : MonoBehaviour
             UnlockCard(db.spades[1]);
             UnlockCard(db.spades[7]);
             UnlockCard(db.spades[8]);
+            return "1,7,8 of Hearts and Spades";
         }
-        else if (succesfulRuns == 1)//serca i pi, 1,10
+        else if (succesfulRuns == 1)//serca i pik, 1,10
         {
             UnlockCard(db.hearts[0]);
             UnlockCard(db.hearts[9]);
 
             UnlockCard(db.spades[0]);
             UnlockCard(db.spades[9]);
+            return "0,9 Hearts and Spades";
         }
         else if (succesfulRuns == 2)//deck kier(1-10)
         {
@@ -145,24 +146,27 @@ public class PlayerManager : MonoBehaviour
             {
                 UnlockCard(db.clubs[0]);
             }
-
+            return "Deck of Hearts";
         }
         else if (succesfulRuns == 3)//item(Sleeve)
         {
             playerData.UnlockItem(db.items[1]);
+            return "Magical Sleeve";
         }
         else if (succesfulRuns == 4)//dama serce i pik
         {
             UnlockCard(db.hearts[11]);
 
             UnlockCard(db.spades[11]);
+            return "Queen of Hearts and Queen of Spades";
         }
         else if (succesfulRuns == 5)//walet serce i pik
         {
             UnlockCard(db.hearts[12]);
 
             UnlockCard(db.spades[12]);
+            return "Jack of Hearts and Jack of Spades";
         }
+        return "nothing";
     }
-
 }

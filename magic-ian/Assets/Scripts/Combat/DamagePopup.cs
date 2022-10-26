@@ -1,7 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using TMPro;
+using UnityEngine;
 
 public class DamagePopup : MonoBehaviour
 {
@@ -9,29 +7,25 @@ public class DamagePopup : MonoBehaviour
     private float dissapearTimer;
     private Color textColor;
     [SerializeField] private Transform pfdamagePopup;
-    
 
-    public  DamagePopup Create(Vector3 position, int damageAmount)
+    public DamagePopup Create(Vector3 position, int damageAmount)
     {
         Transform damagePopupTransform = Instantiate(pfdamagePopup, position, Quaternion.identity);
         DamagePopup damagePopup = damagePopupTransform.GetComponent<DamagePopup>();
         damagePopup.Setup(damageAmount);
 
         return damagePopup;
-
     }
 
     private void Awake()
     {
         popupText = transform.GetComponent<TextMeshPro>();
-       
     }
 
     public void Setup(int damageAmount)
     {
         popupText.SetText(damageAmount.ToString());
         textColor = popupText.color;
-
     }
 
     private void Update()
@@ -40,7 +34,7 @@ public class DamagePopup : MonoBehaviour
         transform.position += new Vector3(0, moveYSpeed) * Time.deltaTime;
 
         dissapearTimer -= Time.deltaTime;
-        if(dissapearTimer < 0)
+        if (dissapearTimer < 0)
         {
             float dissapearSpeed = 0.5f;
             textColor.a -= dissapearSpeed * Time.deltaTime;
@@ -49,9 +43,6 @@ public class DamagePopup : MonoBehaviour
             {
                 Destroy(gameObject);
             }
-
         }
-
-        
     }
 }

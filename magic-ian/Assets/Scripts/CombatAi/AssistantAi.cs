@@ -1,11 +1,8 @@
-using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using UnityEngine;
 
 public class AssistantAi : CombatAi
 {
-
     public override int doSomething(Unit playerUnit, List<Unit> opponentUnits, int turn, int indexPosition, int unitHp, TextMeshProUGUI dialogueText)
     {
         turn += indexPosition;//pierwszy oponent ma pierwsz¹ turê, drugi ma drug¹ turê itd...
@@ -28,17 +25,12 @@ public class AssistantAi : CombatAi
         if (turn % 5 == 4)
         {
             dialogueText.text = thisUnit.unitName + " has a mental breakdown";
-
         }
         if (turn % 5 == 0)
         {
             dialogueText.text = thisUnit.unitName + " talks to herself";//double attack
             thisUnit.ArmorUp(7);
-            
-
         }
         return 0;
     }
-
-
 }

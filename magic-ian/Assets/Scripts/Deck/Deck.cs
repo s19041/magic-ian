@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -7,17 +6,19 @@ using UnityEngine;
 public class Deck : MonoBehaviour
 {
     [SerializeField]
-    List<Card> cards;
+    private List<Card> cards;
+
     [SerializeField]
-    Suit[] deckSuits;
+    private Suit[] deckSuits;
+
     [SerializeField]
-    List<Card> graveyard;
-    List<Card> cardsBackup;
+    private List<Card> graveyard;
+
+    private List<Card> cardsBackup;
 
     public Card topCard;
     public AbstractAbilitySet abilitySet;
     public ItemPowers itemPowers;
-
 
     public Card lastCard;
 
@@ -27,17 +28,16 @@ public class Deck : MonoBehaviour
 
     public CardDisplay cardDisplay;
 
-
     private static Deck _instance;
 
-    public static Deck Instance { get { return _instance; } }
+    public static Deck Instance
+    { get { return _instance; } }
+
     private void Awake()
     {
-
         if (_instance != null && _instance != this)
         {
             Destroy(this.gameObject);
-
         }
         else
         {
@@ -51,14 +51,13 @@ public class Deck : MonoBehaviour
         deckSuits[1] = Suit.EMPTY;
         abilitySet = new AbilitySet1();
         itemPowers = new ItemPowers();
-
     }
 
     private void Start()
     {
-
         PrepareDeck();
     }
+
     public void SetDeckForCombat(CardDisplay cd)
     {
         lastCard = null;
@@ -73,7 +72,7 @@ public class Deck : MonoBehaviour
     {
         if (card.suit != Suit.SPECIAL)
         {
-            if(deckSuits[0]!=card.suit && deckSuits[1] != card.suit)//sprawdzanie czy ju¿ jest taki
+            if (deckSuits[0] != card.suit && deckSuits[1] != card.suit)//sprawdzanie czy ju¿ jest taki
             {
                 if (deckSuits[0] == Suit.EMPTY)
                 {
@@ -85,9 +84,10 @@ public class Deck : MonoBehaviour
                         deckSuits[1] = card.suit;
                 }
             }
-        }        
+        }
         cards.Add(card);
     }
+
     public bool RemoveCard(Card card)//to istnieje dla walidacji czy powinny zmienic sie kolory decku
     {
         Card c = cards.Find(x => x.suit == card.suit && x.rank == card.rank);
@@ -102,23 +102,23 @@ public class Deck : MonoBehaviour
                 if (deckSuits[1] == card.suit)
                     deckSuits[1] = Suit.EMPTY;
             }
-            
         }
-        
+
         return tmp;
     }
+
     public bool SetTopCard()
     {
         if (cards.Count > 0)
         {
             topCard = cards[0];
             cardDisplay.card = topCard;
-            cardDisplay.updateDisplay();// nie jestem pewien czy display powinien tutaj byæ ale chyba lepiej tutaj niz w battle system(nawet na pewno lepiej)
+            cardDisplay.UpdateDisplay();// nie jestem pewien czy display powinien tutaj byæ ale chyba lepiej tutaj niz w battle system(nawet na pewno lepiej)
             return false;
         }
         return true;
-
     }
+
     public void Shuffle()
     {
         var shuffledcards = cards.OrderBy(a => Guid.NewGuid()).ToList();
@@ -132,11 +132,12 @@ public class Deck : MonoBehaviour
         graveyard = new List<Card>();//z tego bêdzie animacja powrotu z graveyard do decku
         Shuffle();
     }
+
     public Card GetTopCard()
     {
         return topCard;
-
     }
+
     public void CardPlayed()
     {
         cards.Remove(topCard);
@@ -149,13 +150,12 @@ public class Deck : MonoBehaviour
             FromGraveyardToDeck();
             SetTopCard();
         }
-
     }
 
     public void ThrowOutTopCard()
     {
         cards.Remove(topCard);
-        
+
         var isEmpty = SetTopCard();
         if (isEmpty)
         {
@@ -163,13 +163,14 @@ public class Deck : MonoBehaviour
             SetTopCard();
         }
     }
+
     public List<Card> GetCards()
     {
         return cards;
     }
+
     public bool CardInDeck(Card card)
     {
-
         return cards.Exists(x => x.rank == card.rank && x.suit == card.suit);
     }
 
@@ -177,6 +178,7 @@ public class Deck : MonoBehaviour
     {
         return graveyard;
     }
+
     public void AddCardsFromJack(List<Card> jackList)
     {
         for (int i = 0; i < jackList.Count; i++)
@@ -184,14 +186,16 @@ public class Deck : MonoBehaviour
             cards[i] = jackList[i];
         }
     }
+
     public void Reset()
     {
         cards = cardsBackup;
     }
-    public void ChangeCardAt(int index,Card _card)
+
+    public void ChangeCardAt(int index, Card _card)
     {
         cards[index] = _card;
-        if(index==0)
+        if (index == 0)
             SetTopCard();
     }
 
@@ -218,5 +222,4 @@ public class Deck : MonoBehaviour
             cards[i].SetCard();
         }
     }
-    
 }

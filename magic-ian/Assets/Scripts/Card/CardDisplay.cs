@@ -1,32 +1,31 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+
 public class CardDisplay : MonoBehaviour
 {
-
     public Card card;
 
-    [SerializeField] Image artworkImage;
+    [SerializeField] private Image artworkImage;
 
-    [SerializeField] Text descriptionText;
+    [SerializeField] private Text descriptionText;
 
     public bool inDeck;
     public bool inDeckColor;//zmienna robi¹ca to ¿e tylko podczas pokazywania deckBuilder karty w decku s¹ zielone
-    DeckBuilder db;
-    void Start()
+    private DeckBuilder db;
+
+    private void Start()
     {
-         db = DeckBuilder.Instance;
+        db = DeckBuilder.Instance;
         inDeck = db.deck.CardInDeck(card);
         if (inDeck && inDeckColor)
         {
             gameObject.GetComponent<Image>().color = new Color32(87, 183, 78, 255);
         }
 
-        //updateDisplay();
+        //UpdateDisplay();
     }
 
-    public void updateDisplay()
+    public void UpdateDisplay()
     {
         artworkImage.sprite = card.artwork;
 
@@ -46,18 +45,16 @@ public class CardDisplay : MonoBehaviour
         }
         else
         {
-
             //var db = FindObjectOfType<DeckBuilder>();
-            if (inDeckColor)//tutaj by³o db.addCardToDeck(card) && building 
+            if (inDeckColor)//tutaj by³o db.addCardToDeck(card) && building
             {
                 db.deck.RemoveCard(card);
                 gameObject.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
             }
             inDeck = false;
         }
-
-
     }
+
     public void addToDeckOnClickJack()
     {
         //var db = DeckBuilder.Instance;
@@ -66,11 +63,9 @@ public class CardDisplay : MonoBehaviour
             db.jackList.Add(card);
             gameObject.GetComponent<Image>().color = new Color32(87, 183, 78, 255);
             inDeck = false;
-
         }
         else
         {
-
             db.jackList.Remove(card);
             gameObject.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
 
@@ -83,17 +78,11 @@ public class CardDisplay : MonoBehaviour
             Time.timeScale = 1;
             db.deck.SetTopCard();
         }
-
-
     }
+
     public void UnlockCardOnClick()
     {
         PlayerManager.Instance.UnlockCard(card);
         GetComponent<Button>().interactable = false;
-
     }
-
-
 }
-
-

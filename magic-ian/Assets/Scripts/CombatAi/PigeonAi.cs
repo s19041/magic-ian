@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -7,15 +6,10 @@ public class PigeonAi : CombatAi
 {
     public Animator animator;
 
-
     public void Start()
     {
         animator = GetComponent<Animator>();
     }
-
-
-
-
 
     public override int doSomething(Unit playerUnit, List<Unit> opponentUnits, int turn, int indexPosition, int unitHp, TextMeshProUGUI dialogueText)
     {
@@ -38,6 +32,4 @@ public class PigeonAi : CombatAi
         }
         return 0;
     }
-
-
 }

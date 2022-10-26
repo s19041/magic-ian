@@ -1,11 +1,8 @@
-using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using UnityEngine;
 
 public class LeruaMerlinAi : CombatAi
 {
-
     public override int doSomething(Unit playerUnit, List<Unit> opponentUnits, int turn, int indexPosition, int unitHp, TextMeshProUGUI dialogueText)
     {
         //turn += indexPosition;//pierwszy oponent ma pierwsz¹ turê, drugi ma drug¹ turê itd...
@@ -30,7 +27,6 @@ public class LeruaMerlinAi : CombatAi
         {
             dialogueText.text = thisUnit.unitName + ": You hold the vacuum";
             playerUnit.AddStunStacks(5);
-
         }
         if (turn % 5 == 4)
         {
@@ -46,6 +42,4 @@ public class LeruaMerlinAi : CombatAi
         }
         return 0;
     }
-
-
 }

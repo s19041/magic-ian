@@ -1,9 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public enum ItemName { CYLINDER, SLEEVE, CAPE, MONOCLE }
+public enum ItemName
+{ CYLINDER, SLEEVE, CAPE, MONOCLE }
+
 [CreateAssetMenu(fileName = "new Item", menuName = "Item")]
 public class Item : ScriptableObject
 {
@@ -11,5 +11,4 @@ public class Item : ScriptableObject
     public ItemName itemName;
     public string buttonText;
     public Sprite artwork;
-
 }

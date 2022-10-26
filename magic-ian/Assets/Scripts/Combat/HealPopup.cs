@@ -1,5 +1,3 @@
- using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class HealPopup : MonoBehaviour
@@ -36,9 +34,6 @@ public class HealPopup : MonoBehaviour
             {
                 Destroy(gameObject);
             }
-
         }
-
-
     }
 }

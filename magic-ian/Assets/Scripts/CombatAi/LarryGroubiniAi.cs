@@ -1,15 +1,12 @@
-using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using UnityEngine;
 
 public class LarryGroubiniAi : CombatAi
 {
     public override int doSomething(Unit playerUnit, List<Unit> opponentUnits, int turn, int indexPosition, int unitHp, TextMeshProUGUI dialogueText)
     {
-        
         //turn += indexPosition;//pierwszy oponent ma pierwsz¹ turê, drugi ma drug¹ turê itd...
-        if(thisUnit.hp<10)
+        if (thisUnit.hp < 10)
         {
             dialogueText.text = thisUnit.unitName + ": Im starting to get hungry";
             thisUnit.DamageUp(3);
@@ -20,7 +17,7 @@ public class LarryGroubiniAi : CombatAi
         {
             dialogueText.text = thisUnit.unitName + " burps";
             playerUnit.AddStunStacks(2);
-            return (int)thisUnit.damage/3 ;
+            return (int)thisUnit.damage / 3;
         }
         if (turn % 4 == 2)
         {
@@ -34,7 +31,7 @@ public class LarryGroubiniAi : CombatAi
             playerUnit.AddStunStacks(20);
             if (playerUnit.armor <= 0)
             {
-                return (int)thisUnit.damage/2;
+                return (int)thisUnit.damage / 2;
             }
         }
         if (turn % 4 == 0)
@@ -45,7 +42,4 @@ public class LarryGroubiniAi : CombatAi
 
         return 0;
     }
-
-
-
 }

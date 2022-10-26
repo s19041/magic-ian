@@ -1,17 +1,17 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class DungeonSettings : MonoBehaviour
 {
     [SerializeField]
-    InputField difficulty;
+    private InputField difficulty;
+
     [SerializeField]
-    InputField additionalCombatRooms;//ta nazwa jest okropna
+    private InputField additionalCombatRooms;//ta nazwa jest okropna
+
     [SerializeField]
-    Button generateButton;
+    private Button generateButton;
 
     public void OnDifficultyEdit()
     {
@@ -20,11 +20,13 @@ public class DungeonSettings : MonoBehaviour
         DungeonManager.Instance.diff = Int32.Parse(difficulty.text);
         generateButton.enabled = true;
     }
+
     public void OnLengthEdit()
     {
         DungeonManager.Instance.additionalCombatRooms = Int32.Parse(additionalCombatRooms.text);
-        generateButton.enabled=true;
+        generateButton.enabled = true;
     }
+
     public void OnGenerateDungeonButton()
     {
         DungeonManager.Instance.OnCreateDungeonButton();

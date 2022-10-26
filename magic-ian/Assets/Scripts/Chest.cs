@@ -1,23 +1,18 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
-
 
 public class Chest : MonoBehaviour
 {
-     Animator animator;
-    [SerializeField] GameObject text;
+    private Animator animator;
+    [SerializeField] private GameObject text;
 
-
-    void Start()
+    private void Start()
     {
         animator = this.GetComponent<Animator>();
     }
 
-    void ChestOpened()
+    private void ChestOpened()
     {
-        animator.SetBool("Over",true);
+        animator.SetBool("Over", true);
     }
 
     public void AnimateChest()
@@ -29,9 +24,9 @@ public class Chest : MonoBehaviour
     {
         text.SetActive(true);
     }
+
     public void OnUnlockNextUnlockableButton()
     {
         PlayerManager.Instance.UnlockNextUnlockables();
     }
-
 }

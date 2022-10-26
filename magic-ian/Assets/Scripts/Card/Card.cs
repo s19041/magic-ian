@@ -1,9 +1,10 @@
- using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public enum Suit { CLUBS, DIAMONDS, HEARTS, SPADES, SPECIAL, EMPTY }
-public enum Rank { ACE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, TEN, JACK, QUEEN, KING, JOKER, EMPTY }
+public enum Suit
+{ CLUBS, DIAMONDS, HEARTS, SPADES, SPECIAL, EMPTY }
+
+public enum Rank
+{ ACE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, TEN, JACK, QUEEN, KING, JOKER, EMPTY }
 
 [CreateAssetMenu(fileName = "new Card", menuName = "Card")]
 public class Card : ScriptableObject
@@ -22,8 +23,6 @@ public class Card : ScriptableObject
 
     public bool aoe;
     public bool hasAbility;
-
-
 
     public Card()
     {
@@ -46,10 +45,12 @@ public class Card : ScriptableObject
         SetHasAbility();
         aoe = false;
     }
+
     public void SetName()
     {
         cardName = rank.ToString() + " Of " + suit.ToString();
     }
+
     public void SetDamage()
     {
         switch (rank)
@@ -107,9 +108,9 @@ public class Card : ScriptableObject
             default:
                 damage = 0;
                 break;
-
         }
     }
+
     public void SetStats()
     {//tu mo¿na dodaæ warunek który wyklucza karty specjalne
         if (damage == 0)
@@ -146,6 +147,7 @@ public class Card : ScriptableObject
                 break;
         }
     }
+
     public void SetHasAbility()
     {
         switch (rank)
@@ -173,8 +175,6 @@ public class Card : ScriptableObject
             default:
                 hasAbility = false;
                 break;
-
         }
     }
-
 }

@@ -1,43 +1,47 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 [Serializable]
-public class PlayerData 
+public class PlayerData
 {
     // Start is called before the first frame update
     public int gold;
+
     public int runs;
     public int succesfulRuns;
     public int failedRuns;
 
     [SerializeField]
     private List<Card> unlockedCards;
+
     [SerializeField]
     private List<Item> unlockedItems;
 
     [HideInInspector]
     public List<Suit> unlockedCardsSuit;//wszystkie unlocked cards s¹ przek³adane na te dwie listy dla serializacji
+
     [HideInInspector]
     public List<Rank> unlockedCardsRank;
+
     [HideInInspector]
     public List<ItemName> unlockedItemEnums;//do serializacji
 
     public PlayerData()
     {
         unlockedCards = new List<Card>();
-        unlockedItems= new List<Item>();
+        unlockedItems = new List<Item>();
 
         gold = 0;
         runs = 0;
         succesfulRuns = 0;
         failedRuns = 0;
     }
+
     public void NewGame()
     {
         DeckBuilder db = DeckBuilder.Instance;
-     
+
         for (int i = 2; i < 7; i++)
         {
             unlockedCards.Add(db.hearts[i]);//king
@@ -49,17 +53,16 @@ public class PlayerData
         }
         unlockedCards.Add(db.clubs[10]);//king
         unlockedItems.Add(db.items[0]);
-
     }
-    
+
     public bool UnlockCard(Card card)
     {
         if (unlockedCards.Exists(x => x.rank == card.rank && x.suit == card.suit))
             return false;
         unlockedCards.Add(new Card(card.suit, card.rank));
         return true;
-
     }
+
     public bool UnlockSuit(Suit suit)//odblokowane koloru to tylko odblokowanie kart 1-10 bez kart specjalnych które mozna inaczej zdobyc
     {
         if (unlockedCards.Exists(x => x.suit == suit))
@@ -71,8 +74,8 @@ public class PlayerData
             unlockedCards.Add(tmp[i]);
         }
         return true;
-
     }
+
     public bool UnlockItem(Item item)
     {
         if (!unlockedItems.Exists(x => x.itemName == item.itemName))
@@ -82,33 +85,36 @@ public class PlayerData
         }
         return false;
     }
+
     public List<Card> GetUnlockedCards()
     {
         return unlockedCards;
     }
+
     public List<Item> GetUnlockedItems()
     {
         return unlockedItems;
     }
-    //rozwi¹zania znalezione na necie by³ nadmiarowe wiêc serializacja w taki dziwny sposób 
+
+    //rozwi¹zania znalezione na necie by³ nadmiarowe wiêc serializacja w taki dziwny sposób
     public void Serialize()
     {
         unlockedCardsRank = new List<Rank>();
         unlockedCardsSuit = new List<Suit>();
-        foreach(Card card in unlockedCards)
+        foreach (Card card in unlockedCards)
         {
             unlockedCardsRank.Add(card.rank);
             unlockedCardsSuit.Add(card.suit);
         }
         unlockedItemEnums = new List<ItemName>();
-        foreach(Item item in unlockedItems)
+        foreach (Item item in unlockedItems)
         {
             unlockedItemEnums.Add(item.itemName);
         }
     }
+
     public void Deserialize()
     {
-
         unlockedCards = new List<Card>();
         DeckBuilder db = DeckBuilder.Instance;
         for (int i = 0; i < unlockedCardsRank.Count; i++)
@@ -134,6 +140,7 @@ public class PlayerData
 
                     unlockedCards.Add(db.diamonds.Find(x => x.rank == unlockedCardsRank[i]));
                     break;
+
                 case Suit.SPECIAL:
 
                     unlockedCards.Add(db.special.Find(x => x.rank == unlockedCardsRank[i]));
@@ -141,11 +148,10 @@ public class PlayerData
 
                 default:
                     break;
-
             }
         }
         unlockedItems = new List<Item>();
-        foreach(ItemName itemName in unlockedItemEnums)
+        foreach (ItemName itemName in unlockedItemEnums)
         {
             unlockedItems.Add(db.items.Find(x => x.itemName == itemName));
         }
@@ -155,5 +161,4 @@ public class PlayerData
     {
         return gold;
     }
-
 }

@@ -1,15 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class UnlockableShopPicker : MonoBehaviour//chyba brzydszej klasy to jeszcze nie zrobi³em...
 {
     public GameObject unlockableSpot;
-    DeckBuilder deckBuilder;
-    PlayerManager playerManager;
-    int safeGuard;
-    int unlockablesCount;
+    private DeckBuilder deckBuilder;
+    private PlayerManager playerManager;
+    private int safeGuard;
+    private int unlockablesCount;
+
     private void Awake()
     {
         safeGuard = 0;
@@ -19,8 +18,9 @@ public class UnlockableShopPicker : MonoBehaviour//chyba brzydszej klasy to jesz
         int index = Random.Range(0, unlockablesCount);
         AssignButton(index);
         Button button = unlockableSpot.GetComponentInChildren<Button>();
-        button.onClick.AddListener(() => button.interactable = false) ;
+        button.onClick.AddListener(() => button.interactable = false);
     }
+
     public void AssignButton(int index)
     {
         safeGuard++;
@@ -29,7 +29,7 @@ public class UnlockableShopPicker : MonoBehaviour//chyba brzydszej klasy to jesz
             gameObject.SetActive(false);
             return;
         }
-            
+
         unlockableSpot.GetComponent<ItemHolder>().item.price = 200;
         Button button = unlockableSpot.GetComponentInChildren<Button>();
         if (index == 0)
@@ -41,7 +41,6 @@ public class UnlockableShopPicker : MonoBehaviour//chyba brzydszej klasy to jesz
             }
             else
                 AssignButton(1);
-
         }
         if (index == 1)
         {
@@ -55,7 +54,7 @@ public class UnlockableShopPicker : MonoBehaviour//chyba brzydszej klasy to jesz
         }
         if (index == 2)
         {
-            if (!playerManager.GetUnlockedCards().Exists(x=>x.suit ==deckBuilder.clubs[10].suit && x.rank == deckBuilder.clubs[10].rank))
+            if (!playerManager.GetUnlockedCards().Exists(x => x.suit == deckBuilder.clubs[10].suit && x.rank == deckBuilder.clubs[10].rank))
             {
                 button.onClick.AddListener(() => playerManager.UnlockCard(deckBuilder.clubs[10]));
                 unlockableSpot.GetComponent<ItemHolder>().logo.sprite = deckBuilder.clubs[10].artwork;
@@ -65,7 +64,7 @@ public class UnlockableShopPicker : MonoBehaviour//chyba brzydszej klasy to jesz
         }
         if (index == 3)
         {
-            if (!playerManager.GetUnlockedCards().Exists(x=>x.suit == deckBuilder.clubs[11].suit && x.rank == deckBuilder.clubs[11].rank))
+            if (!playerManager.GetUnlockedCards().Exists(x => x.suit == deckBuilder.clubs[11].suit && x.rank == deckBuilder.clubs[11].rank))
             {
                 button.onClick.AddListener(() => playerManager.UnlockCard(deckBuilder.clubs[11]));
                 unlockableSpot.GetComponent<ItemHolder>().logo.sprite = deckBuilder.clubs[11].artwork;
@@ -75,7 +74,7 @@ public class UnlockableShopPicker : MonoBehaviour//chyba brzydszej klasy to jesz
         }
         if (index == 4)
         {
-            if (!playerManager.GetUnlockedCards().Exists(x=>x.suit == deckBuilder.clubs[12].suit && x.rank == deckBuilder.clubs[12].rank))
+            if (!playerManager.GetUnlockedCards().Exists(x => x.suit == deckBuilder.clubs[12].suit && x.rank == deckBuilder.clubs[12].rank))
             {
                 button.onClick.AddListener(() => playerManager.UnlockCard(deckBuilder.clubs[12]));
                 unlockableSpot.GetComponent<ItemHolder>().logo.sprite = deckBuilder.clubs[12].artwork;

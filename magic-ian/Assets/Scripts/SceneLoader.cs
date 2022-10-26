@@ -1,19 +1,18 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class SceneLoader : MonoBehaviour
 {
     private static SceneLoader _instance;
-    public static SceneLoader Instance { get { return _instance; } }
+    public static SceneLoader Instance
+    { get { return _instance; } }
+
     public void Awake()
     {
         if (_instance != null && _instance != this)
         {
             Destroy(this.gameObject);
-
         }
         else
         {
@@ -21,6 +20,7 @@ public class SceneLoader : MonoBehaviour
         }
         DontDestroyOnLoad(gameObject);
     }
+
     public void LoadRoom(Room room)
     {
         switch (room.type)
@@ -44,10 +44,12 @@ public class SceneLoader : MonoBehaviour
 
                 SecretScene();
                 break;
+
             case Type.TRADER:
 
                 TraderScene();
                 break;
+
             case Type.TREASURE:
 
                 TreasureScene();
@@ -55,49 +57,46 @@ public class SceneLoader : MonoBehaviour
 
             default:
                 break;
-
         }
     }
+
     public void StartScene()
     {
         SceneManager.LoadScene(0);
-
     }
+
     public void HubScene()
     {
         SceneManager.LoadScene(1);
-
     }
+
     public void EntranceScene()
     {
         SceneManager.LoadScene(2);
-
     }
+
     public void CombatScene()
     {
         SceneManager.LoadScene(3);
-
     }
+
     public void SecretScene()
     {
         throw new NotImplementedException();
-
     }
+
     public void TreasureScene()
     {
         SceneManager.LoadScene(6);
-
     }
+
     public void TraderScene()
     {
         SceneManager.LoadScene(5);
-
     }
+
     public void BossScene()
     {
         SceneManager.LoadScene(4);
-
     }
-
-
 }
