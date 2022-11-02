@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 public class SceneLoader : MonoBehaviour
 {
     private static SceneLoader _instance;
+
     public static SceneLoader Instance
     { get { return _instance; } }
 
@@ -98,5 +99,10 @@ public class SceneLoader : MonoBehaviour
     public void BossScene()
     {
         SceneManager.LoadScene(4);
+    }
+
+    public void ExitGame()
+    {
+        Application.Quit();
     }
 }
