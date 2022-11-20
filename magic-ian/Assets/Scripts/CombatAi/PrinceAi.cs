@@ -24,7 +24,7 @@ public class PrinceAi : CombatAi
         if (turn % 4 == 0)
         {
             dialogueText.text = thisUnit.unitName + " catches a fly";
-            thisUnit.Heal(10);
+            thisUnit.Heal(6);
         }
         return 0;
     }

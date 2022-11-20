@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 4897434664256905212}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1, y: 1, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -101,5 +101,12 @@ MonoBehaviour:
   damage: 0
   stunStacks: 0
   barrierStacks: 0
+  damagePopup: {fileID: 0}
+  healPopup: {fileID: 0}
+  armorPopup: {fileID: 0}
+  damageUpPopup: {fileID: 0}
+  damageNumber: {fileID: 0}
+  numberPosition: {x: 0, y: 0, z: 0}
+  animator: {fileID: 0}
   maxHp: 50
   combatAi: {fileID: 0}

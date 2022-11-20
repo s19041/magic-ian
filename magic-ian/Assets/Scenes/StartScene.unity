@@ -460,10 +460,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 5606788881178868117}
-    - target: {fileID: 1190312255974948120, guid: 065d17561fbfbc941a26874fbbbd06ca, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ExitGame
-      objectReference: {fileID: 0}
     - target: {fileID: 1190312256619617034, guid: 065d17561fbfbc941a26874fbbbd06ca, type: 3}
       propertyPath: m_Name
       value: StartMenu Canvas

@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 45ee2a2c6063ea64d844477a76fbf2a3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a4eea62d88a5dbe41a8366198df6c971, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -108,6 +108,7 @@ MonoBehaviour:
   damageUpPopup: {fileID: 108628239557612809, guid: 63e89d177f06510478c4a6debb9cfbae, type: 3}
   damageNumber: {fileID: 4167822517260315188, guid: 44ea479e8af79d74db11f6f758533f98, type: 3}
   numberPosition: {x: 0, y: 0, z: 0}
+  animator: {fileID: 0}
   maxHp: 15
   combatAi: {fileID: 1328308211620735092}
 --- !u!114 &1328308211620735092
