@@ -2,7 +2,7 @@
 <PlayerData xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <gold>0</gold>
   <runs>0</runs>
-  <succesfulRuns>2</succesfulRuns>
+  <succesfulRuns>4</succesfulRuns>
   <failedRuns>0</failedRuns>
   <unlockedCardsSuit>
     <Suit>HEARTS</Suit>
@@ -23,6 +23,7 @@
     <Suit>SPADES</Suit>
     <Suit>SPADES</Suit>
     <Suit>SPADES</Suit>
+    <Suit>CLUBS</Suit>
   </unlockedCardsSuit>
   <unlockedCardsRank>
     <Rank>THREE</Rank>
@@ -43,8 +44,10 @@
     <Rank>TWO</Rank>
     <Rank>EIGHT</Rank>
     <Rank>NINE</Rank>
+    <Rank>ACE</Rank>
   </unlockedCardsRank>
   <unlockedItemEnums>
     <ItemName>CYLINDER</ItemName>
+    <ItemName>SLEEVE</ItemName>
   </unlockedItemEnums>
 </PlayerData>
