@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 5fd28e40be3231c4480f1e8a8b5e60cb, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 18ee6c45d533724459a101ce4ab90825, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -102,6 +102,13 @@ MonoBehaviour:
   damage: 4
   stunStacks: 0
   barrierStacks: 0
+  damagePopup: {fileID: 0}
+  healPopup: {fileID: 0}
+  armorPopup: {fileID: 0}
+  damageUpPopup: {fileID: 0}
+  damageNumber: {fileID: 0}
+  numberPosition: {x: 0, y: 0, z: 0}
+  animator: {fileID: 0}
   maxHp: 120
   combatAi: {fileID: -5965283131537802494}
 --- !u!114 &-5965283131537802494
