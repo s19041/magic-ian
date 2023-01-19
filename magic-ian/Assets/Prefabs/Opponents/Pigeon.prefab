@@ -99,7 +99,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unitName: Pigeon
   hp: 10
-  armor: 2
+  armor: 10
   damage: 3
   stunStacks: 0
   barrierStacks: 0
