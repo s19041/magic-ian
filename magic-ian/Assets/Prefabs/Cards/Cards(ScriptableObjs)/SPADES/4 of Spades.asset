@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d37d1607e6228344688a10db5852c015, type: 3}
+  m_Name: 4 of Spades
+  m_EditorClassIdentifier: 
+  cardName: ACE Of CLUBS
+  suit: 3
+  rank: 3
+  description: 
+  damage: 1
+  heal: 0
+  armor: 9
+  stunStacks: 0
+  artwork: {fileID: 7881601550259347632, guid: 357a967688d2f5e439b15bccb5bf30d3, type: 3}

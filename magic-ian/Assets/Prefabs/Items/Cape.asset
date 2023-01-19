@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cdd155fc6c394074c9cb411cefbeae45, type: 3}
+  m_Name: Cape
+  m_EditorClassIdentifier: 
+  descriptionText: {fileID: 0}
+  itemName: 2
+  buttonText: Ressurect
+  artwork: {fileID: 21300000, guid: 7df44d77ab5c14d438d0feb918a0ad0c, type: 3}
