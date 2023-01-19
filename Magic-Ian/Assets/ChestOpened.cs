@@ -4,9 +4,14 @@ using UnityEngine;
 public class ChestOpened : MonoBehaviour
 {
     // Update is called once per frame
-    public IEnumerator NextScene()
+    public void NextScene()
     {
-        yield return new WaitForSeconds(3);
+        StartCoroutine(NextScene(3f));
+    }
+
+    public IEnumerator NextScene(float delayInSecs)
+    {
+        yield return new WaitForSeconds(delayInSecs);
         DungeonManager.Instance.EnableNextSceneButton();
     }
 }

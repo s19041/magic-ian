@@ -21,7 +21,7 @@ public class LeruaMerlinAi : CombatAi
         {
             dialogueText.text = thisUnit.unitName + ": I found the right screw";
             thisUnit.ArmorUp(5);
-            thisUnit.Heal(5);
+            thisUnit.Heal(3);
         }
         if (turn % 5 == 3)
         {

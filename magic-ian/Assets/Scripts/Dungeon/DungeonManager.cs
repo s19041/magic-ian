@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,6 +13,7 @@ public class DungeonManager : MonoBehaviour//tutaj bêdzie ca³y gameloop(albo w g
 
     public int diff;
     public int additionalCombatRooms;
+    public TextMeshProUGUI info;
 
     [SerializeField]
     private Button nextSceneButtonCanvas;
@@ -105,8 +107,9 @@ public class DungeonManager : MonoBehaviour//tutaj bêdzie ca³y gameloop(albo w g
         }
         else
         {
-            //tutaj zrobiæ jakiœ popup ¿e niewystarczaj¹ca iloœæ kart
-            Debug.Log("Niewystarczaj¹ca iloœæ kart w decku do wystartowania dungeona");
+            Debug.Log("Not enough cards in deck to start");
+            info.gameObject.SetActive(true);
+            info.text = "Not enough cards in deck to start";
         }
     }
 

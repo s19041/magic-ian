@@ -9,7 +9,7 @@ public class KnowerAi : CombatAi
         if (Deck.Instance.lastCard.hasAbility)//jak zagrasz specjaln¹ kartê to jest przypa³ i siê bufuje mocno
         {
             dialogueText.text = thisUnit.unitName + " : I know how you did that!";
-            thisUnit.ArmorUp(8);
+            thisUnit.ArmorUp(6);
             thisUnit.DamageUp(4);
         }
         if (turn % 3 == 1)

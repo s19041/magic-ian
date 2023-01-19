@@ -41,7 +41,7 @@ public class HubManager : MonoBehaviour
 
     public void OnWearItemButton(Item item)
     {
-        if (Deck.Instance.item1.itemName == item.itemName || Deck.Instance.item1.itemName == item.itemName)
+        if (Deck.Instance.item1.itemName == item.itemName || Deck.Instance.item2.itemName == item.itemName)
             return;
         if (itemNumber == 1)
         {
@@ -53,7 +53,6 @@ public class HubManager : MonoBehaviour
             Deck.Instance.item2 = item;
             itemNumber = 1;
         }
-        //tutaj jakaœ logika oznaczenia w Hubie ¿e item jest za³o¿ony (np zielona poœwiata)
     }
 
     public void OnStartDungeonButton()
