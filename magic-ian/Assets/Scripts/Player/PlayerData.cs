@@ -40,6 +40,14 @@ public class PlayerData
 
     public void NewGame()
     {
+        unlockedCards = new List<Card>();
+        unlockedItems = new List<Item>();
+
+        gold = 0;
+        runs = 0;
+        succesfulRuns = 0;
+        failedRuns = 0;
+
         DeckBuilder db = DeckBuilder.Instance;
 
         for (int i = 2; i < 7; i++)
@@ -53,6 +61,7 @@ public class PlayerData
         }
         unlockedCards.Add(db.clubs[10]);//king
         unlockedItems.Add(db.items[0]);
+        unlockedItems.Add(db.items[1]);
     }
 
     public bool UnlockCard(Card card)

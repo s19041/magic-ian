@@ -924,6 +924,22 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1479528994546407127, guid: b79b93556c82b424985da07800e76966, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1479528994546407127, guid: b79b93556c82b424985da07800e76966, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1479528994546407127, guid: b79b93556c82b424985da07800e76966, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1479528994546407127, guid: b79b93556c82b424985da07800e76966, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2008812967163620932, guid: b79b93556c82b424985da07800e76966, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -1020,6 +1036,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 4685485774569115781, guid: b79b93556c82b424985da07800e76966, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ShowUnlockedCards
+      objectReference: {fileID: 0}
     - target: {fileID: 4685485774569115835, guid: b79b93556c82b424985da07800e76966, type: 3}
       propertyPath: m_Layer
       value: 5
@@ -1034,7 +1054,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4685485774696218772, guid: b79b93556c82b424985da07800e76966, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4685485774696218773, guid: b79b93556c82b424985da07800e76966, type: 3}
       propertyPath: m_Camera
@@ -1207,6 +1227,22 @@ PrefabInstance:
     - target: {fileID: 6133207672520320653, guid: b79b93556c82b424985da07800e76966, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 6462079279277463542, guid: b79b93556c82b424985da07800e76966, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6462079279277463542, guid: b79b93556c82b424985da07800e76966, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6462079279277463542, guid: b79b93556c82b424985da07800e76966, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6462079279277463542, guid: b79b93556c82b424985da07800e76966, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6561377714919205718, guid: b79b93556c82b424985da07800e76966, type: 3}
       propertyPath: m_AnchorMax.y
