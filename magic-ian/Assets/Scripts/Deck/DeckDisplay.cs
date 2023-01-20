@@ -80,7 +80,7 @@ public class DeckDisplay : MonoBehaviour//note to self: wiêkszoœæ klas 'display'
         }
     }
 
-    public void ShowDeckBuilder()
+    public void ShowUnlockedCards()
     {
         ClearDeckDisplay();
         if (panel.activeSelf)
@@ -90,7 +90,8 @@ public class DeckDisplay : MonoBehaviour//note to self: wiêkszoœæ klas 'display'
         else
         {
             panel.SetActive(true);
-            ShowDeckBuilder(PlayerManager.Instance.GetUnlockedCards(), true);
+            var cards = PlayerManager.Instance.GetUnlockedCards();
+            ShowDeckBuilder(cards, true);
         }
     }
 
@@ -109,7 +110,15 @@ public class DeckDisplay : MonoBehaviour//note to self: wiêkszoœæ klas 'display'
             cardDisplay.UpdateDisplay();
 
             GameObject cardObject = Instantiate(cardPrefab);
-            cardObject.GetComponent<CardDisplay>().inDeckColor = isEnabled;
+            if (isEnabled)
+            {
+                if (Deck.Instance.GetCards().FindAll(x => x.suit == card.suit && card.rank == x.rank).Count != 0)
+                    cardObject.GetComponent<CardDisplay>().inDeckColor = true;
+                else
+                    cardObject.GetComponent<CardDisplay>().inDeckColor = false;
+            }
+            else
+                cardObject.GetComponent<CardDisplay>().inDeckColor = false;
             cardsDisplayed.Add(cardObject);
             cardObject.transform.SetParent(panel.transform, false);
             cardObject.GetComponent<Button>().enabled = isEnabled;
