@@ -205,6 +205,75 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &436258880
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1557767469979534533, guid: 9848f5b93efadd34c8d103f75c9c5a60, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6539607446473684968, guid: 9848f5b93efadd34c8d103f75c9c5a60, type: 3}
+      propertyPath: m_Name
+      value: DeckManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 6539607446473684969, guid: 9848f5b93efadd34c8d103f75c9c5a60, type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6539607446473684969, guid: 9848f5b93efadd34c8d103f75c9c5a60, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -3.24
+      objectReference: {fileID: 0}
+    - target: {fileID: 6539607446473684969, guid: 9848f5b93efadd34c8d103f75c9c5a60, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.14
+      objectReference: {fileID: 0}
+    - target: {fileID: 6539607446473684969, guid: 9848f5b93efadd34c8d103f75c9c5a60, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.6922466
+      objectReference: {fileID: 0}
+    - target: {fileID: 6539607446473684969, guid: 9848f5b93efadd34c8d103f75c9c5a60, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6539607446473684969, guid: 9848f5b93efadd34c8d103f75c9c5a60, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6539607446473684969, guid: 9848f5b93efadd34c8d103f75c9c5a60, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6539607446473684969, guid: 9848f5b93efadd34c8d103f75c9c5a60, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6539607446473684969, guid: 9848f5b93efadd34c8d103f75c9c5a60, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6539607446473684969, guid: 9848f5b93efadd34c8d103f75c9c5a60, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6539607446473684969, guid: 9848f5b93efadd34c8d103f75c9c5a60, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7867937196103585131, guid: 9848f5b93efadd34c8d103f75c9c5a60, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7867937196103585131, guid: 9848f5b93efadd34c8d103f75c9c5a60, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 9848f5b93efadd34c8d103f75c9c5a60, type: 3}
 --- !u!1 &654972182
 GameObject:
   m_ObjectHideFlags: 0
@@ -552,6 +621,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1190312256672621255, guid: 065d17561fbfbc941a26874fbbbd06ca, type: 3}
+      propertyPath: m_text
+      value: No
+      objectReference: {fileID: 0}
+    - target: {fileID: 1190312256872213316, guid: 065d17561fbfbc941a26874fbbbd06ca, type: 3}
+      propertyPath: m_text
+      value: Yes
+      objectReference: {fileID: 0}
+    - target: {fileID: 1190312257038126300, guid: 065d17561fbfbc941a26874fbbbd06ca, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1914184750}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 065d17561fbfbc941a26874fbbbd06ca, type: 3}
 --- !u!1001 &5606788881178868116
