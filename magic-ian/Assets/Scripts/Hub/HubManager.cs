@@ -37,6 +37,16 @@ public class HubManager : MonoBehaviour
         mainCanvas.gameObject.SetActive(false);
     }
 
+    public void ShowDeckButton()
+    {
+        DeckDisplay.Instance.ShowDeck();
+    }
+
+    public void ShowDeckBuilderButton()
+    {
+        DeckDisplay.Instance.ShowUnlockedCards();
+    }
+
     public int itemNumber = 1;
 
     public void OnWearItemButton(Item item)

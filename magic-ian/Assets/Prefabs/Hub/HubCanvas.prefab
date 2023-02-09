@@ -1891,9 +1891,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: DeckDisplay, Assembly-CSharp
-        m_MethodName: ShowDeck
+      - m_Target: {fileID: 4685485775392382678}
+        m_TargetAssemblyTypeName: HubManager, Assembly-CSharp
+        m_MethodName: ShowDeckButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2424,9 +2424,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: DeckDisplay, Assembly-CSharp
-        m_MethodName: ShowDeckBuilder
+      - m_Target: {fileID: 4685485775392382678}
+        m_TargetAssemblyTypeName: HubManager, Assembly-CSharp
+        m_MethodName: ShowDeckBuilderButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
